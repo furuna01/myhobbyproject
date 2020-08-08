@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace OseroGame
 {
@@ -22,9 +23,14 @@ namespace OseroGame
         }
         //初期表示
         private void OseroForm_Load(object sender, EventArgs e)
-        {   
+        {
+            /***********************************************************
+             *  2020/08/09修正、
+             *  CSVから初期のオセロの石の状態を読み込む
+             *  ********************************************************/
+            this.LoadCsv();
             //セルの初期化オセロのゲームの初めの状態
-            for (int i = 0; i < CONST.MATH_NUM; i++)
+            /*for (int i = 0; i < CONST.MATH_NUM; i++)
             {
                 for (int j = 0; j < CONST.MATH_NUM; j++)
                 {
@@ -49,6 +55,21 @@ namespace OseroGame
                         sell_status[i, j] = -1;
                     }
                 }
+            }*/
+        }
+        private void LoadCsv()
+        {
+            StreamReader reader = new StreamReader("screen.csv");
+            int i = 0;
+            while(!reader.EndOfStream)
+            {
+                String line = reader.ReadLine();
+                String[] cell = line.Split(',');
+                for(int j = 0; j < CONST.MATH_NUM; j ++)
+                {
+                    sell_status[i, j] = int.Parse(cell[j]);
+                }
+                i++;
             }
         }
         override protected void OnPaint(PaintEventArgs e)
@@ -193,8 +214,17 @@ namespace OseroGame
                     }
                 }
             }
+            //コンピュータが打つ
+            PutStoneComputer();
+        }
+        /*******************************************************************************
+         * コンピューターのアルゴリズム
+         * *****************************************************************************/
+        private void PutStoneComputer()
+        {
+            CreverseStone stone = new CreverseStone(this);
             CControlGame control = new CControlGame();
-            if(control.showGameResult(sell_status, fTeban))
+            if (control.showGameResult(sell_status, fTeban))
             {
                 return;
             }
@@ -202,9 +232,9 @@ namespace OseroGame
             //コンピュータの考える番
             Thread.Sleep(CONST.REVERSE_INTERVAL);
             CcheckabletoPut able2 = new CcheckabletoPut();
-            
+
             int[] count_num = new int[CONST.DIRECTION_NUMBER];
-            for(int i = 0; i < CONST.DIRECTION_NUMBER; ++i)
+            for (int i = 0; i < CONST.DIRECTION_NUMBER; ++i)
             {
                 count_num[i] = 0;
             }
@@ -218,14 +248,15 @@ namespace OseroGame
             int pos_y = 0;
             int max_num = 0;
             max_num = able2.ChekcYonsumiIsAvaiable(fTeban, sell_status, count_num, outflag, ref pos_x, ref pos_y);
-            
+
             //端の石をひっくり返せるか調べる
-            if(max_num > 0)
+            if (max_num > 0)
             {
-                if(fTeban == 1)
+                if (fTeban == 1)
                 {
                     DrawCircle(pos_y, pos_x, CONST.BLACK);
-                }else
+                }
+                else
                 {
                     DrawCircle(pos_y, pos_x, CONST.WHITE);
                 }
@@ -241,7 +272,7 @@ namespace OseroGame
             {
                 count_num[i] = 0;
             }
-            
+
             outflag = new bool[CONST.DIRECTION_NUMBER];
             for (int i = 0; i < CONST.DIRECTION_NUMBER; ++i)
             {
@@ -250,7 +281,7 @@ namespace OseroGame
             pos_x = 0;
             pos_y = 0;
             max_num = able2.CountCenterAbaiable(fTeban, sell_status, count_num, outflag, ref pos_x, ref pos_y);
-            if(max_num > 0)
+            if (max_num > 0)
             {
                 if (fTeban == 1)
                 {
@@ -264,7 +295,7 @@ namespace OseroGame
                 }
                 stone.ReverseStone(pos_y, pos_x, fTeban, sell_status, outflag, count_num);
             }
-            if(control.showGameResult(sell_status, fTeban))
+            if (control.showGameResult(sell_status, fTeban))
             {
                 return;
             }
