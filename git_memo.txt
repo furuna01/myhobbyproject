@@ -1,2 +1,8 @@
 https://github.com/furuna01/myhobbyproject.git
 git merge --allow-unrelated-histories origin/master
+
+//リモートのファイルを消す
+git rm -r ファイル名
+git add .
+git commit -m "メッセージ"
+git push
