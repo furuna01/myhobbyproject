@@ -24,6 +24,10 @@ namespace OseroGame
             {
                 for (int i = 1; i <= stone_num[0]; i++)
                 {
+                    if(y - i == CONST.MATH_NUM || y - i == -1)
+                    {
+                        break;
+                    }
                     if (fTeban == 1)
                     {
                         Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -45,6 +49,11 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[1]; i++)
                     {
+                        if (x + i == CONST.MATH_NUM || x + i == -1  
+                            || y - i == CONST.MATH_NUM || y - i == -1)
+                        {
+                            break;
+                        }
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -67,6 +76,10 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[2]; i++)
                     {
+                        if(x + i == CONST.MATH_NUM || x + i == -1)
+                        {
+                            break;
+                        }
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -89,6 +102,12 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[3]; i++)
                     {
+                        if(x + i == CONST.MATH_NUM || x + i == -1
+                            || y + i == CONST.MATH_NUM || y + i == -1)
+                        {
+                            break;
+                        }
+                        
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -111,6 +130,10 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[4]; i++)
                     {
+                        if(y + i == CONST.MATH_NUM || y + i == -1)
+                        {
+                            break;
+                        }
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -133,6 +156,11 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[5]; i++)
                     {
+                        if(x - i == CONST.MATH_NUM || x - i == -1
+                            || y + i == CONST.MATH_NUM || y + i == -1)
+                        {
+                            break;
+                        }
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -155,6 +183,10 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[6]; i++)
                     {
+                        if(x - i == CONST.MATH_NUM || x - i == -1)
+                        {
+                            break;
+                        }
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -177,6 +209,11 @@ namespace OseroGame
                 {
                     for (int i = 1; i <= stone_num[7]; i++)
                     {
+                        if(x - i == CONST.MATH_NUM || x - i == -1
+                            || y - i == CONST.MATH_NUM || y - i == -1)
+                        {
+                            break;
+                        }
                         if (fTeban == 1)
                         {
                             Thread.Sleep(CONST.REVERSE_INTERVAL);

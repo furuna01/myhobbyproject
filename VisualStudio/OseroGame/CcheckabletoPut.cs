@@ -29,7 +29,7 @@ namespace OseroGame
             //自分の上方向にひっくり返せる石がないかチェック
             if(fTeban == 1)
             {
-                for(int i = 1; i < CONST.FILED_HEIGHT; i ++ )
+                for(int i = 1; i < CONST.MATH_NUM; i ++ )
                 {
                     if (x - i == CONST.MATH_NUM || x - i == -1 ||
                         y == CONST.MATH_NUM || y == -1)
@@ -65,7 +65,7 @@ namespace OseroGame
                 }
 
                 //石が斜め右上で反転できるかどうかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x - i == CONST.MATH_NUM || x - i == -1 ||
                         y + i == CONST.MATH_NUM || y + i == -1)
@@ -102,7 +102,7 @@ namespace OseroGame
                     }
                 }
                 //石が右側で反転できるかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x == CONST.MATH_NUM || x == -1 ||
                        y + i == CONST.MATH_NUM || y + i == -1)
@@ -139,7 +139,7 @@ namespace OseroGame
                     }
                 }
                 //石が右下で反転できるものがないかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x + i == CONST.MATH_NUM || x + i == -1 ||
                        y + i == CONST.MATH_NUM || y + i == -1)
@@ -176,7 +176,7 @@ namespace OseroGame
                     }
                 }
                 //石が下側で反転できるかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x + i == CONST.MATH_NUM || x + i == -1 ||
                         y == CONST.MATH_NUM || y == -1)
@@ -213,7 +213,7 @@ namespace OseroGame
                     }
                 }
                 //石が斜め左下で反転できるかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x + i == CONST.MATH_NUM || x + i == -1 ||
                         y - i == CONST.MATH_NUM || y - i == -1)
@@ -250,7 +250,7 @@ namespace OseroGame
                     }
                 }
                 //石が左側で反転できるものがないかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x == CONST.MATH_NUM || x == -1 ||
                         y - i == CONST.MATH_NUM || y - i == -1)
@@ -287,7 +287,7 @@ namespace OseroGame
                     }
                 }
                 //石が左上側で反転できるものがないかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x - i == CONST.MATH_NUM || x - i == -1 ||
                         y - i == CONST.MATH_NUM || y - i == -1)
@@ -327,7 +327,7 @@ namespace OseroGame
             else
             {
                 //上方向のひっくり返せる石をチェックする
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x - i == CONST.MATH_NUM || x - i == -1 ||
                         y == CONST.MATH_NUM || y == -1)
@@ -365,7 +365,7 @@ namespace OseroGame
                 }
 
                 //石が斜め右上で反転できるかどうかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x - i == CONST.MATH_NUM || x - i == -1 ||
                         y + i == CONST.MATH_NUM || y + i == -1)
@@ -402,7 +402,7 @@ namespace OseroGame
                     }
                 }
                 //石が右側で反転できるかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x == CONST.MATH_NUM || x == -1 ||
                        y + i == CONST.MATH_NUM || y + i == -1)
@@ -439,7 +439,7 @@ namespace OseroGame
                     }
                 }
                 //石が右下で反転できるものがないかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x + i == CONST.MATH_NUM || x + i == -1 ||
                        y + i == CONST.MATH_NUM || y + i == -1)
@@ -476,7 +476,7 @@ namespace OseroGame
                     }
                 }
                 //石が下側で反転できるかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x + i == CONST.MATH_NUM || x + i == -1 ||
                         y == CONST.MATH_NUM || y == -1)
@@ -513,7 +513,7 @@ namespace OseroGame
                     }
                 }
                 //石が斜め左下で反転できるかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x + i == CONST.MATH_NUM || x + i == -1 ||
                         y - i == CONST.MATH_NUM || y - i == -1)
@@ -550,7 +550,7 @@ namespace OseroGame
                     }
                 }
                 //石が左側で反転できるものがないかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x == CONST.MATH_NUM || x == -1 ||
                         y - i == CONST.MATH_NUM || y - i == -1)
@@ -587,7 +587,7 @@ namespace OseroGame
                     }
                 }
                 //石が左上側で反転できるものがないかチェック
-                for (int i = 1; i < CONST.FILED_HEIGHT; i++)
+                for (int i = 1; i < CONST.MATH_NUM; i++)
                 {
                     if (x - i == CONST.MATH_NUM || x - i == -1 ||
                         y - i == CONST.MATH_NUM || y - i == -1)
@@ -602,7 +602,7 @@ namespace OseroGame
                         {
                             array_count_num[7]++;
                         }
-                        else if (sellstatus[x - i, y - i] == CONST.BLACK)
+                        else if (sellstatus[x - i, y - i] == CONST.WHITE)
                         {
                             if (array_count_num[7] > 0)
                             {
@@ -775,7 +775,7 @@ namespace OseroGame
             Boolean[] fable = new Boolean[CONST.DIRECTION_NUMBER];
             int[] able_array = new int[CONST.DIRECTION_NUMBER];
             //x,y のひっくり返せる石の数を保存する
-            int[,] result_array = new int[CONST.MATH_NUM - 1, CONST.MATH_NUM - 1];
+            int[,] result_array = new int[CONST.MATH_NUM, CONST.MATH_NUM];
             int[, , ] local_number = new int[CONST.MATH_NUM, CONST.MATH_NUM, CONST.DIRECTION_NUMBER];
             Boolean[, , ] local_fput = new Boolean[CONST.MATH_NUM, CONST.MATH_NUM, CONST.DIRECTION_NUMBER];
 
@@ -792,9 +792,9 @@ namespace OseroGame
                     result_array[i, j] = 0;
                 }
             }
-            for (int i = 0; i < CONST.MATH_NUM - 1; i ++)
+            for (int i = 0; i < CONST.MATH_NUM; i ++)
             {
-                for(int j = 0; j < CONST.MATH_NUM -1; j ++)
+                for(int j = 0; j < CONST.MATH_NUM; j ++)
                 {
                     for(int k = 0; k < CONST.DIRECTION_NUMBER - 1; k ++ )
                     {
@@ -804,9 +804,9 @@ namespace OseroGame
                 }
             }
             //四隅と端以外で石をひっくり返す場所をチェックして数え上げる
-            for (int i = 0; i < CONST.MATH_NUM - 1; i ++)
+            for (int i = 0; i < CONST.MATH_NUM; i ++)
             {
-                for(int j = 0; j < CONST.MATH_NUM - 1; j ++)
+                for(int j = 0; j < CONST.MATH_NUM; j ++)
                 {
                     //四隅は置ける場所が存在するなら既に置かれているので飛ばす
                     //(1, 1)は飛ばす
@@ -836,7 +836,7 @@ namespace OseroGame
                     if (CheckAbleToPut(fable))
                     {
                         int sum = 0;
-                        for(int k = 0; k < CONST.DIRECTION_NUMBER - 1; k ++)
+                        for(int k = 0; k < CONST.DIRECTION_NUMBER; k ++)
                         {
                             local_number[i, j, k] = able_array[k];
                             local_fput[i, j, k] = fable[k];
@@ -856,7 +856,7 @@ namespace OseroGame
 
             //一番石をひっくり返せる場所とひっくり返せる個数、方向でひっくり返すかどうかのフラグ、ひっくり返すを取得する。
             int max_num = getNumAndPos(result_array, ref pos_x, ref pos_y);
-            for(int i = 0; i < CONST.DIRECTION_NUMBER - 1; ++i )
+            for(int i = 0; i < CONST.DIRECTION_NUMBER; ++i )
             {
                 array_count_num[i] = local_number[pos_x, pos_y, i];
                 f_count_array[i] = local_fput[pos_x, pos_y, i];

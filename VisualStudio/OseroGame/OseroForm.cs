@@ -112,6 +112,9 @@ namespace OseroGame
 
                 }
             }
+            /*this.PutStoneComputer();
+            CControlGame control = new CControlGame();
+            control.showGameResult(sell_status, fTeban);*/
 
         }
 
@@ -214,20 +217,23 @@ namespace OseroGame
                     }
                 }
             }
+            CControlGame control = new CControlGame();
+            control.showGameResult(sell_status, fTeban);
             //コンピュータが打つ
             PutStoneComputer();
+            control.showGameResult(sell_status, fTeban);
+            fTeban = (fTeban + 1) % 2;
+
+            
         }
         /*******************************************************************************
          * コンピューターのアルゴリズム
          * *****************************************************************************/
         private void PutStoneComputer()
         {
+            Thread.Sleep(500);
             CreverseStone stone = new CreverseStone(this);
             CControlGame control = new CControlGame();
-            if (control.showGameResult(sell_status, fTeban))
-            {
-                return;
-            }
             fTeban = (fTeban + 1) % 2;
             //コンピュータの考える番
             Thread.Sleep(CONST.REVERSE_INTERVAL);
@@ -248,6 +254,15 @@ namespace OseroGame
             int pos_y = 0;
             int max_num = 0;
             max_num = able2.ChekcYonsumiIsAvaiable(fTeban, sell_status, count_num, outflag, ref pos_x, ref pos_y);
+            
+            if(pos_x == 1)
+            {
+                pos_x = CONST.MATH_NUM - 1;
+            }
+            if(pos_y == 1)
+            {
+                pos_y = CONST.MATH_NUM - 1;
+            }
 
             //端の石をひっくり返せるか調べる
             if (max_num > 0)
@@ -295,11 +310,6 @@ namespace OseroGame
                 }
                 stone.ReverseStone(pos_y, pos_x, fTeban, sell_status, outflag, count_num);
             }
-            if (control.showGameResult(sell_status, fTeban))
-            {
-                return;
-            }
-            fTeban = (fTeban + 1) % 2;
         }
     }
 }

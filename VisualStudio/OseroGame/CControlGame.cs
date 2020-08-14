@@ -83,7 +83,10 @@ namespace OseroGame
             {
                 for(int j = 0; j < CONST.MATH_NUM; ++j)
                 {
-                    result_flag = able.CountAbletoPut(i, j, fTeban, sell_status, result_array);
+                    if(sell_status[i,j] == -1)
+                    {
+                        result_flag = able.CountAbletoPut(i, j, fTeban, sell_status, result_array);
+                    }
                     if(able.CheckAbleToPut(result_flag))
                     {
                         return true;
