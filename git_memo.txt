@@ -1,0 +1,2 @@
+https://github.com/furuna01/myhobbyproject.git
+git merge --allow-unrelated-histories origin/master
