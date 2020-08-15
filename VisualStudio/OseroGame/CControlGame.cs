@@ -49,7 +49,7 @@ namespace OseroGame
          * 機能
          * ボードの黒石と白石の数を数える
          * ****************************************************************************************/
-        private void countAllBlockAndWhiteStone(int[,] sell_status, ref int black_num, ref int white_num)
+        public void countAllBlockAndWhiteStone(int[,] sell_status, ref int black_num, ref int white_num)
         {
             black_num = 0;
             white_num = 0;
@@ -72,8 +72,11 @@ namespace OseroGame
         /********************************************************************************************
          *  機能
          *  ボード全体を見てひっくり返せる石があるかどうかチェックする
+         *  返り値
+         *      ひっくり返せる石がある true
+         *      ひっくり返せる石がない false
          *  *****************************************************************************************/
-         private Boolean checkAllAbletoReverse(int[,] sell_status, int fTeban)
+         public Boolean checkAllAbletoReverse(int[,] sell_status, int fTeban)
         {
             int[] result_array = new int[CONST.DIRECTION_NUMBER];
             Boolean[] result_flag = new bool[CONST.DIRECTION_NUMBER];
@@ -86,10 +89,14 @@ namespace OseroGame
                     if(sell_status[i,j] == -1)
                     {
                         result_flag = able.CountAbletoPut(i, j, fTeban, sell_status, result_array);
+                        if (able.CheckAbleToPut(result_flag))
+                        {
+                            return true;
+                        }
                     }
-                    if(able.CheckAbleToPut(result_flag))
+                    else
                     {
-                        return true;
+                        continue;
                     }
                 }
             }
@@ -113,68 +120,6 @@ namespace OseroGame
                 }
             }
             return true;
-        }
-        /********************************************************************************************
-         * 機能
-         * ゲームの終了判定を行って、終わりの時勝ち負けの結果と、黒石と白石の数を提示する
-         * ******************************************************************************************/
-        public Boolean showGameResult(int[,] sell_status, int fTeban)
-        {
-            if(this.checkAllisBlack(sell_status))
-            {
-                //すべて黒なのでゲームを終了して黒の勝ちであることと石の数を表示する
-                int black_num = 0;
-                int white_num = 0;
-                this.countAllBlockAndWhiteStone(sell_status, ref black_num, ref white_num);
-                MessageBox.Show("黒の勝ちです。黒石の個数: " + black_num.ToString());
-                return true;
-            }
-            if(this.checkAllisWhite(sell_status))
-            {
-                //すべて白なのでゲームを終了して白の勝ちであることと石の数を表示する
-                int black_num = 0;
-                int white_num = 0;
-                this.countAllBlockAndWhiteStone(sell_status, ref black_num, ref white_num);
-                MessageBox.Show("白の勝ちです。白石の個数: " + white_num.ToString());
-                return true;
-            }
-            if(this.checkAbleToPut(sell_status))
-            {
-                int black_num = 0;
-                int white_num = 0;
-                this.countAllBlockAndWhiteStone(sell_status, ref black_num, ref white_num);
-                if(black_num > white_num)
-                {
-                    MessageBox.Show("黒の勝ちです。黒石の個数: " + black_num.ToString() + " 白石の個数: " + white_num.ToString());
-                }else if(black_num == white_num)
-                {
-                    MessageBox.Show("引き分けです。黒石の個数: " + black_num.ToString() + " 白石の個数: " + white_num.ToString());
-                }else
-                {
-                    MessageBox.Show("白の勝ちです。黒石の個数: " + black_num.ToString() + " 白石の個数: " + white_num.ToString());
-                }
-                return true;
-            }
-            if(!(this.checkAllAbletoReverse(sell_status, fTeban)))
-            {
-                int black_num = 0;
-                int white_num = 0;
-                this.countAllBlockAndWhiteStone(sell_status, ref black_num, ref white_num);
-                if (black_num > white_num)
-                {
-                    MessageBox.Show("黒の勝ちです。黒石の個数: " + black_num.ToString() + " 白石の個数: " + white_num.ToString());
-                }
-                else if (black_num == white_num)
-                {
-                    MessageBox.Show("引き分けです。黒石の個数: " + black_num.ToString() + " 白石の個数: " + white_num.ToString());
-                }
-                else
-                {
-                    MessageBox.Show("白の勝ちです。黒石の個数: " + black_num.ToString() + " 白石の個数: " + white_num.ToString());
-                }
-                return true;
-            }
-            return false;
         }
     }
 }

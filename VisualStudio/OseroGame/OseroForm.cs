@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using System.IO;
 
 namespace OseroGame
 {
@@ -61,11 +54,11 @@ namespace OseroGame
         {
             StreamReader reader = new StreamReader("screen.csv");
             int i = 0;
-            while(!reader.EndOfStream)
+            while (!reader.EndOfStream)
             {
                 String line = reader.ReadLine();
                 String[] cell = line.Split(',');
-                for(int j = 0; j < CONST.MATH_NUM; j ++)
+                for (int j = 0; j < CONST.MATH_NUM; j++)
                 {
                     sell_status[i, j] = int.Parse(cell[j]);
                 }
@@ -112,10 +105,18 @@ namespace OseroGame
 
                 }
             }
-            /*this.PutStoneComputer();
-            CControlGame control = new CControlGame();
-            control.showGameResult(sell_status, fTeban);*/
-
+           /*fTeban = (fTeban + 1) % 2;
+           CControlGame control = new CControlGame();
+           if(!control.checkAllAbletoReverse(sell_status, fTeban))
+           {
+                MessageBox.Show("パスします");
+                fTeban = (fTeban + 1) % 2;
+                return;
+           }
+           //コンピュータが打つ
+           PutStoneComputer();
+           fTeban = (fTeban + 1) % 2;
+           */
         }
 
         /*g.FillEllipse(new SolidBrush(Color.Black), 
@@ -133,7 +134,9 @@ namespace OseroGame
                     if (sell_status[i, j] == CONST.WHITE)
                     {
                         this.DrawCircle(i - 1, j - 1, CONST.WHITE);
-                    } else if (sell_status[i, j] == CONST.BLACK) {
+                    }
+                    else if (sell_status[i, j] == CONST.BLACK)
+                    {
                         this.DrawCircle(i - 1, j - 1, CONST.BLACK);
                     }
 
@@ -177,29 +180,30 @@ namespace OseroGame
             CreverseStone stone = new CreverseStone(this);
             for (int i = 0; i < CONST.MATH_NUM; i++)
             {
-                for (int j = 0; j < CONST.MATH_NUM; j++) {
+                for (int j = 0; j < CONST.MATH_NUM; j++)
+                {
                     //MessageBox.Show(i.ToString() + "," + j.ToString());
                     if (CONST.FIRST_HIGHT + CONST.ONE_BLOCK_HEIGHT * i < e.Y &&
                         CONST.FIRST_HIGHT + CONST.ONE_BLOCK_HEIGHT * i + CONST.ONE_BLOCK_HEIGHT > e.Y &&
                         CONST.FIRST_WIDTH + CONST.ONE_BLOCK_WIDTH * j < e.X &&
-                        CONST.FIRST_WIDTH + CONST.ONE_BLOCK_WIDTH * j + CONST.ONE_BLOCK_WIDTH> e.X)
+                        CONST.FIRST_WIDTH + CONST.ONE_BLOCK_WIDTH * j + CONST.ONE_BLOCK_WIDTH > e.X)
                     {
                         //石が置けるかどうか判定する
                         CcheckabletoPut able = new CcheckabletoPut();
                         int[] array_count_num = new int[CONST.DIRECTION_NUMBER];
 
-                        for(int k = 0; k < CONST.DIRECTION_NUMBER; k ++)
+                        for (int k = 0; k < CONST.DIRECTION_NUMBER; k++)
                         {
                             array_count_num[k] = 0;
                         }
                         Boolean[] arrayflag = able.CountAbletoPut(i, j, fTeban, sell_status, array_count_num);
-                        
+
                         //裏返せるかどうか判定するして、裏返せるなら裏返す
-                        if(able.CheckAbleToPut(arrayflag))
+                        if (able.CheckAbleToPut(arrayflag))
                         {
                             //石を裏返す
                             stone = new CreverseStone(this);
-                            if(fTeban == 1)
+                            if (fTeban == 1)
                             {
                                 this.DrawCircle(j, i, CONST.BLACK);
                                 sell_status[i, j] = CONST.BLACK;
@@ -210,21 +214,25 @@ namespace OseroGame
                                 sell_status[i, j] = CONST.WHITE;
                             }
                             stone.ReverseStone(j, i, fTeban, sell_status, arrayflag, array_count_num);
-                        }else
+                        }
+                        else
                         {
                             return;
                         }
                     }
                 }
             }
+            fTeban = (fTeban + 1) % 2;
             CControlGame control = new CControlGame();
-            control.showGameResult(sell_status, fTeban);
+            if(!control.checkAllAbletoReverse(sell_status, fTeban))
+            {
+                MessageBox.Show("パスします！");
+                fTeban = (fTeban + 1) % 2;
+                return;
+            }
             //コンピュータが打つ
             PutStoneComputer();
-            control.showGameResult(sell_status, fTeban);
             fTeban = (fTeban + 1) % 2;
-
-            
         }
         /*******************************************************************************
          * コンピューターのアルゴリズム
@@ -234,7 +242,6 @@ namespace OseroGame
             Thread.Sleep(500);
             CreverseStone stone = new CreverseStone(this);
             CControlGame control = new CControlGame();
-            fTeban = (fTeban + 1) % 2;
             //コンピュータの考える番
             Thread.Sleep(CONST.REVERSE_INTERVAL);
             CcheckabletoPut able2 = new CcheckabletoPut();
@@ -254,12 +261,12 @@ namespace OseroGame
             int pos_y = 0;
             int max_num = 0;
             max_num = able2.ChekcYonsumiIsAvaiable(fTeban, sell_status, count_num, outflag, ref pos_x, ref pos_y);
-            
-            if(pos_x == 1)
+
+            if (pos_x == 1)
             {
                 pos_x = CONST.MATH_NUM - 1;
             }
-            if(pos_y == 1)
+            if (pos_y == 1)
             {
                 pos_y = CONST.MATH_NUM - 1;
             }
@@ -276,7 +283,6 @@ namespace OseroGame
                     DrawCircle(pos_y, pos_x, CONST.WHITE);
                 }
                 stone.ReverseStone(pos_y, pos_x, fTeban, sell_status, outflag, count_num);
-                fTeban = (fTeban + 1) % 2;
                 return;
             }
 
@@ -309,6 +315,34 @@ namespace OseroGame
                     sell_status[pos_x, pos_y] = CONST.WHITE;
                 }
                 stone.ReverseStone(pos_y, pos_x, fTeban, sell_status, outflag, count_num);
+            }
+        }
+
+        private void EndGameBtn_Click(object sender, EventArgs e)
+        {
+            CControlGame control = new CControlGame();
+            int black_num = 0;
+            int white_num = 0;
+            control.countAllBlockAndWhiteStone(sell_status, ref black_num, ref white_num);
+            if(black_num > white_num)
+            {
+                MessageBox.Show("黒石は" + black_num.ToString() + "個、白石は" + white_num.ToString() + "個、黒の勝ちです。");
+            }
+            else if(black_num < white_num)
+            {
+                MessageBox.Show("黒石は" + black_num.ToString() + "個、白石は" + white_num.ToString() + "個、白の勝ちです。");
+            }
+            else
+            {
+                MessageBox.Show("黒石は" + black_num.ToString() + "個、白石は" + white_num.ToString() + "個、引き分けです");
+            }
+            //石をなしにする
+            for(int i = 0; i < CONST.MATH_NUM; i ++)
+            {
+                for(int j = 0; j < CONST.MATH_NUM; j ++)
+                {
+                    sell_status[i, j] = -1;
+                }
             }
         }
     }

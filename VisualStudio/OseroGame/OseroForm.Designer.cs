@@ -28,29 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SenteBtn = new System.Windows.Forms.Button();
-            this.KouteBtn = new System.Windows.Forms.Button();
+            this.EndGameBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // SenteBtn
+            // EndGameBtn
             // 
-            this.SenteBtn.Location = new System.Drawing.Point(636, 12);
-            this.SenteBtn.Name = "SenteBtn";
-            this.SenteBtn.Size = new System.Drawing.Size(87, 32);
-            this.SenteBtn.TabIndex = 0;
-            this.SenteBtn.Text = "先手";
-            this.SenteBtn.UseVisualStyleBackColor = true;
-            this.SenteBtn.Click += new System.EventHandler(this.SenteBtn_Click);
-            // 
-            // KouteBtn
-            // 
-            this.KouteBtn.Location = new System.Drawing.Point(636, 59);
-            this.KouteBtn.Name = "KouteBtn";
-            this.KouteBtn.Size = new System.Drawing.Size(87, 32);
-            this.KouteBtn.TabIndex = 1;
-            this.KouteBtn.Text = "後手";
-            this.KouteBtn.UseVisualStyleBackColor = true;
-            this.KouteBtn.Click += new System.EventHandler(this.KouteBtn_Click);
+            this.EndGameBtn.Location = new System.Drawing.Point(721, 13);
+            this.EndGameBtn.Name = "EndGameBtn";
+            this.EndGameBtn.Size = new System.Drawing.Size(113, 34);
+            this.EndGameBtn.TabIndex = 0;
+            this.EndGameBtn.Text = "ゲーム終了";
+            this.EndGameBtn.UseVisualStyleBackColor = true;
+            this.EndGameBtn.Click += new System.EventHandler(this.EndGameBtn_Click);
             // 
             // OseroForm
             // 
@@ -59,8 +48,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(984, 870);
-            this.Controls.Add(this.KouteBtn);
-            this.Controls.Add(this.SenteBtn);
+            this.Controls.Add(this.EndGameBtn);
             this.Name = "OseroForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.OseroForm_Load);
@@ -71,8 +59,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button SenteBtn;
-        private System.Windows.Forms.Button KouteBtn;
+        private System.Windows.Forms.Button EndGameBtn;
     }
 }
 

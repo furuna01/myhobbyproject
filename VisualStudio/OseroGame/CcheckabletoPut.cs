@@ -780,14 +780,14 @@ namespace OseroGame
             Boolean[, , ] local_fput = new Boolean[CONST.MATH_NUM, CONST.MATH_NUM, CONST.DIRECTION_NUMBER];
 
             //パラメータの初期化
-            for (int i = 0; i < CONST.DIRECTION_NUMBER - 1; i ++)
+            for (int i = 0; i < CONST.DIRECTION_NUMBER; i ++)
             {
                 fable[i] = false;
                 able_array[i] = 0;
             }
-            for (int i = 0; i < CONST.MATH_NUM - 1; i ++)
+            for (int i = 0; i < CONST.MATH_NUM; i ++)
             {
-                for(int j = 0; j < CONST.MATH_NUM - 1; j ++)
+                for(int j = 0; j < CONST.MATH_NUM; j ++)
                 {
                     result_array[i, j] = 0;
                 }
@@ -796,7 +796,7 @@ namespace OseroGame
             {
                 for(int j = 0; j < CONST.MATH_NUM; j ++)
                 {
-                    for(int k = 0; k < CONST.DIRECTION_NUMBER - 1; k ++ )
+                    for(int k = 0; k < CONST.DIRECTION_NUMBER; k ++ )
                     {
                         local_number[i, j, k] = 0;
                         local_fput[i, j, k] = false;
@@ -846,10 +846,6 @@ namespace OseroGame
                             }
                         }
                         result_array[i, j] = sum;
-                        if (sum > 0)
-                        {
-                            //MessageBox.Show(i.ToString() + "" + j.ToString() + sum.ToString());
-                        }
                     }
                 }
             }
@@ -867,9 +863,9 @@ namespace OseroGame
         private int getNumAndPos(int [,] array, ref int pos_x, ref int pos_y)
         {
             int max = 0;
-                for (int i = 0; i < CONST.MATH_NUM - 1; i++)
+                for (int i = 0; i < CONST.MATH_NUM; i++)
                 {
-                    for(int j = 0; j < CONST.MATH_NUM - 1; j ++)
+                    for(int j = 0; j < CONST.MATH_NUM; j ++)
                     {
                         if(max < array[i,j])
                         {
@@ -880,9 +876,9 @@ namespace OseroGame
 
 
             //一番ひっくり返せる位置を保存
-            for (int i = 0; i < CONST.MATH_NUM - 1; i++)
+            for (int i = 0; i < CONST.MATH_NUM; i++)
             {
-                for (int j = 0; j < CONST.MATH_NUM - 1; j++)
+                for (int j = 0; j < CONST.MATH_NUM; j++)
                 {
                     if (max == array[i, j])
                     {
