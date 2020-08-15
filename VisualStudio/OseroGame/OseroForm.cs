@@ -277,10 +277,12 @@ namespace OseroGame
                 if (fTeban == 1)
                 {
                     DrawCircle(pos_y, pos_x, CONST.BLACK);
+                    sell_status[pos_x, pos_y] = CONST.BLACK;
                 }
                 else
                 {
                     DrawCircle(pos_y, pos_x, CONST.WHITE);
+                    sell_status[pos_x, pos_y] = CONST.WHITE;
                 }
                 stone.ReverseStone(pos_y, pos_x, fTeban, sell_status, outflag, count_num);
                 return;
@@ -299,8 +301,8 @@ namespace OseroGame
             {
                 outflag[i] = false;
             }
-            pos_x = 0;
-            pos_y = 0;
+            pos_x = -1;
+            pos_y = -1;
             max_num = able2.CountCenterAbaiable(fTeban, sell_status, count_num, outflag, ref pos_x, ref pos_y);
             if (max_num > 0)
             {
