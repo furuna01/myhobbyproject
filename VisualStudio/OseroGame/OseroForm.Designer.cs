@@ -29,17 +29,28 @@
         private void InitializeComponent()
         {
             this.EndGameBtn = new System.Windows.Forms.Button();
+            this.PassBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EndGameBtn
             // 
-            this.EndGameBtn.Location = new System.Drawing.Point(721, 13);
+            this.EndGameBtn.Location = new System.Drawing.Point(839, 12);
             this.EndGameBtn.Name = "EndGameBtn";
             this.EndGameBtn.Size = new System.Drawing.Size(113, 34);
             this.EndGameBtn.TabIndex = 0;
             this.EndGameBtn.Text = "ゲーム終了";
             this.EndGameBtn.UseVisualStyleBackColor = true;
             this.EndGameBtn.Click += new System.EventHandler(this.EndGameBtn_Click);
+            // 
+            // PassBtn
+            // 
+            this.PassBtn.Location = new System.Drawing.Point(695, 12);
+            this.PassBtn.Name = "PassBtn";
+            this.PassBtn.Size = new System.Drawing.Size(113, 34);
+            this.PassBtn.TabIndex = 1;
+            this.PassBtn.Text = "パス";
+            this.PassBtn.UseVisualStyleBackColor = true;
+            this.PassBtn.Click += new System.EventHandler(this.PassBtn_Click);
             // 
             // OseroForm
             // 
@@ -48,6 +59,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(984, 870);
+            this.Controls.Add(this.PassBtn);
             this.Controls.Add(this.EndGameBtn);
             this.Name = "OseroForm";
             this.Text = "Form1";
@@ -60,6 +72,7 @@
         #endregion
 
         private System.Windows.Forms.Button EndGameBtn;
+        private System.Windows.Forms.Button PassBtn;
     }
 }
 

@@ -320,6 +320,10 @@ namespace OseroGame
             }
         }
 
+        /************************************************************************************
+         * 機能
+         * 　ゲームの終了処理、石を数えてゲームの勝者、敗者を知らせる
+         * 　********************************************************************************/
         private void EndGameBtn_Click(object sender, EventArgs e)
         {
             CControlGame control = new CControlGame();
@@ -346,6 +350,25 @@ namespace OseroGame
                     sell_status[i, j] = -1;
                 }
             }
+        }
+
+        /****************************************************************************************
+         * 機能
+         *  順番をパスしてコンピュータに手を譲る
+         ***************************************************************************************/
+        private void PassBtn_Click(object sender, EventArgs e)
+        {
+            fTeban = (fTeban + 1) % 2;
+            CControlGame control = new CControlGame();
+            if (!control.checkAllAbletoReverse(sell_status, fTeban))
+            {
+                MessageBox.Show("パスします！");
+                fTeban = (fTeban + 1) % 2;
+                return;
+            }
+            //コンピュータがさす
+            this.PutStoneComputer();
+            fTeban = (fTeban + 1) % 2;
         }
     }
 }
