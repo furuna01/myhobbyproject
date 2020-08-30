@@ -10,7 +10,7 @@ namespace TetorisGame
 {
     class CDrawFigure
     {
-        public void DrawBlockOrWall(int x, int y, Graphics graphics, int[,] screen_status)
+        public void DrawBlockOrWall(Graphics graphics, int[,] screen_status)
         {
             for (int i = 0; i < CONST.BLOCK_NUM_HEIGHT; i++)
             {
@@ -19,15 +19,18 @@ namespace TetorisGame
                     //壁を描く
                     if(screen_status[i,j] == CONST.BLOCK_STATUS)
                     {
-                        DrawBlock(x, y, CONST.BLOCK_STATUS, graphics);
+                        DrawBlock(CONST.DISTANCE_TO_SCREEN_WIDTH + CONST.BLOCK_SIZE * j, CONST.DISTANCE_TO_SCREEN_HEIGHT + CONST.BLOCK_SIZE * i
+                            , CONST.BLOCK_STATUS, graphics);
                     }
                     else if(screen_status[i,j] == CONST.WALL_STATUS)
                     {
-                        DrawBlock(x, y, CONST.WALL_STATUS, graphics);
+                        DrawBlock(CONST.DISTANCE_TO_SCREEN_WIDTH + CONST.BLOCK_SIZE * j, CONST.DISTANCE_TO_SCREEN_HEIGHT + CONST.BLOCK_SIZE * i
+                           , CONST.WALL_STATUS, graphics);
                     }
                     else if(screen_status[i, j] == CONST.NOTHING_STATUS)
                     {
-                        DrawBlock(x, y, CONST.NOTHING_STATUS, graphics);
+                        DrawBlock(CONST.DISTANCE_TO_SCREEN_WIDTH + CONST.BLOCK_SIZE * j, CONST.DISTANCE_TO_SCREEN_HEIGHT + CONST.BLOCK_SIZE * i
+                           , CONST.NOTHING_STATUS, graphics);
                     }
                     else
                     {
@@ -35,6 +38,10 @@ namespace TetorisGame
                     }
                 }
             }
+
+        }
+        public void DrawBlock(int x, int y, Graphics graphics)
+        {
 
         }
         public void DrawBlock(int x, int y, int walltype, Graphics graphics)

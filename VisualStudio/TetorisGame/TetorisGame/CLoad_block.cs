@@ -95,7 +95,7 @@ namespace TetorisGame
                 while(!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
-                    string[] value = line.Split('.');
+                    string[] value = line.Split(',');
                     for(int j = 0; j < retu_number; j ++)
                     {
                         if(minotype == 1)

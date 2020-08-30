@@ -49,6 +49,7 @@
     <Compile Include="CDrawFigure.cs" />
     <Compile Include="CONST.cs" />
     <Compile Include="CLoad_block.cs" />
+    <Compile Include="CTetorisTimer.cs" />
     <Compile Include="TetorisForm.cs">
       <SubType>Form</SubType>
     </Compile>

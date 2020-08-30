@@ -14,6 +14,7 @@ namespace TetorisGame
     public partial class TetorisForm : Form
     {
         private int[,] screen_status;
+        private CTetorisTimer Maintimer;
         public TetorisForm()
         {
             InitializeComponent();
@@ -55,6 +56,8 @@ namespace TetorisGame
             {
                 screen_status[i, CONST.BLOCK_NUM_WIDTH - 1] = CONST.WALL_STATUS;
             }
+            Maintimer = new CTetorisTimer();
+            Maintimer.Run();
         }
         /*********************************************************************************
         * 機能
@@ -63,31 +66,8 @@ namespace TetorisGame
         private void TetorisForm_Paint(object sender, PaintEventArgs e)
         {
             CDrawFigure figure = new CDrawFigure();
-            for(int i = 0; i < CONST.BLOCK_NUM_HEIGHT; i ++)
-            {
-                for(int j = 0; j < CONST.BLOCK_NUM_WIDTH; j ++)
-                {
-                    if (screen_status[i, j] == CONST.WALL_STATUS)
-                    {
-                        figure.DrawBlock(CONST.DISTANCE_TO_SCREEN_WIDTH + CONST.BLOCK_SIZE * j, CONST.DISTANCE_TO_SCREEN_HEIGHT + CONST.BLOCK_SIZE * i,
-                            CONST.WALL_STATUS, e.Graphics);
-                    }
-                    else if (screen_status[i, j] == CONST.BLOCK_STATUS)
-                    {
-                        figure.DrawBlock(CONST.DISTANCE_TO_SCREEN_WIDTH + CONST.BLOCK_SIZE * j, CONST.DISTANCE_TO_SCREEN_HEIGHT + CONST.BLOCK_SIZE * i,
-                            CONST.BLOCK_STATUS, e.Graphics);
-                    }
-                    else if(screen_status[i,j] == CONST.NOTHING_STATUS)
-                    {
-                        figure.DrawBlock(CONST.DISTANCE_TO_SCREEN_WIDTH + CONST.BLOCK_SIZE * j, CONST.DISTANCE_TO_SCREEN_HEIGHT + CONST.BLOCK_SIZE * i,
-                            CONST.NOTHING_STATUS, e.Graphics);
-                    }
-                    else
-                    {
-                        MessageBox.Show("何か違うものが画面の状態の値に入っています");
-                    }
-                }
-            }
+            Maintimer.setGraphics(e.Graphics);
+            figure.DrawBlockOrWall(e.Graphics, screen_status);
 
         }
         
