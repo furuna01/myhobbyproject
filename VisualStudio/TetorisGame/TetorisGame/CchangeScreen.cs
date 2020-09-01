@@ -45,7 +45,8 @@ namespace TetorisGame
                                 for (int l = 0; l < 2; l++)
                                 {
                                     //移動した先が壁か、テトリスミノがすでにあったらfalseを返す
-                                    if (screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
+                                    if ((screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
+                                        && (minoArray[k, l] == CONST.WALL_STATUS || minoArray[k, l] == CONST.BLOCK_STATUS))
                                     {
                                         return false;
                                     }
@@ -60,7 +61,8 @@ namespace TetorisGame
                                 for (int l = 0; l < 3; l++)
                                 {
                                     //移動した先が壁か、テトリスミノがすでにあったらfalseを返す
-                                    if (screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
+                                    if ((screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
+                                        && (minoArray[k, l] == CONST.WALL_STATUS || minoArray[k, l] == CONST.BLOCK_STATUS))
                                     {
                                         return false;
                                     }

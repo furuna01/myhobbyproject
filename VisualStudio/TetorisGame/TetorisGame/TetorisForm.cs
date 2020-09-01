@@ -69,6 +69,10 @@ namespace TetorisGame
             figure.DrawBlockOrWall(e.Graphics, screen_status);
 
         }
+        public int[,] getScreenStatus()
+        {
+            return screen_status;
+        }
         
        
     }
