@@ -56,7 +56,7 @@ namespace TetorisGame
             {
                 screen_status[i, CONST.BLOCK_NUM_WIDTH - 1] = CONST.WALL_STATUS;
             }
-            Maintimer = new CTetorisTimer();
+            Maintimer = new CTetorisTimer(screen_status, this);
             Maintimer.Run();
         }
         /*********************************************************************************
@@ -66,7 +66,6 @@ namespace TetorisGame
         private void TetorisForm_Paint(object sender, PaintEventArgs e)
         {
             CDrawFigure figure = new CDrawFigure();
-            Maintimer.setGraphics(e.Graphics);
             figure.DrawBlockOrWall(e.Graphics, screen_status);
 
         }

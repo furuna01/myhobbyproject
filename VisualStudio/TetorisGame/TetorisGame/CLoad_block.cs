@@ -133,7 +133,7 @@ namespace TetorisGame
             }
             catch(Exception e)
             {
-                MessageBox.Show("ファイルの読み込みに失敗したか、不適切なデータを読み込みました。");
+                MessageBox.Show(e.ToString() + "ファイルの読み込みに失敗したか、不適切なデータを読み込みました。");
                 return false;
             }
         }
