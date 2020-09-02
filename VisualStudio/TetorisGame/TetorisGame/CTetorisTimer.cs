@@ -28,7 +28,7 @@ namespace TetorisGame
         {
             Timer timer = new Timer();
             timer.Tick += new EventHandler(MyClock);
-            timer.Interval = 1000;
+            timer.Interval = 300;
             timer.Enabled = true; // timer.Start()と同じ
         }
         /********************************************************************************************
@@ -45,7 +45,10 @@ namespace TetorisGame
                 screen.setScreen(CONST.START_MINO_POS, tempMinoPos, var_sell_status, temp_mino, temp_minoNumber);
                 return;
             }*/
-            
+            if(MinoPos != 0)
+            {
+                screen.deleteScreen(CONST.START_MINO_POS, tempMinoPos, var_sell_status, temp_mino, temp_minoNumber);
+            }
             //１～７の乱数発生
             Random random = new System.Random();
             if (MinoPos == 0)
@@ -53,7 +56,6 @@ namespace TetorisGame
                 minoNo = random.Next(1, 8);   //1から7の乱数を発生して、表示させるミノを決める
                 temp_minoNumber = minoNo;
                 CLoad_block block = new CLoad_block();
-                block.LoadCsv(minoNo);
                 if (minoNo == 1)
                 {
                     tetoris_mino = block.getTetorisMino1();
@@ -115,6 +117,7 @@ namespace TetorisGame
             {
                 //ミノが動けない、以前のミノを表示する
                 screen.setScreen(CONST.START_MINO_POS, tempMinoPos, var_sell_status, tetoris_mino, minoNo);
+                figure.DrawBlock(timer_graphics, var_sell_status);
                 MinoPos = 0;
             }
         }        
@@ -155,6 +158,14 @@ namespace TetorisGame
         public void setGraphics(Graphics graphics)
         {
             timer_graphics = graphics;
+        }
+        public int[,] getTetorisMino()
+        {
+            return this.tetoris_mino;
+        }
+        public int getMinoPos()
+        {
+            return this.MinoPos;
         }
     }
 }

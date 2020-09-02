@@ -149,7 +149,10 @@ namespace TetorisGame
                             {
                                 for (int l = 0; l < 1; l++)
                                 {
-                                    screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
+                                    if (minoArray[k, l] == CONST.BLOCK_STATUS)
+                                    {
+                                        screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
+                                    }
                                 }
 
                             }
@@ -161,7 +164,10 @@ namespace TetorisGame
                             {
                                 for (int l = 0; l < 2; l++)
                                 {
-                                    screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
+                                    if (minoArray[k, l] == CONST.BLOCK_STATUS)
+                                    {
+                                        screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
+                                    }
                                 }
                             }
                             return;
@@ -172,7 +178,10 @@ namespace TetorisGame
                             {
                                 for (int l = 0; l < 3; l++)
                                 {
-                                    screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
+                                    if (minoArray[k, l] == CONST.BLOCK_STATUS)
+                                    {
+                                        screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
+                                    }
                                 }
                             }
                             return;
