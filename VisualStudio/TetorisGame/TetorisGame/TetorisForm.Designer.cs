@@ -43,6 +43,7 @@
             this.Text = "Tetoris";
             this.Load += new System.EventHandler(this.TetorisForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.TetorisForm_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TetorisForm_KeyDown);
             this.ResumeLayout(false);
 
         }
