@@ -98,7 +98,14 @@ namespace TetorisGame
                             {
                                 for (int l = 0; l < 1; l++)
                                 {
-                                    screen_status[i + k, j + l] = minoArray[k, l];
+                                    if(screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[k, l] == CONST.NOTHING_STATUS)
+                                    {
+                                        screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
+                                    }
+                                    else
+                                    {
+                                        screen_status[i + k, j + l] = minoArray[k, l];
+                                    }
                                 }
                             }
                             return;
@@ -109,7 +116,14 @@ namespace TetorisGame
                             {
                                 for (int l = 0; l < 2; l++)
                                 {
-                                    screen_status[i + k, j + l] = minoArray[k, l];
+                                    if (screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[k, l] == CONST.NOTHING_STATUS)
+                                    {
+                                        screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
+                                    }
+                                    else
+                                    {
+                                        screen_status[i + k, j + l] = minoArray[k, l];
+                                    }
                                 }
                             }
                             return;
@@ -120,7 +134,14 @@ namespace TetorisGame
                             {
                                 for (int l = 0; l < 3; l++)
                                 {
-                                    screen_status[i + k, j + l] = minoArray[k, l];
+                                    if (screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[k, l] == CONST.NOTHING_STATUS)
+                                    {
+                                        screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
+                                    }
+                                    else
+                                    {
+                                        screen_status[i + k, j + l] = minoArray[k, l];
+                                    }
                                 }
                             }
                             return;
