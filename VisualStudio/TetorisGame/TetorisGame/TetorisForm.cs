@@ -22,11 +22,11 @@ namespace TetorisGame
 
         private void TetorisForm_Load(object sender, EventArgs e)
         {
-            screen_status = new int[CONST.BLOCK_NUM_HEIGHT, CONST.BLOCK_NUM_WIDTH];
+            screen_status = new int[CONST.WHOLE_SCREEN_SIZE_HEIGHT, CONST.WHOLE_SCREEN_SIZE_WIDTH];
             //画面の初期化
-            for(int i = 0; i < CONST.BLOCK_NUM_HEIGHT; i ++)
+            for(int i = 0; i < CONST.WHOLE_SCREEN_SIZE_HEIGHT; i ++)
             {
-                for(int j = 0; j < CONST.BLOCK_NUM_WIDTH; j ++)
+                for(int j = 0; j < CONST.WHOLE_SCREEN_SIZE_WIDTH; j ++)
                 {
                     screen_status[i, j] = CONST.NOTHING_STATUS;
                 }
@@ -83,7 +83,8 @@ namespace TetorisGame
             int pos_x = Maintimer.getMinoPos_x();
             int pos_y = Maintimer.getMinoPos_y();
             int minoNo = Maintimer.getMinoNo();
-            int[,] minoblock = Maintimer.getTetorisMino();
+            int direction = Maintimer.getDirection();
+            int[,,] minoblock = Maintimer.getTetorisMino();
             int[,] screen_status = Maintimer.getScreenStatus();
 
             CchangeScreen screen = new CchangeScreen();
@@ -92,14 +93,14 @@ namespace TetorisGame
             if (e.KeyCode == Keys.Right)
             {
                 //前の状態を消去
-                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, minoNo);
+                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
                 //ミノを右に移動させる
                 pos_x++;
-                if(screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, minoNo))
+                if(screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, direction))
                 {
                     //ミノが動かせるときにミノを移動させる
                     //新しい状態のミノを表示
-                    screen.setScreen(pos_x, pos_y - 1, screen_status, minoblock, minoNo);
+                    screen.setScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
                     //物理的に描く
                     figure.DrawBlock(this.CreateGraphics(), screen_status);
                     Maintimer.setMinoPos_x(pos_x);
@@ -111,14 +112,14 @@ namespace TetorisGame
             {
                 //ミノを下に移動させる
                 //前の状態を消去
-                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, minoNo);
+                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
                 //ミノを右に移動させる
                 pos_y ++;
-                if (screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, minoNo))
+                if (screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, direction))
                 {
                     //ミノが動かせるときにミノを移動させる
                     //新しい状態のミノを表示
-                    screen.setScreen(pos_x, pos_y - 1, screen_status, minoblock, minoNo);
+                    screen.setScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
                     //物理的に描く
                     figure.DrawBlock(this.CreateGraphics(), screen_status);
                     Maintimer.setMinoPos_x(pos_x);
@@ -130,14 +131,14 @@ namespace TetorisGame
             {
                 //ミノを左に移動させる
                 //前の状態を消去
-                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, minoNo);
+                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock,direction);
                 //ミノを右に移動させる
-                pos_x--;
-                if (screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, minoNo))
+                pos_x --;
+                if (screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, direction))
                 {
                     //ミノが動かせるときにミノを移動させる
                     //新しい状態のミノを表示
-                    screen.setScreen(pos_x, pos_y - 1, screen_status, minoblock, minoNo);
+                    screen.setScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
                     //物理的に描く
                     figure.DrawBlock(this.CreateGraphics(), screen_status);
                     Maintimer.setMinoPos_x(pos_x);

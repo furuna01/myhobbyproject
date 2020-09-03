@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TetorisGame
 {
@@ -14,66 +15,32 @@ namespace TetorisGame
          * テトリスミノが移動可能か判定する。移動した先が壁かテトリスのミノがすでに置かれている場所
          * だったらfalseを返し、それ以外はtrueを返す
          * *******************************************************************************************/
-        public Boolean checkBlockIsMove(int pos_x, int pos_y, int[,] screen_status, int[,] minoArray, int minoNo)
+        public Boolean checkBlockIsMove(int pos_x, int pos_y, int[,] screen_status, int[,,] minoArray, int direction)
         {
+            if(direction < 0 || direction > 3)
+            {
+                MessageBox.Show("ミノの方向を表す変数の値がおかしいです");
+            }
             for (int i = 0; i < CONST.BLOCK_NUM_HEIGHT; i++)
             {
                 for (int j = 0; j < CONST.BLOCK_NUM_WIDTH; j++)
                 {
                     if (j == pos_x && i == pos_y)
                     {
-                        if (minoNo == 1)
+
+                        for (int k = 0; k < CONST.MINO_SIZE; k++)
                         {
-                            for (int k = 0; k < 4; k++)
+                            for (int l = 0; l < CONST.MINO_SIZE; l++)
                             {
-                                for (int l = 0; l < 1; l++)
+                                //移動した先が壁か、テトリスミノがすでにあったらfalseを返す
+                                if ((screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
+                                     && (minoArray[direction, k, l] == CONST.WALL_STATUS || minoArray[direction, k, l] == CONST.BLOCK_STATUS))
                                 {
-                                    //移動した先が壁か、テトリスミノがすでにあったらfalseを返す
-                                    if ((screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
-                                         && (minoArray[k, l] == CONST.WALL_STATUS || minoArray[k, l] == CONST.BLOCK_STATUS))
-                                    {
-                                        return false;
-                                    }
+                                    return false;
                                 }
                             }
-                            return true;
                         }
-                        if (minoNo == 2)
-                        {
-                            for (int k = 0; k < 2; k++)
-                            {
-                                for (int l = 0; l < 2; l++)
-                                {
-                                    //移動した先が壁か、テトリスミノがすでにあったらfalseを返す
-                                    if ((screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
-                                        && (minoArray[k, l] == CONST.WALL_STATUS || minoArray[k, l] == CONST.BLOCK_STATUS))
-                                    {
-                                        return false;
-                                    }
-                                }
-                            }
-                            return true;
-                        }
-                        else
-                        {
-                            for (int k = 0; k < 2; k++)
-                            {
-                                for (int l = 0; l < 3; l++)
-                                {
-                                    //移動した先が壁か、テトリスミノがすでにあったらfalseを返す
-                                    if ((screen_status[i + k, j + l] == CONST.WALL_STATUS || screen_status[i + k, j + l] == CONST.BLOCK_STATUS)
-                                        && (minoArray[k, l] == CONST.WALL_STATUS || minoArray[k, l] == CONST.BLOCK_STATUS))
-                                    {
-                                        return false;
-                                    }
-                                }
-                            }
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        continue;
+                        return true;
                     }
                 }
             }
@@ -84,7 +51,7 @@ namespace TetorisGame
          * 機能
          * テトリスミノを画面に表示する
          * *******************************************************************************************/
-        public void setScreen(int pos_x, int pos_y, int[,] screen_status, int[,] minoArray, int minoNo)
+        public void setScreen(int pos_x, int pos_y, int[,] screen_status, int[,,] minoArray, int direction)
         {
             for (int i = 0; i < CONST.BLOCK_NUM_HEIGHT; i++)
             {
@@ -92,62 +59,28 @@ namespace TetorisGame
                 {
                     if (j == pos_x && i == pos_y)
                     {
-                        if (minoNo == 1)
+                        for (int k = 0; k < CONST.MINO_SIZE; k++)
                         {
-                            for (int k = 0; k < 4; k++)
+                            for (int l = 0; l < CONST.MINO_SIZE; l++)
                             {
-                                for (int l = 0; l < 1; l++)
+                                if (screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[direction, k, l] == CONST.NOTHING_STATUS)
                                 {
-                                    if(screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[k, l] == CONST.NOTHING_STATUS)
-                                    {
-                                        screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
-                                    }
-                                    else
-                                    {
-                                        screen_status[i + k, j + l] = minoArray[k, l];
-                                    }
+                                    screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
+                                }
+                                else if(screen_status[i + k, j + l] == CONST.WALL_STATUS && minoArray[direction, k, l] ==CONST.NOTHING_STATUS)
+                                {
+                                    screen_status[i + k, j + l] = CONST.WALL_STATUS;
+                                }
+                                else
+                                {
+                                    screen_status[i + k, j + l] = minoArray[direction, k, l];
                                 }
                             }
-                            return;
                         }
-                        if (minoNo == 2)
-                        {
-                            for (int k = 0; k < 2; k++)
-                            {
-                                for (int l = 0; l < 2; l++)
-                                {
-                                    if (screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[k, l] == CONST.NOTHING_STATUS)
-                                    {
-                                        screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
-                                    }
-                                    else
-                                    {
-                                        screen_status[i + k, j + l] = minoArray[k, l];
-                                    }
-                                }
-                            }
-                            return;
-                        }
-                        else
-                        {
-                            for (int k = 0; k < 2; k++)
-                            {
-                                for (int l = 0; l < 3; l++)
-                                {
-                                    if (screen_status[i + k, j + l] == CONST.BLOCK_STATUS && minoArray[k, l] == CONST.NOTHING_STATUS)
-                                    {
-                                        screen_status[i + k, j + l] = CONST.BLOCK_STATUS;
-                                    }
-                                    else
-                                    {
-                                        screen_status[i + k, j + l] = minoArray[k, l];
-                                    }
-                                }
-                            }
-                            return;
-                        }
-
+                        return;
                     }
+
+
                 }
             }
         }
@@ -155,7 +88,7 @@ namespace TetorisGame
          * 機能
          * テトリスミノの表示を消す
          * ******************************************************************************************************/
-        public void deleteScreen(int pos_x, int pos_y, int[,] screen_status, int[,] minoArray, int minoNo)
+        public void deleteScreen(int pos_x, int pos_y, int[,] screen_status, int[,,] minoArray, int direction)
         {
             for (int i = 0; i < CONST.BLOCK_NUM_HEIGHT; i++)
             {
@@ -164,49 +97,18 @@ namespace TetorisGame
                 {
                     if (j == pos_x && i == pos_y)
                     {
-                        if (minoNo == 1)
+                        for (int k = 0; k < CONST.MINO_SIZE; k++)
                         {
-                            for (int k = 0; k < 4; k++)
+                            for (int l = 0; l < CONST.MINO_SIZE; l++)
                             {
-                                for (int l = 0; l < 1; l++)
+                                if (minoArray[direction, k, l] == CONST.BLOCK_STATUS)
                                 {
-                                    if (minoArray[k, l] == CONST.BLOCK_STATUS)
-                                    {
-                                        screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
-                                    }
+                                    screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
                                 }
+                            }
 
-                            }
-                            return;
                         }
-                        else if (minoNo == 2)
-                        {
-                            for (int k = 0; k < 2; k++)
-                            {
-                                for (int l = 0; l < 2; l++)
-                                {
-                                    if (minoArray[k, l] == CONST.BLOCK_STATUS)
-                                    {
-                                        screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
-                                    }
-                                }
-                            }
-                            return;
-                        }
-                        else
-                        {
-                            for (int k = 0; k < 2; k++)
-                            {
-                                for (int l = 0; l < 3; l++)
-                                {
-                                    if (minoArray[k, l] == CONST.BLOCK_STATUS)
-                                    {
-                                        screen_status[i + k, j + l] = CONST.NOTHING_STATUS;
-                                    }
-                                }
-                            }
-                            return;
-                        }
+                        return;
                     }
                 }
 

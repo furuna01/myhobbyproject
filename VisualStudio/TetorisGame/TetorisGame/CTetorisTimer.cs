@@ -10,16 +10,15 @@ namespace TetorisGame
 {
     class CTetorisTimer
     {
-        int minoNo = -1;
-        int temp_minoNumber = 0;
-        int MinoPos_x = CONST.START_MINO_POS;
-        int MinoPos_y = 0;
-        int tempMinoPos = 0;
-        int[,] tetoris_mino;
-        int[,] temp_mino;
-        int[,] var_sell_status;
-        Boolean flag = false;
-        Graphics timer_graphics;
+        private int minoNo = -1;
+        private int MinoPos_x = CONST.START_MINO_POS;
+        private int MinoPos_y = 0;
+        private int direction = 0;
+        private int tempMinoPos = 0;
+        private int[,,] tetoris_mino;
+        private int[,,] temp_mino;
+        private int[,] var_sell_status;
+        private Graphics timer_graphics;
         public CTetorisTimer(int[,] screen_status, TetorisForm form)
         {
             timer_graphics = form.CreateGraphics();
@@ -48,7 +47,7 @@ namespace TetorisGame
             }*/
             if(MinoPos_y != 0)
             {
-                screen.deleteScreen(MinoPos_x, MinoPos_y - 1, var_sell_status, temp_mino, temp_minoNumber);
+                screen.deleteScreen(MinoPos_x, MinoPos_y - 1, var_sell_status, temp_mino, direction);
             }
             //１～７の乱数発生
             Random random = new System.Random();
@@ -56,42 +55,42 @@ namespace TetorisGame
             {
                 MinoPos_x = CONST.START_MINO_POS;
                 minoNo = random.Next(1, 8);   //1から7の乱数を発生して、表示させるミノを決める
-                temp_minoNumber = minoNo;
+                //temp_minoNumber = minoNo;
                 CLoad_block block = new CLoad_block();
                 if (minoNo == 1)
                 {
                     tetoris_mino = block.getTetorisMino1();
-                    temp_mino = new int[4, 1];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else if (minoNo == 2)
                 {
                     tetoris_mino = block.getTetorisMino2();
-                    temp_mino = new int[2, 2];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else if (minoNo == 3)
                 {
                     tetoris_mino = block.getTetorisMino3();
-                    temp_mino = new int[2, 3];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else if (minoNo == 4)
                 {
                     tetoris_mino = block.getTetorisMino4();
-                    temp_mino = new int[2, 3];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else if (minoNo == 5)
                 {
                     tetoris_mino = block.getTetorisMino5();
-                    temp_mino = new int[2, 3];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else if (minoNo == 6)
                 {
                     tetoris_mino = block.getTetorisMino6();
-                    temp_mino = new int[2, 3];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else if (minoNo == 7)
                 {
                     tetoris_mino = block.getTetorisMino7();
-                    temp_mino = new int[2, 3];
+                    temp_mino = new int[4, 4, 4];
                 }
                 else
                 {
@@ -102,15 +101,15 @@ namespace TetorisGame
             //MessageBox.Show(minoNo.ToString());
 
             //ミノが動けるとき画面を表示
-            if (screen.checkBlockIsMove(MinoPos_x, MinoPos_y, var_sell_status, tetoris_mino, minoNo))
+            if (screen.checkBlockIsMove(MinoPos_x, MinoPos_y, var_sell_status, tetoris_mino, direction))
             {
                 //ミノの画面への状態をセット
-                screen.setScreen(MinoPos_x, MinoPos_y, var_sell_status, tetoris_mino, minoNo);
+                screen.setScreen(MinoPos_x, MinoPos_y, var_sell_status, tetoris_mino, direction);
 
                 //ミノが移動できるのでミノを描写する
                 figure.DrawBlock(timer_graphics, var_sell_status);
                 //前の画面の状態を保持
-                this.setPreviousScreen(tetoris_mino, temp_mino, minoNo);
+                this.setPreviousScreen(tetoris_mino, temp_mino, direction);
                 tempMinoPos = MinoPos_y;
                 MinoPos_y++;
 
@@ -118,44 +117,20 @@ namespace TetorisGame
             else
             {
                 //ミノが動けない、以前のミノを表示する
-                screen.setScreen(MinoPos_x, MinoPos_y - 1, var_sell_status, tetoris_mino, minoNo);
+                screen.setScreen(MinoPos_x, MinoPos_y - 1, var_sell_status, tetoris_mino, direction);
                 figure.DrawBlock(timer_graphics, var_sell_status);
                 MinoPos_y = 0;
             }
         }        
-        private void setPreviousScreen(int[,] previous, int[,] after, int minoNo)
+        private void setPreviousScreen(int[,,] previous, int[,,] after, int direction)
         {
-            if(minoNo == 1)
+            for (int i = 0; i < CONST.MINO_SIZE; i++)
             {
-                for(int i = 0; i < 4; i ++)
+                for (int j = 0; j < CONST.MINO_SIZE; j++)
                 {
-                    for(int j = 0; j < 1; j ++)
-                    {
-                        after[i, j] = previous[i, j];
-                    }
+                    after[direction, i, j] = previous[direction, i, j];
                 }
             }
-            else if(minoNo == 2)
-            {
-                for(int i = 0; i < 2; i ++)
-                {
-                    for(int j = 0; j < 2; j ++)
-                    {
-                        after[i, j] = previous[i, j];
-                    }
-                }
-            }
-            else
-            {
-                for(int i = 0; i < 2; i ++)
-                {
-                    for(int j = 0; j < 3; j ++)
-                    {
-                        after[i, j] = previous[i, j];
-                    }
-                }
-            }
-
         }
         public void setGraphics(Graphics graphics)
         {
@@ -169,7 +144,7 @@ namespace TetorisGame
         {
             return this.minoNo;
         }
-        public int[,] getTetorisMino()
+        public int[,,] getTetorisMino()
         {
             return this.tetoris_mino;
         }
@@ -188,6 +163,14 @@ namespace TetorisGame
         public int getMinoPos_y()
         {
             return this.MinoPos_y;
+        }
+        public void setDirection(int direction)
+        {
+            this.direction = direction;
+        }
+        public int getDirection()
+        {
+            return this.direction;
         }
         public void setTempMinoPos(int tempMinoPos)
         {
