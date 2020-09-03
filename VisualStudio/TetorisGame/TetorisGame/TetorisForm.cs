@@ -94,6 +94,7 @@ namespace TetorisGame
             {
                 //前の状態を消去
                 screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
+                Maintimer.setScreenStatus(screen_status);
                 //ミノを右に移動させる
                 pos_x++;
                 if(screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, direction))
@@ -105,6 +106,7 @@ namespace TetorisGame
                     figure.DrawBlock(this.CreateGraphics(), screen_status);
                     Maintimer.setMinoPos_x(pos_x);
                     Maintimer.setMinoPos_y(pos_y);
+                    Maintimer.setScreenStatus(screen_status);
                 }
 
             }
@@ -113,6 +115,7 @@ namespace TetorisGame
                 //ミノを下に移動させる
                 //前の状態を消去
                 screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
+                Maintimer.setScreenStatus(screen_status);
                 //ミノを右に移動させる
                 pos_y ++;
                 if (screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, direction))
@@ -124,6 +127,7 @@ namespace TetorisGame
                     figure.DrawBlock(this.CreateGraphics(), screen_status);
                     Maintimer.setMinoPos_x(pos_x);
                     Maintimer.setMinoPos_y(pos_y);
+                    Maintimer.setScreenStatus(screen_status);
                 }
 
             }
@@ -132,6 +136,7 @@ namespace TetorisGame
                 //ミノを左に移動させる
                 //前の状態を消去
                 screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock,direction);
+                Maintimer.setScreenStatus(screen_status);
                 //ミノを右に移動させる
                 pos_x --;
                 if (screen.checkBlockIsMove(pos_x, pos_y - 1, screen_status, minoblock, direction))
@@ -143,15 +148,58 @@ namespace TetorisGame
                     figure.DrawBlock(this.CreateGraphics(), screen_status);
                     Maintimer.setMinoPos_x(pos_x);
                     Maintimer.setMinoPos_y(pos_y);
+                    Maintimer.setScreenStatus(screen_status);
                 }
             }
             if(e.KeyCode == Keys.L)
             {
+                //前のミノの上位を消去
+                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
+                Maintimer.setScreenStatus(screen_status);
                 //ミノを右回転させる
+                direction++;
+                if(direction == 4)
+                {
+                    direction = 0;
+                }
+                if (screen.checkBlockIsMove(pos_x, pos_y, screen_status, minoblock, direction))
+                {
+                    //ミノが動かせるときにミノを移動させる
+                    //新しい状態のミノを表示
+                    screen.setScreen(pos_x, pos_y, screen_status, minoblock, direction);
+                    //物理的に描く
+                    figure.DrawBlock(this.CreateGraphics(), screen_status);
+                    Maintimer.setDirection(direction);
+                    Maintimer.setTempMino(minoblock);
+                    Maintimer.setMinoPos_y(pos_y + 1);
+                    Maintimer.setScreenStatus(screen_status);
+                }
             }
             if(e.KeyCode == Keys.J)
             {
                 //ミノを左回転させる
+                //前のミノの上位を消去
+                screen.deleteScreen(pos_x, pos_y - 1, screen_status, minoblock, direction);
+                Maintimer.setScreenStatus(screen_status);
+                //ミノを右回転させる
+                direction --;
+                if(direction == -1)
+                {
+                    direction = 3;
+                }
+                direction = direction % 4;
+                if (screen.checkBlockIsMove(pos_x, pos_y, screen_status, minoblock, direction))
+                {
+                    //ミノが動かせるときにミノを移動させる
+                    //新しい状態のミノを表示
+                    screen.setScreen(pos_x, pos_y, screen_status, minoblock, direction);
+                    //物理的に描く
+                    figure.DrawBlock(this.CreateGraphics(), screen_status);
+                    Maintimer.setDirection(direction);
+                    Maintimer.setTempMino(minoblock);
+                    Maintimer.setMinoPos_y(pos_y + 1);
+                    Maintimer.setScreenStatus(screen_status);
+                }
 
             }
 

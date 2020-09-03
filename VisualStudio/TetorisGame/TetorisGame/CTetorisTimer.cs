@@ -119,6 +119,8 @@ namespace TetorisGame
                 //ミノが動けない、以前のミノを表示する
                 screen.setScreen(MinoPos_x, MinoPos_y - 1, var_sell_status, tetoris_mino, direction);
                 figure.DrawBlock(timer_graphics, var_sell_status);
+                //ここに一行そろっていたら消す処理を入れる
+
                 MinoPos_y = 0;
             }
         }        
@@ -172,9 +174,9 @@ namespace TetorisGame
         {
             return this.direction;
         }
-        public void setTempMinoPos(int tempMinoPos)
+        public void setTempMino(int[,,] temp_mino)
         {
-            this.tempMinoPos = tempMinoPos;
+            this.temp_mino = temp_mino;
         }
         public void setScreenStatus(int[,] screenstatus)
         {
