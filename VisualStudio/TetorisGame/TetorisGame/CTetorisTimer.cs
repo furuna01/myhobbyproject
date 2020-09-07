@@ -40,6 +40,7 @@ namespace TetorisGame
         { 
             CchangeScreen screen = new CchangeScreen();
             CDrawFigure figure = new CDrawFigure();
+            CdeleteBlock delete = new CdeleteBlock();
             /*if (MinoPos == 0 && flag ==false)
             {
                 screen.setScreen(CONST.START_MINO_POS, tempMinoPos, var_sell_status, temp_mino, temp_minoNumber);
@@ -120,7 +121,7 @@ namespace TetorisGame
                 screen.setScreen(MinoPos_x, MinoPos_y - 1, var_sell_status, tetoris_mino, direction);
                 figure.DrawBlock(timer_graphics, var_sell_status);
                 //ここに一行そろっていたら消す処理を入れる
-
+                delete.deleteBlock(timer_graphics, var_sell_status);
                 MinoPos_y = 0;
             }
         }        

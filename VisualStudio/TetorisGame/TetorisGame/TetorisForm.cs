@@ -86,6 +86,8 @@ namespace TetorisGame
             int direction = Maintimer.getDirection();
             int[,,] minoblock = Maintimer.getTetorisMino();
             int[,] screen_status = Maintimer.getScreenStatus();
+            CdeleteBlock delete = new CdeleteBlock();
+
 
             CchangeScreen screen = new CchangeScreen();
             CDrawFigure figure = new CDrawFigure();
@@ -108,6 +110,11 @@ namespace TetorisGame
                     Maintimer.setMinoPos_y(pos_y);
                     Maintimer.setScreenStatus(screen_status);
                 }
+                else
+                {
+                    //行がそろっていたら消す
+                    //delete.deleteBlock(this.CreateGraphics(), screen_status);
+                }
 
             }
             if(e.KeyCode == Keys.Down)
@@ -129,6 +136,11 @@ namespace TetorisGame
                     Maintimer.setMinoPos_y(pos_y);
                     Maintimer.setScreenStatus(screen_status);
                 }
+                else
+                {
+                    //行がそろっていたら消す
+                    //delete.deleteBlock(this.CreateGraphics(), screen_status);
+                }
 
             }
             if(e.KeyCode == Keys.Left)
@@ -149,6 +161,11 @@ namespace TetorisGame
                     Maintimer.setMinoPos_x(pos_x);
                     Maintimer.setMinoPos_y(pos_y);
                     Maintimer.setScreenStatus(screen_status);
+                }
+                else
+                {
+                    //行がそろっていたら消す
+                    //delete.deleteBlock(this.CreateGraphics(), screen_status);
                 }
             }
             if(e.KeyCode == Keys.L)
