@@ -1,87 +1,102 @@
-<html>
+<!DOCTYPE html>
+<html lang=gjah>
     <head>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+        <title>•ó‚­‚¶ƒQ[ƒ€</title>
+        <style>
+            body {
+                background-color: skyblue;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                border: 1px solid;
+            }
+            td {
+                border: 1px solid;
+            }
+        </style>
     </head>
     <body>
         <script>
-            //å®ãã˜ã®ä¸€æšã®å€¤æ®µ
+            //•ó‚­‚¶‚Ìˆê–‡‚Ì’l’i
             const tresure_value = 300;
-            //å®ãã˜ã‚’è²·ã†å‰ã®åˆæœŸã®æŠ•è³‡é¡
+            //•ó‚­‚¶‚ğ”ƒ‚¤‘O‚Ì‰Šú‚Ì“Š‘Šz
             const initial_value = 1000000;
-            //å…¨è²¡ç”£
-            const all_money = initial_value;
-            //å¼•ã„ãŸå®ãã˜ã®æ•°
-            const tresure_num_of_picking_up = 0;
-            //å®ãã˜ã®çµ„ã®æ•°
+            //‘SàY
+            var all_money = initial_value;
+            //ˆø‚¢‚½•ó‚­‚¶‚Ì”
+            var tresure_num_of_picking_up = 0;
+            //•ó‚­‚¶‚Ì‘g‚Ì”
             const combination_num = 200;
-            //å®ãã˜ã®ä¸€çµ„å½“ãŸã‚Šã®ãã˜ã®æ•°
+            //•ó‚­‚¶‚Ìˆê‘g“–‚½‚è‚Ì‚­‚¶‚Ì”
             const peronenum = 100000
-            const tresure_num = combination_num * peronenum;
-            //ä¸€ç­‰ã®è³é‡‘é¡
+            //ˆê“™‚ÌÜ‹àŠz
             const one_money = 400000000;
-            //å‰å¾Œè³ã®è³é‡‘é¡
+            //‘OŒãÜ‚ÌÜ‹àŠz
             const zengo_money = 100000000;
-            //äºŒç­‰ã®è³é‡‘é¡
+            //“ñ“™‚ÌÜ‹àŠz
             const two_money = 30000000;
-            //ä¸‰ç­‰ã®è³é‡‘é¡
+            //O“™‚ÌÜ‹àŠz
             const third_money = 1000000;
-            //å››ç­‰ã®è³é‡‘é¡
+            //l“™‚ÌÜ‹àŠz
             const fourth_money = 100000;
-            //äº”ç­‰ã®è³é‡‘é¡
+            //ŒÜ“™‚ÌÜ‹àŠz
             const fifth_money = 3000;
-            //å…­ç­‰ã®è³é‡‘é¡
+            //˜Z“™‚ÌÜ‹àŠz
             const sixth_money = 300;
-            //å½“ãŸã‚Šãã˜ã‚’å‰²ã‚Šå½“ã¦ã‚‹å‡¦ç†
-            //ä¸€ç­‰ã€ä¸‹8æ¡ä»¥ä¸‹ã®æ•°å­—
+            //“–‚½‚è‚­‚¶‚ğŠ„‚è“–‚Ä‚éˆ—
+            //ˆê“™A‰º8Œ…ˆÈ‰º‚Ì”š
             const one_num1 = 31111111;
             const one_num2 = 32222222;
-            //å‰å¾Œè³ã€ä¸‹7æ¡ä»¥ä¸‹ã®æ•°
+            //‘OŒãÜA‰º7Œ…ˆÈ‰º‚Ì”
             const zengo_num1 = 33333333;
             const zengo_num2 = 34444444;
             const zengo_num3 = 35555555;
             const zengo_num4 = 36666666;
-            //äºŒç­‰
+            //“ñ“™
             const two_num1 = 41111111;
             const two_num2 = 42222222;
             const two_num3 = 43333333;
             const two_num4 = 44444444;
             const two_num5 = 45555555;
             const two_num6 = 46666666;
-            //ä¸‰ç­‰
+            //O“™
             const third_num1 = 11111;
-            //4ç­‰
+            //4“™
             const fourth_num1 = 111;
-            //5ç­‰
+            //5“™
             const fifth_num1 = 11;
-            //6ç­‰
+            //6“™
             const sixth_num1 = 1;
-            //ä¸€ç­‰ã®å½“ãŸã£ãŸæ•°
+            //ˆê“™‚Ì“–‚½‚Á‚½”
             var one_apply_num = 0;
-            //ä¸€ç­‰ã®å½“ãŸã£ãŸç·åˆé¡
+            //ˆê“™‚Ì“–‚½‚Á‚½‘‡Šz
             var one_apply_value = 0;
-            //å‰å¾Œè³ã®å½“ãŸã£ãŸæ•°
+            //‘OŒãÜ‚Ì“–‚½‚Á‚½”
             var zengo_apply_num = 0;
-            //å‰å¾Œè³ã®å½“ãŸã£ãŸç·åˆé¡
+            //‘OŒãÜ‚Ì“–‚½‚Á‚½‘‡Šz
             var zengo_apply_value = 0;
-            //äºŒç­‰ã®å½“ãŸã£ãŸæ•°
+            //“ñ“™‚Ì“–‚½‚Á‚½”
             var two_apply_num = 0;
-            //äºŒç­‰ã®å½“ãŸã£ãŸç·åˆé¡
+            //“ñ“™‚Ì“–‚½‚Á‚½‘‡Šz
             var two_apply_value = 0;
-            //ä¸‰ç­‰ã®å½“ãŸã£ãŸæ•°
+            //O“™‚Ì“–‚½‚Á‚½”
             var third_apply_num = 0;
-            //ä¸‰ç­‰ã®å½“ãŸã£ãŸç·åˆé¡
+            //O“™‚Ì“–‚½‚Á‚½‘‡Šz
             var third_apply_value = 0;
-            //å››ç­‰ã®å½“ãŸã£ãŸæ•°
+            //l“™‚Ì“–‚½‚Á‚½”
             var fourth_apply_num = 0;
-            //å››ç­‰ã®å½“ãŸã£ãŸç·åˆé¡
+            //l“™‚Ì“–‚½‚Á‚½‘‡Šz
             var fourth_apply_value = 0;
-            //äº”ç­‰ã®å½“ãŸã£ãŸæ•°
+            //ŒÜ“™‚Ì“–‚½‚Á‚½”
             var fifth_apply_num = 0;
-            //äº”ç­‰ã®å½“ãŸã£ãŸç·åˆé¡
+            //ŒÜ“™‚Ì“–‚½‚Á‚½‘‡Šz
             var fifth_apply_value = 0;
-            //å…­ç­‰ã®å½“ãŸã£ãŸæ•°
+            //˜Z“™‚Ì“–‚½‚Á‚½”
             var sixth_apply_num = 0;
-            //å…­ç­‰ã®å½“ãŸã£ãŸç·åˆé¡
+            //˜Z“™‚Ì“–‚½‚Á‚½‘‡Šz
             var sixth_apply_value = 0;
             var createCombination = function() {
                 var random = Math.floor(Math.random() * 201);
@@ -95,17 +110,25 @@
                 if(random == 200000) {
                     return -1;
                 }
+                if(random < 100000) {
+                    return -1;
+                }
                 return random;
             }
-            //ã‚»ãƒƒãƒˆã—ãŸæ™‚é–“ã”ã¨ã«ãã˜ã‚’å¼•ã„ã¦çµæœã‚’è¡¨ç¤ºã™ã‚‹
+            //ƒZƒbƒg‚µ‚½ŠÔ‚²‚Æ‚É‚­‚¶‚ğˆø‚¢‚ÄŒ‹‰Ê‚ğ•\¦‚·‚é
             var showResult = function() {
-                //å¼•ã„ãŸãã˜ã®æ•°ã‚’è¡¨ç¤º
-                document.getElementById("apply_num").textContent = String(tresure_num_of_picking_up) + "/" + String(tresure_num);
+                tresure_num_of_picking_up ++;
+                //ˆø‚¢‚½‚­‚¶‚Ì”‚ğ•\¦
+                document.getElementById("apply_num").textContent = String(tresure_num_of_picking_up) + "/" + "20000000";
                 document.getElementById("apply_value").textContent = String(all_money);
-                //å…¨è²¡ç”£ã‹ã‚‰å®ãã˜ä»£ã‚’å¼•ã
+                //‘SàY‚©‚ç•ó‚­‚¶‘ã‚ğˆø‚­
                 all_money -= tresure_value;
-                //å®ãã˜ã®çµ„ã‚’1, 12ã®æ•°å€¤ã‹ã‚‰,ãªã©001, 012ã«å¤‰æ›
+                //•ó‚­‚¶‚Ì‘g‚ğ1, 12‚Ì”’l‚©‚ç,‚È‚Ç001, 012‚É•ÏŠ·
                 var kumi = createCombination();
+                var kumi_str;
+                if(kumi == -1) {
+                    return ;
+                }
                 var kumi_str = String(kumi);
                 if(kumi_str.length == 1) {
                     kumi_str = "00" + kumi_str;
@@ -113,159 +136,162 @@
                 if(kumi_str.length == 2) {
                     kumi_str = "0" + kumi_str;
                 }
-                //100000ï½199999ã®æ•°å€¤ã‚’å¼•ã„ã¦çµ„ã®ç•ªå·ã¨çµåˆ
+                //100000`199999‚Ì”’l‚ğˆø‚¢‚Ä‘g‚Ì”Ô†‚ÆŒ‹‡
                 var tresure_num = createTresureNum();
+                if(tresure_num == -1) {
+                    return ;
+                }
                 tresure_num = kumi_str + String(tresure_num);
-                //å½“é¸ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®å‡¦ç†
-                //ï¼‘ç­‰ãŒå½“ãŸã£ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯
+                //“–‘I‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìˆ—
+                //‚P“™‚ª“–‚½‚Á‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN
                 var temp_num = tresure_num.substr(-8);
                 if(temp_num == one_num1 || temp_num == one_num2) {
-                    //ä¸‹ï¼˜æ¡ãŒä¸€ç­‰ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰º‚WŒ…‚ªˆê“™‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     one_apply_num ++;
                     one_apply_value += one_money;
                     all_money += one_money;
-                    //ä¸€ç­‰ã®å½“ãŸã‚Šãã˜ã®æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //ˆê“™‚Ì“–‚½‚è‚­‚¶‚Ì”‚ğƒZƒbƒg
                     document.getElementById("one_num").textContent = String(one_apply_num);
-                    //ä¸€ç­‰ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
+                    //ˆê“™‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
                     document.getElementById("one_value").textContent = String(one_apply_value);
-                    //ä¸€ç­‰å½“ãŸã£ãŸåˆ†å…¨è²¡ç”£ã‚’å¢—ã‚„ã™
+                    //ˆê“™“–‚½‚Á‚½•ª‘SàY‚ğ‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
 
                 }
                 if(temp_num == zengo_num1 || temp_num == zengo_num2
                     || temp_num == zengo_num3 || temp_num == zengo_num4) {
-                    //ä¸‹ï¼˜æ¡ãŒå‰å¾Œè³ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰º‚WŒ…‚ª‘OŒãÜ‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     zengo_apply_num ++;
                     zengo_apply_value += zengo_money;
                     all_money += zengo_money;
-                    //å‰å¾Œè³ã®å½“ãŸã‚Šã«ãã˜æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //‘OŒãÜ‚Ì“–‚½‚è‚É‚­‚¶”‚ğƒZƒbƒg
                     document.getElementById("zengo_num").textContent = String(zengo_apply_num);
-                    //å‰å¾Œè³ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
+                    //‘OŒãÜ‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
                     document.getElementById("zengo_value").textContent = String(zengo_apply_value);
-                    //å‰å¾Œè³å½“ãŸã£ãŸåˆ†ã®å…¨è²¡ç”£ã‚’å¢—ã‚„ã™
+                    //‘OŒãÜ“–‚½‚Á‚½•ª‚Ì‘SàY‚ğ‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
                 }
                 if(temp_num == two_num1 || temp_num == two_num2
                     || temp_num == two_num3 || temp_num == two_num4
                     || temp_num == two_num5 || temp_num == two_num5) {
-                    //ä¸‹ï¼˜æ¡ãŒï¼’ç­‰ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰º‚WŒ…‚ª‚Q“™‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     two_apply_num ++;
                     two_apply_value += two_money;
                     all_money += two_money;
-                    //äºŒç­‰ã®å½“ãŸã‚Šãã˜æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //“ñ“™‚Ì“–‚½‚è‚­‚¶”‚ğƒZƒbƒg
                     document.getElementById("two_num").textContent = String(two_apply_num);
-                    //äºŒç­‰ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
+                    //“ñ“™‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
                     document.getElementById("two_value").textContent = String(two_apply_value);
-                    //äºŒç­‰ã®å½“ãŸã£ãŸåˆ†ã®å…¨è²¡ç”£ã‚’å¢—ã‚„ã™
+                    //“ñ“™‚Ì“–‚½‚Á‚½•ª‚Ì‘SàY‚ğ‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
 
                 }
                 temp_num = tresure_num.substr(-5);
                 if(temp_num == third_num1) {
-                    //ä¸‹ï¼•æ¡ãŒï¼“ç­‰ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰º‚TŒ…‚ª‚R“™‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     third_apply_num ++;
                     third_apply_value += third_money;
                     all_money += third_money;
-                    //ä¸‰ç­‰ã®å½“ãŸã‚Šãã˜ã®æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //O“™‚Ì“–‚½‚è‚­‚¶‚Ì”‚ğƒZƒbƒg
                     document.getElementById("third_num").textContent = String(third_apply_num);
-                    //ä¸‰ç­‰ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
+                    //O“™‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
                     document.getElementById("third_value").textContent = String(third_apply_value);
-                    //ä¸‰ç­‰ã®å½“ãŸã£ãŸåˆ†ã®å…¨è²¡ç”£ã‚’å¢—ã‚„ã™
+                    //O“™‚Ì“–‚½‚Á‚½•ª‚Ì‘SàY‚ğ‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
                 }
                 temp_num = tresure_num.substr(-3);
                 if(temp_num == fourth_num1) {
-                    //ä¸‹ï¼“æ¡ãŒï¼”ç­‰ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰º‚RŒ…‚ª‚S“™‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     fourth_apply_num ++;
                     fourth_apply_value += fourth_money;
                     all_money += fourth_money;
-                    //å››ç­‰ã®å½“ãŸã‚Šãã˜ã®æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //l“™‚Ì“–‚½‚è‚­‚¶‚Ì”‚ğƒZƒbƒg
                     document.getElementById("fourth_num").textContent = String(fourth_apply_num);
-                    //å››ç­‰ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
-                    document.getElementById("fourth_value").textContent = String(fourth_apply_vaue);
-                    //å››ç­‰ã®å½“ãŸã£ãŸåˆ†ã®å…¨è²¡ç”£å¢—ã‚„ã™
+                    //l“™‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
+                    document.getElementById("fourth_value").textContent = String(fourth_apply_value);
+                    //l“™‚Ì“–‚½‚Á‚½•ª‚Ì‘SàY‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
                 }
                 temp_num = tresure_num.substr(-2);
                 if(temp_num == fifth_num1) {
-                    //ä¸‹ï¼’æ¡ãŒï¼•ç­‰ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰º‚QŒ…‚ª‚T“™‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     fifth_apply_num ++;
                     fifth_apply_value += fifth_money;
                     all_money += fifth_money;
-                    //äº”ç­‰ã®å½“ãŸã‚Šãã˜ã®æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //ŒÜ“™‚Ì“–‚½‚è‚­‚¶‚Ì”‚ğƒZƒbƒg
                     document.getElementById("fifth_num").textContent = String(fifth_apply_num);
-                    //äº”ç­‰ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
+                    //ŒÜ“™‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
                     document.getElementById("fifth_value").textContent = String(fifth_apply_value);
-                    //äº”ç­‰ã®å½“ãŸã£ãŸåˆ†ã®å…¨è²¡ç”£ã‚’å¢—ã‚„ã™
+                    //ŒÜ“™‚Ì“–‚½‚Á‚½•ª‚Ì‘SàY‚ğ‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
                 }
                 temp_num = tresure_num.substr(-1);
                 if(temp_num == sixth_num1) {
-                    //ä¸‹ä¸€æ¡ãŒï¼–ç­‰ã®æ•°å­—ã¨ä¸€è‡´ã—ã¦ã„ã‚‹
+                    //‰ºˆêŒ…‚ª‚U“™‚Ì”š‚Æˆê’v‚µ‚Ä‚¢‚é
                     sixth_apply_num ++;
                     sixth_apply_value += sixth_money;
                     all_money += sixth_money;
-                    //å…­ç­‰ã®å½“ãŸã‚Šãã˜ã®æ•°ã‚’ã‚»ãƒƒãƒˆ
+                    //˜Z“™‚Ì“–‚½‚è‚­‚¶‚Ì”‚ğƒZƒbƒg
                     document.getElementById("sixth_num").textContent = String(sixth_apply_num);
-                    //å…­ç­‰ã®å½“ãŸã‚Šç·é¡ã‚’ã‚»ãƒƒãƒˆ
+                    //˜Z“™‚Ì“–‚½‚è‘Šz‚ğƒZƒbƒg
                     document.getElementById("sixth_value").textContent = String(sixth_apply_value);
-                    //å…­ç­‰ã®å½“ãŸã£ãŸåˆ†ã®å…¨è²¡ç”£ã‚’å¢—ã‚„ã™
+                    //˜Z“™‚Ì“–‚½‚Á‚½•ª‚Ì‘SàY‚ğ‘‚â‚·
                     document.getElementById("apply_value").textContent = String(all_money);
                     return ;
                 }
 
             }
-            setInterval(showResult, 3000);
+            setInterval(showResult, 100);
         </script>
-        <h1>å®ãã˜ã‚²ãƒ¼ãƒ </h1>
-        <p>å¼•ã„ãŸãã˜ã®æ•°</p>
+        <h1>•ó‚­‚¶ƒQ[ƒ€</h1>
+        <p>ˆø‚¢‚½‚­‚¶‚Ì”</p>
         <p id = "apply_num"></p>
-        <p>å…¨è²¡ç”£</p>
+        <p>‘SàY</p>
         <p id = "apply_value"></p>
         <table>
             <tr>
-                <th>ç­‰æ•°</th>
-                <th>å½“ãŸã£ãŸãã˜ã®æ•°</th>
-                <th>å½“ãŸã£ãŸé‡‘é¡</th>
+                <th>“™”</th>
+                <th>“–‚½‚Á‚½‚­‚¶‚Ì”</th>
+                <th>“–‚½‚Á‚½‹àŠz</th>
             </tr>
             <tr>
-                <td>ä¸€ç­‰</td>
+                <td>ˆê“™</td>
                 <td id = "one_num">0</td>
                 <td id = "one_value">0</td>
             </tr>
             <tr>
-                <td>å‰å¾Œè³</td>
+                <td>‘OŒãÜ</td>
                 <td id = "zengo_num">0</td>
                 <td id = "zengo_value">0</td>
             </tr>
             <tr>
-                <td>äºŒç­‰</td>
+                <td>“ñ“™</td>
                 <td id = "two_num">0</td>
                 <td id = "two_value">0</td>
             </tr>
             <tr>
-                <td>ä¸‰ç­‰</td>
+                <td>O“™</td>
                 <td id = "third_num">0</td>
                 <td id = "third_vavlue">0</td>
             </tr>
             <tr>
-                <td>å››ç­‰</td>
+                <td>l“™</td>
                 <td id = "fourth_num">0</td>
                 <td id = "fourth_value">0</td>
             </tr>
             <tr>
-                <td>äº”ç­‰</td>
+                <td>ŒÜ“™</td>
                 <td id = "fifth_num">0</td>
                 <td id = "fifth_value">0</td>
             </tr>
             <tr>
-                <td>å…­ç­‰</td>
+                <td>˜Z“™</td>
                 <td id = "sixth_num">0</td>
                 <td id = "sixth_value">0</td>
             </tr>
