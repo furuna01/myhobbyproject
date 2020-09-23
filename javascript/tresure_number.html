@@ -117,12 +117,6 @@
             }
             //セットした時間ごとにくじを引いて結果を表示する
             var showResult = function() {
-                tresure_num_of_picking_up ++;
-                //引いたくじの数を表示
-                document.getElementById("apply_num").textContent = String(tresure_num_of_picking_up) + "/" + "20000000";
-                document.getElementById("apply_value").textContent = String(all_money);
-                //全財産から宝くじ代を引く
-                all_money -= tresure_value;
                 //宝くじの組を1, 12の数値から,など001, 012に変換
                 var kumi = createCombination();
                 var kumi_str;
@@ -142,6 +136,12 @@
                     return ;
                 }
                 tresure_num = kumi_str + String(tresure_num);
+                tresure_num_of_picking_up ++;
+                //引いたくじの数を表示
+                document.getElementById("apply_num").textContent = String(tresure_num_of_picking_up) + "/" + "20000000";
+                document.getElementById("apply_value").textContent = String(all_money);
+                //全財産から宝くじ代を引く
+                all_money -= tresure_value;
                 //当選しているかどうかの処理
                 //１等が当たっているかチェック
                 var temp_num = tresure_num.substr(-8);
@@ -247,9 +247,42 @@
                 }
 
             }
-            setInterval(showResult, 100);
+            setInterval(showResult, 50);
         </script>
         <h1>宝くじゲーム</h1>
+        <p>200組<br>
+            一組　100000～199999<br>
+            1等　4億円　1000万分の1<br>
+            下のけた<br>
+            31111111,
+            32222222<br>
+            前後賞　1億円　500万分の1<br>
+            下のけた<br>
+            33333333, 
+            34444444, 
+            35555555, 
+            36666666<br>
+            2等　3000万円　1000万分の3<br>
+            下のけた<br>
+            41111111, 
+            42222222, 
+            43333333, 
+            44444444, 
+            45555555, 
+            46666666<br> 
+            3等　100万円　10万分の1<br>
+            下のけた<br>
+            11111<br>
+            組違い賞・4等　10万円　1000分の1<br>
+            下のけた<br>
+            111<br>
+            5等　3000円　100分の1<br>
+            下のけた<br>
+            11<br>
+            6等　300円　10分の1<br>
+            下のけた<br>
+            1
+        </p>
         <p>引いたくじの数</p>
         <p id = "apply_num"></p>
         <p>全財産</p>
