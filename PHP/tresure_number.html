@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang=“ja”>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+        <title>宝くじゲーム</title>
+        <style>
+            body {
+                background-color: skyblue;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                border: 1px solid;
+            }
+            td {
+                border: 1px solid;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            //宝くじの一枚の値段
+            const tresure_value = 300;
+            //宝くじを買う前の初期の投資額
+            const initial_value = 1000000;
+            //全財産
+            var all_money = initial_value;
+            //引いた宝くじの数
+            var tresure_num_of_picking_up = 0;
+            //宝くじの組の数
+            const combination_num = 200;
+            //宝くじの一組当たりのくじの数
+            const peronenum = 100000
+            //一等の賞金額
+            const one_money = 400000000;
+            //前後賞の賞金額
+            const zengo_money = 100000000;
+            //二等の賞金額
+            const two_money = 30000000;
+            //三等の賞金額
+            const third_money = 1000000;
+            //四等の賞金額
+            const fourth_money = 100000;
+            //五等の賞金額
+            const fifth_money = 3000;
+            //六等の賞金額
+            const sixth_money = 300;
+            //当たりくじを割り当てる処理
+            //一等、下8桁以下の数字
+            const one_num1 = 31111111;
+            const one_num2 = 32222222;
+            //前後賞、下7桁以下の数
+            const zengo_num1 = 33333333;
+            const zengo_num2 = 34444444;
+            const zengo_num3 = 35555555;
+            const zengo_num4 = 36666666;
+            //二等
+            const two_num1 = 41111111;
+            const two_num2 = 42222222;
+            const two_num3 = 43333333;
+            const two_num4 = 44444444;
+            const two_num5 = 45555555;
+            const two_num6 = 46666666;
+            //三等
+            const third_num1 = 11111;
+            //4等
+            const fourth_num1 = 111;
+            //5等
+            const fifth_num1 = 11;
+            //6等
+            const sixth_num1 = 1;
+            //一等の当たった数
+            var one_apply_num = 0;
+            //一等の当たった総合額
+            var one_apply_value = 0;
+            //前後賞の当たった数
+            var zengo_apply_num = 0;
+            //前後賞の当たった総合額
+            var zengo_apply_value = 0;
+            //二等の当たった数
+            var two_apply_num = 0;
+            //二等の当たった総合額
+            var two_apply_value = 0;
+            //三等の当たった数
+            var third_apply_num = 0;
+            //三等の当たった総合額
+            var third_apply_value = 0;
+            //四等の当たった数
+            var fourth_apply_num = 0;
+            //四等の当たった総合額
+            var fourth_apply_value = 0;
+            //五等の当たった数
+            var fifth_apply_num = 0;
+            //五等の当たった総合額
+            var fifth_apply_value = 0;
+            //六等の当たった数
+            var sixth_apply_num = 0;
+            //六等の当たった総合額
+            var sixth_apply_value = 0;
+            //言語設定を取得
+            var userlanguage = window.navigator.language
+                || window.navigator.browserLanguage
+                || window.navigator.userLanguage;
+            const title_str;
+            const kumi_str;
+            const one_kumi_str;
+            const one_prize;
+            const one_probability;
+            const under_number;
+            const zengo_prize;
+            const zengo_probability;
+            const two_prize;
+            const two_probability;
+            const third_prize;
+            const third_probability;
+            const fourth_prize;
+            const fourth_probability;
+            const fifth_prize;
+            const fifth_probability;
+            const sixth_prize;
+            const sixth_probability;
+            const all_money_str;
+            const number_picking_up;
+            var createCombination = function() {
+                var random = Math.floor(Math.random() * 201);
+                if(random == 201) {
+                    return -1;
+                }
+                return random;
+            }
+            var createTresureNum = function() {
+                var random = Math.floor(Math.random() * 200000);
+                if(random == 200000) {
+                    return -1;
+                }
+                if(random < 100000) {
+                    return -1;
+                }
+                return random;
+            }
+            //セットした時間ごとにくじを引いて結果を表示する
+            var showResult = function() {
+                //宝くじの組を1, 12の数値から,など001, 012に変換
+                var kumi = createCombination();
+                var kumi_str;
+                if(kumi == -1) {
+                    return ;
+                }
+                var kumi_str = String(kumi);
+                if(kumi_str.length == 1) {
+                    kumi_str = "00" + kumi_str;
+                }
+                if(kumi_str.length == 2) {
+                    kumi_str = "0" + kumi_str;
+                }
+                //100000～199999の数値を引いて組の番号と結合
+                var tresure_num = createTresureNum();
+                if(tresure_num == -1) {
+                    return ;
+                }
+                tresure_num = kumi_str + String(tresure_num);
+                tresure_num_of_picking_up ++;
+                //引いたくじの数を表示
+                document.getElementById("apply_num").textContent = String(tresure_num_of_picking_up) + "/" + "20000000";
+                document.getElementById("apply_value").textContent = String(all_money);
+                //全財産から宝くじ代を引く
+                all_money -= tresure_value;
+                //当選しているかどうかの処理
+                //１等が当たっているかチェック
+                var temp_num = tresure_num.substr(-8);
+                if(temp_num == one_num1 || temp_num == one_num2) {
+                    //下８桁が一等の数字と一致している
+                    one_apply_num ++;
+                    one_apply_value += one_money;
+                    all_money += one_money;
+                    //一等の当たりくじの数をセット
+                    document.getElementById("one_num").textContent = String(one_apply_num);
+                    //一等の当たり総額をセット
+                    document.getElementById("one_value").textContent = String(one_apply_value);
+                    //一等当たった分全財産を増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+
+                }
+                if(temp_num == zengo_num1 || temp_num == zengo_num2
+                    || temp_num == zengo_num3 || temp_num == zengo_num4) {
+                    //下８桁が前後賞の数字と一致している
+                    zengo_apply_num ++;
+                    zengo_apply_value += zengo_money;
+                    all_money += zengo_money;
+                    //前後賞の当たりにくじ数をセット
+                    document.getElementById("zengo_num").textContent = String(zengo_apply_num);
+                    //前後賞の当たり総額をセット
+                    document.getElementById("zengo_value").textContent = String(zengo_apply_value);
+                    //前後賞当たった分の全財産を増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+                }
+                if(temp_num == two_num1 || temp_num == two_num2
+                    || temp_num == two_num3 || temp_num == two_num4
+                    || temp_num == two_num5 || temp_num == two_num5) {
+                    //下８桁が２等の数字と一致している
+                    two_apply_num ++;
+                    two_apply_value += two_money;
+                    all_money += two_money;
+                    //二等の当たりくじ数をセット
+                    document.getElementById("two_num").textContent = String(two_apply_num);
+                    //二等の当たり総額をセット
+                    document.getElementById("two_value").textContent = String(two_apply_value);
+                    //二等の当たった分の全財産を増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+
+                }
+                temp_num = tresure_num.substr(-5);
+                if(temp_num == third_num1) {
+                    //下５桁が３等の数字と一致している
+                    third_apply_num ++;
+                    third_apply_value += third_money;
+                    all_money += third_money;
+                    //三等の当たりくじの数をセット
+                    document.getElementById("third_num").textContent = String(third_apply_num);
+                    //三等の当たり総額をセット
+                    document.getElementById("third_value").textContent = String(third_apply_value);
+                    //三等の当たった分の全財産を増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+                }
+                temp_num = tresure_num.substr(-3);
+                if(temp_num == fourth_num1) {
+                    //下３桁が４等の数字と一致している
+                    fourth_apply_num ++;
+                    fourth_apply_value += fourth_money;
+                    all_money += fourth_money;
+                    //四等の当たりくじの数をセット
+                    document.getElementById("fourth_num").textContent = String(fourth_apply_num);
+                    //四等の当たり総額をセット
+                    document.getElementById("fourth_value").textContent = String(fourth_apply_value);
+                    //四等の当たった分の全財産増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+                }
+                temp_num = tresure_num.substr(-2);
+                if(temp_num == fifth_num1) {
+                    //下２桁が５等の数字と一致している
+                    fifth_apply_num ++;
+                    fifth_apply_value += fifth_money;
+                    all_money += fifth_money;
+                    //五等の当たりくじの数をセット
+                    document.getElementById("fifth_num").textContent = String(fifth_apply_num);
+                    //五等の当たり総額をセット
+                    document.getElementById("fifth_value").textContent = String(fifth_apply_value);
+                    //五等の当たった分の全財産を増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+                }
+                temp_num = tresure_num.substr(-1);
+                if(temp_num == sixth_num1) {
+                    //下一桁が６等の数字と一致している
+                    sixth_apply_num ++;
+                    sixth_apply_value += sixth_money;
+                    all_money += sixth_money;
+                    //六等の当たりくじの数をセット
+                    document.getElementById("sixth_num").textContent = String(sixth_apply_num);
+                    //六等の当たり総額をセット
+                    document.getElementById("sixth_value").textContent = String(sixth_apply_value);
+                    //六等の当たった分の全財産を増やす
+                    document.getElementById("apply_value").textContent = String(all_money);
+                    return ;
+                }
+
+            }
+            setInterval(showResult, 50);
+            //言語設定を取得
+            if(userlanguage == "ja" || userlanguage == "JA") {
+                title_str = "宝くじゲーム";
+                one_combination = "200組";
+                one_kumi_str ="一組　100000～199999";
+                one_prize = "一等　4億円　1000万分の1";
+                zengo_prize = "前後賞　1億円　500万分の1";;
+                under_number = "下のけた";
+                two_prize = "二等　3000万円　1000万分の3";
+                third_prize = "三等　100万円　10万分の1<";
+                fourth_prize = "組違い賞・四等　10万円　1000分の1";
+                fifth_prize = "五等　3000円　100分の1";
+                sixth_prize = "六等　300円　10分の1";
+                rottelly_pulled = "引いたくじの数";
+                all_money_str = "全財産";
+                value_str = "等級";
+                applied_num = "当たったくじの数";
+                amount_of_money = "当たった金額";
+                one = "一等";
+                zengo = "前後賞";
+                two = "二等";
+                third = "三等";
+                fourth = "四等";
+                fifth = "五等";
+                sixth = "六等";
+            }else {
+
+            }
+        </script>
+        <h1><script>title_str</script></h1>
+        <p><script>one_combination</script><br>
+            <script>one_kumi_str</script><br>
+            <script>one_prize</script><br>
+            <script>under_number</script><br>
+            31111111,
+            32222222<br>
+            <script>zengo_prize</script><br>
+            <script>under_number</script><br>
+            33333333, 
+            34444444, 
+            35555555, 
+            36666666<br>
+            <script>two_prize</script><br>
+            <script>under_number</script><br>
+            41111111, 
+            42222222, 
+            43333333, 
+            44444444, 
+            45555555, 
+            46666666<br> 
+            <script>third_prize</script><br>
+            <script>under_number</script><br>
+            11111<br>
+            <script>fourth_prize</script><br>
+            <script>under_number</script><br>
+            111<br>
+            <script>fifth_prize</script><br>
+            <script>under_number</script><br>
+            11<br>
+            <script>sixth_prize</script><br>
+            <script>under_number</script><br>
+            1
+        </p>
+        <p><script>rottelly_pulled</script></p>
+        <p id = "apply_num"></p>
+        <p><script>all_money_str</script></p>
+        <p id = "apply_value"></p>
+        <table>
+            <tr>
+                <th><script> value_str</script></th>
+                <th><script>applied_num</script></th>
+                <th><script>amount_of_money</script></th>
+            </tr>
+            <tr>
+                <td><script>one</script></td>
+                <td id = "one_num">0</td>
+                <td id = "one_value">0</td>
+            </tr>
+            <tr>
+                <td><script>zengo</script></td>
+                <td id = "zengo_num">0</td>
+                <td id = "zengo_value">0</td>
+            </tr>
+            <tr>
+                <td><script>two</script></td>
+                <td id = "two_num">0</td>
+                <td id = "two_value">0</td>
+            </tr>
+            <tr>
+                <td><script>third</script></td>
+                <td id = "third_num">0</td>
+                <td id = "third_vavlue">0</td>
+            </tr>
+            <tr>
+                <td><script>fourth</script></td>
+                <td id = "fourth_num">0</td>
+                <td id = "fourth_value">0</td>
+            </tr>
+            <tr>
+                <td><script>fifth</script></td>
+                <td id = "fifth_num">0</td>
+                <td id = "fifth_value">0</td>
+            </tr>
+            <tr>
+                <td><script>sixth</script></td>
+                <td id = "sixth_num">0</td>
+                <td id = "sixth_value">0</td>
+            </tr>
+        </table>
+    </body>
+</html>

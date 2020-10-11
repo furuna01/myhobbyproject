@@ -1,0 +1,25 @@
+Scanner sc = new Scanner(System.in);
+
+String line = sc.nextLine();
+        
+System.out.println("XXXXXX");
+
+Scanner sn = new Scanner(System.in);
+ArrayList<Integer> list = new ArrayList<Integer>();
+
+while (sn.hasNextLine()) {
+    String str = sn.nextLine();
+    list.add(Integer.parseInt(str));
+}
+
+while(sc.hasNextLine()) {
+            
+	line_array.add(sc.nextLine());
+
+}
+        
+for(String line: line_array) {
+
+	System.out.println(line);
+       
+}

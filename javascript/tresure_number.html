@@ -98,6 +98,30 @@
             var sixth_apply_num = 0;
             //六等の当たった総合額
             var sixth_apply_value = 0;
+            //言語設定を取得
+            var userlanguage = window.navigator.language
+                || window.navigator.browserLanguage
+                || window.navigator.userLanguage;
+            const title_str;
+            const kumi_str;
+            const one_kumi_str;
+            const one_prize;
+            const one_probability;
+            const under_number;
+            const zengo_prize;
+            const zengo_probability;
+            const two_prize;
+            const two_probability;
+            const third_prize;
+            const third_probability;
+            const fourth_prize;
+            const fourth_probability;
+            const fifth_prize;
+            const fifth_probability;
+            const sixth_prize;
+            const sixth_probability;
+            const all_money_str;
+            const number_picking_up;
             var createCombination = function() {
                 var random = Math.floor(Math.random() * 201);
                 if(random == 201) {
@@ -248,86 +272,122 @@
 
             }
             setInterval(showResult, 50);
-        </script>
-        <h1>宝くじゲーム</h1>
-        <p>200組<br>
-            一組　100000～199999<br>
-            1等　4億円　1000万分の1<br>
-            下のけた<br>
-            31111111,
-            32222222<br>
-            前後賞　1億円　500万分の1<br>
-            下のけた<br>
+            //言語設定を取得
+            if(userlanguage == "ja" || userlanguage == "JA") {
+                title_str = "宝くじゲーム";
+                one_combination = "200組";
+                one_kumi_str ="一組　100000～199999";
+                one_prize = "一等　4億円　1000万分の1";
+                zengo_prize = "前後賞　1億円　500万分の1";;
+                under_number = "下のけた";
+                two_prize = "二等　3000万円　1000万分の3";
+                third_prize = "三等　100万円　10万分の1<";
+                fourth_prize = "組違い賞・四等　10万円　1000分の1";
+                fifth_prize = "五等　3000円　100分の1";
+                sixth_prize = "六等　300円　10分の1";
+                rottelly_pulled = "引いたくじの数";
+                all_money_str = "全財産";
+                value_str = "等級";
+                applied_num = "当たったくじの数";
+                amount_of_money = "当たった金額";
+                one = "一等";
+                zengo = "前後賞";
+                two = "二等";
+                third = "三等";
+                fourth = "四等";
+                fifth = "五等";
+                sixth = "六等";
+            }else {
+
+            }
+        document.write("<h1>");
+        document.write(title_str);
+        document.write("</h1>");
+        document.writeLn("<p>");
+        document.write(one_combination);
+        document.writeln("<br>");
+        document.write(one_kumi_str);
+        document.writeln("<br>");
+        document(one_prize);
+        document.writeln("<br>");
+        under_number;
+        documement.writeln("<br>");
+        document.write("31111111, ");
+        document.writeln("32222222<br>");
+        document.write(zengo_prize);
+        document.writeln("<br>");
+        document.writeln(under_number + "<br>");
             33333333, 
             34444444, 
             35555555, 
             36666666<br>
-            2等　3000万円　1000万分の3<br>
-            下のけた<br>
+            two_prize<br>
+            under_number<br>
             41111111, 
             42222222, 
             43333333, 
             44444444, 
             45555555, 
             46666666<br> 
-            3等　100万円　10万分の1<br>
-            下のけた<br>
+            third_prize<br>
+            under_number<br>
             11111<br>
-            組違い賞・4等　10万円　1000分の1<br>
-            下のけた<br>
+            fourth_prize<br>
+            under_number<br>
             111<br>
-            5等　3000円　100分の1<br>
-            下のけた<br>
+            fifth_prize<br>
+            under_number<br>
             11<br>
-            6等　300円　10分の1<br>
-            下のけた<br>
+            sixth_prize<br>
+            under_number<br>
             1
         </p>
-        <p>引いたくじの数</p>
+        <p><rottelly_pulled</p>
         <p id = "apply_num"></p>
-        <p>全財産</p>
+        <p>all_money_str</p>
         <p id = "apply_value"></p>
         <table>
             <tr>
-                <th>等数</th>
-                <th>当たったくじの数</th>
-                <th>当たった金額</th>
+                <th>value_str</th>
+                <th>applied_num</th>
+                <th>amount_of_money</th>
             </tr>
             <tr>
-                <td>一等</td>
+                <td>one</td>
                 <td id = "one_num">0</td>
                 <td id = "one_value">0</td>
             </tr>
             <tr>
-                <td>前後賞</td>
+                <td>zengo</td>
                 <td id = "zengo_num">0</td>
                 <td id = "zengo_value">0</td>
             </tr>
             <tr>
-                <td>二等</td>
+                <td>two</td>
                 <td id = "two_num">0</td>
                 <td id = "two_value">0</td>
             </tr>
             <tr>
-                <td>三等</td>
+                <td>third</td>
                 <td id = "third_num">0</td>
                 <td id = "third_vavlue">0</td>
             </tr>
             <tr>
-                <td>四等</td>
+                <td>fourth</td>
                 <td id = "fourth_num">0</td>
                 <td id = "fourth_value">0</td>
             </tr>
             <tr>
-                <td>五等</td>
+                <td>fifth</td>
                 <td id = "fifth_num">0</td>
                 <td id = "fifth_value">0</td>
             </tr>
             <tr>
-                <td>六等</td>
+                <td>sixth</td>
                 <td id = "sixth_num">0</td>
                 <td id = "sixth_value">0</td>
             </tr>
         </table>
+        </script>
     </body>
 </html>
