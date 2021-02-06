@@ -1,0 +1,65 @@
+import requests, bs4, urllib
+import os
+import datetime
+
+def get_file_name(file_path):
+    var_array = file_path.split('/')
+    file_name = var_array[len(var_array) - 1]
+    return file_name
+
+def get_extention(file_name):
+    var_array = file_name.split('/')
+    last_file = var_array[len(var_array) - 1]
+    extention_array = last_file.split('.')
+    extention = extention_array[len(extention_array) - 1]
+    return extention
+def is_target_file(file_path):
+    extention = get_extention(file_path)
+    if extention == "jpeg" or extention == "jpg":
+        return True
+    else:
+        return False
+
+def get_target_file(file_path_list):
+    for file in file_path_list:
+        if is_target_file(file):
+            target_file_path_list.append(file)
+
+target_file_path_list = []
+    
+def down_all_jpgfile(Url):
+    res = requests.get(Url)
+    res.raise_for_status()
+    soup = bs4.BeautifulSoup(res.text, "html.parser")
+    contents_of_img = soup.select('img')
+    down_file_path_list = []
+    for var in contents_of_img:
+        down_file_path_list.append(var.get('src'))
+
+    contents_of_a = soup.select('a')
+    for var in contents_of_a:
+        down_file_path_list.append(var.get('href'))
+
+#for path in down_file_path_list:
+#    print(path)
+
+    get_target_file(down_file_path_list)
+
+    if len(target_file_path_list) == 0:
+        print("This application was not able to find target files")
+        exit(0)
+    current_path = os.getcwd()
+    folder_name = current_path + "/" + "temp"
+    os.makedirs(folder_name)
+    for file in target_file_path_list:
+        file_path = folder_name + "/" + get_file_name(file)
+        print(file_path)
+        response = requests.get(file)
+        image = response.content
+
+        result_file = open(file_path, "wb")
+        result_file.write(image)
+
+Url = "http://www.erosite1012.com/archives/269206"
+#down_all_jpgfile(Url)
+down_all_jpgfile(Url)
