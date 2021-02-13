@@ -1,6 +1,9 @@
 import requests, bs4, urllib
+import urllib.parse
+from urllib.parse import urlparse
 import os
 import datetime
+import sys
 
 def get_file_name(file_path):
     var_array = file_path.split('/')
@@ -49,17 +52,31 @@ def down_all_jpgfile(Url):
         print("This application was not able to find target files")
         exit(0)
     current_path = os.getcwd()
-    folder_name = current_path + "/" + "temp"
-    os.makedirs(folder_name)
+
+    folder_name = ""
+    if len(sys.argv) == 3:
+        folder_name = sys.argv[2]
+    elif len(sys.argv) == 2 or len(sys.argv) > 3 or len(sys.argv) == 1:
+        folder_name = "temp"
+
+    folder_path = current_path + "/" + folder_name
+    os.makedirs(folder_path)
     for file in target_file_path_list:
         file_path = folder_name + "/" + get_file_name(file)
         print(file_path)
+        if not ("https" in file or "http" in file):
+            parsed_url = urlparse(Url)
+            file = parsed_url.scheme + "://" + parsed_url.netloc + "/" + file
         response = requests.get(file)
         image = response.content
 
         result_file = open(file_path, "wb")
         result_file.write(image)
+Url = ""
+if len(sys.argv) == 1:
+    Url = "http://www.erosite1012.com/archives/269206"
+elif len(sys.argv) >= 2:
+    Url = sys.argv[1]
 
-Url = "http://www.erosite1012.com/archives/269206"
 #down_all_jpgfile(Url)
 down_all_jpgfile(Url)
