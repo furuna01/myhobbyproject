@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang=“ja”>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>宝くじゲーム</title>
+        <style>
+            body {
+                background-color: skyblue;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                border: 1px solid;
+            }
+            td {
+                border: 1px solid;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+        </script>
+    </head>
+    <h1>宝くじゲーム</h1>
+        <p>200組<br>
+            一組　100000～199999<br>
+            1等　4億円　1000万分の1<br>
+            下のけた<br>
+            31111111,
+            32222222<br>
+            前後賞　1億円　500万分の1<br>
+            下のけた<br>
+            33333333, 
+            34444444, 
+            35555555, 
+            36666666<br>
+            2等　3000万円　1000万分の3<br>
+            下のけた<br>
+            41111111, 
+            42222222, 
+            43333333, 
+            44444444, 
+            45555555, 
+            46666666<br> 
+            3等　100万円　10万分の1<br>
+            下のけた<br>
+            11111<br>
+            組違い賞・4等　10万円　1000分の1<br>
+            下のけた<br>
+            111<br>
+            5等　3000円　100分の1<br>
+            下のけた<br>
+            11<br>
+            6等　300円　10分の1<br>
+            下のけた<br>
+            1
+        </p>
+        <div id="timer">
+        <p>引いたくじの数</p>
+        <p>{{ apply_num }}</p>
+        <p>全財産</p>
+        <p>{{ all_money }}</p>
+            <button v-on:click="start" v-if="!timerOn">Start</button>
+            <button v-on:click="stop" v-if="timerOn">Stop</button>
+            <table>
+                <tr>
+                    <th>等数</th>
+                    <th>当たったくじの数</th>
+                    <th>当たった金額</th>
+                </tr>
+                <tr>
+                    <td>一等</td>
+                    <td>{{ one_apply_num }}</td>
+                    <td>{{ one_apply_value }}</td>
+                </tr>
+                <tr>
+                    <td>前後賞</td>
+                    <td>{{ zengo_apply_num }}</td>
+                    <td>{{ zengo_apply_value }}</td>
+                </tr>
+                <tr>
+                    <td>二等</td>
+                    <td> {{ two_apply_num }}</td>
+                    <td>{{ two_apply_value }}</td>
+                </tr>
+                <tr>
+                    <td>三等</td>
+                    <td>{{ third_apply_num }}</td>
+                    <td>{{ third_apply_value }}</td>
+                </tr>
+                <tr>
+                    <td>四等</td>
+                    <td>{{ fourth_apply_num }}</td>
+                    <td>{{ fourth_apply_value }}</td>
+                </tr>
+                <tr>
+                    <td>五等</td>
+                    <td>{{ fifth_apply_num }}</td>
+                    <td>{{ fifth_apply_value }}</td>
+                </tr>
+                <tr>
+                    <td>六等</td>
+                    <td>{{ sixth_apply_num }}</td>
+                    <td>{{ sixth_apply_value }}</td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            new Vue ({
+                el: '#timer',
+                data: {
+                    //宝くじの一枚の値段
+                    tresure_value: 300,
+                    //引いたくじの数
+                    apply_num: 0,
+                    //全財産
+                    all_money: 1000000,
+                    //引いた宝くじの数
+                    tresure_num_of_picking_up: 0,
+                    //宝くじの組の数
+                    combination_num: 200,
+                    //宝くじの一組当たりのくじの数
+                    peronenum: 100000,
+                    //一等の賞金額
+                    one_money: 400000000,
+                    //前後賞の賞金額
+                    zengo_money: 100000000,
+                    //二等の賞金額
+                    two_money: 30000000,
+                    //三等の賞金額
+                    third_money: 1000000,
+                    //四等の賞金額
+                    fourth_money: 100000,
+                    //五等の賞金額
+                    fifth_money: 3000,
+                    //六等の賞金額
+                    sixth_money: 300,
+                    //当たりくじを割り当てる処理
+                    //一等、下8桁以下の数字
+                    one_num1: 31111111,
+                    one_num2: 32222222,
+                    //前後賞、下7桁以下の数
+                    zengo_num1: 33333333,
+                    zengo_num2: 34444444,
+                    zengo_num3: 35555555,
+                    zengo_num4: 36666666,
+                    //二等
+                    two_num1: 41111111,
+                    two_num2: 42222222,
+                    two_num3: 43333333,
+                    two_num4: 44444444,
+                    two_num5: 45555555,
+                    two_num6: 46666666,
+                    //三等
+                    third_num1: 11111,
+                    //4等
+                    fourth_num1: 111,
+                    //5等
+                    fifth_num1: 11,
+                    //6等
+                    sixth_num1: 1,
+                    //一等の当たった数
+                    one_apply_num: 0,
+                    //一等の当たった総合額
+                    one_apply_value: 0,
+                    //前後賞の当たった数
+                    zengo_apply_num: 0,
+                    //前後賞の当たった総合額
+                    zengo_apply_value: 0,
+                    //二等の当たった数
+                    two_apply_num: 0,
+                    //二等の当たった総合額
+                    two_apply_value: 0,
+                    //三等の当たった数
+                    third_apply_num: 0,
+                    //三等の当たった総合額
+                    third_apply_value: 0,
+                    //四等の当たった数
+                    fourth_apply_num: 0,
+                    //四等の当たった総合額
+                    fourth_apply_value: 0,
+                    //五等の当たった数
+                    fifth_apply_num: 0,
+                    //五等の当たった総合額
+                    fifth_apply_value: 0,
+                    //六等の当たった数
+                    sixth_apply_num: 0,
+                    //六等の当たった総合額
+                    sixth_apply_value: 0,
+                    timerOn: false,
+                    timerObj: null,
+                },
+                methods: {
+                    start: function() {
+                        let self = this;
+                        this.timerObj = setInterval(function(){self.pullrottery()}, 50)
+                        this.timerOn = true; //timerがONであることを状態として保持
+                    },
+                    stop: function() {
+                        clearInterval(this.timerObj);
+                        this.timerOn = false; //timerがOFFであることを状態として保持
+                    },
+                    pullrottery: function() {
+                        //宝くじの組を1, 12の数値から,など001, 012に変換
+                        var kumi = this.createCombination();
+                        var kumi_str;
+                        if(kumi == -1) {
+                            return ;
+                        }
+                        var kumi_str = String(kumi);
+                        if(kumi_str.length == 1) {
+                            kumi_str = "00" + kumi_str;
+                        }
+                        if(kumi_str.length == 2) {
+                            kumi_str = "0" + kumi_str;
+                        }
+                        //100000～199999の数値を引いて組の番号と結合
+                        var tresure_num = this.createTresureNum();
+                        if(tresure_num == -1) {
+                            return ;
+                        }
+                        tresure_num = kumi_str + String(tresure_num);
+                        //引いたくじの数を表示
+                        this.apply_num ++;
+                
+                        this.tresure_num_of_picking_up ++;
+                        //全財産から宝くじ代を引く
+                        this.all_money -= this.tresure_value;
+                        //当選しているかどうかの処理
+                        //１等が当たっているかチェック
+                        var temp_num = tresure_num.substr(-8);
+                        if(temp_num == this.one_num1 || temp_num == this.one_num2) {
+                            //下８桁が一等の数字と一致している
+                            this.one_apply_num ++;
+                            this.one_apply_value += this.one_money;
+                            this.all_money += this.one_money;
+                            return ;
+
+                        }
+                        if(temp_num == this.zengo_num1 || temp_num == this.zengo_num2
+                            || temp_num == this.zengo_num3 || temp_num == this.zengo_num4) {
+                            //下８桁が前後賞の数字と一致している
+                            this.zengo_apply_num ++;
+                            this.zengo_apply_value += this.zengo_money;
+                            this.all_money += this.zengo_money;
+                            return ;
+                        }
+                        if(temp_num == this.two_num1 || temp_num == this.two_num2
+                            || temp_num == this.two_num3 || temp_num == this.two_num4
+                            || temp_num == this.two_num5 || temp_num == this.two_num5) {
+                            //下８桁が２等の数字と一致している
+                            this.two_apply_num ++;
+                            this.two_apply_value += this.two_money;
+                            this.all_money += this.two_money;
+                            return ;
+
+                        }
+                        temp_num = tresure_num.substr(-5);
+                        if(temp_num == this.third_num1) {
+                            //下５桁が３等の数字と一致している
+                            this.third_apply_num ++;
+                            this.third_apply_value += this.third_money;
+                            this.all_money += this.third_money;
+                            return ;
+                        }
+                        temp_num = tresure_num.substr(-3);
+                        if(temp_num == this.fourth_num1) {
+                            //下３桁が４等の数字と一致している
+                            this.fourth_apply_num ++;
+                            this.fourth_apply_value += this.fourth_money;
+                            this.all_money += this.fourth_money;
+                            return ;
+                        }
+                        temp_num = tresure_num.substr(-2);
+                        if(temp_num == this.fifth_num1) {
+                            //下２桁が５等の数字と一致している
+                            this.fifth_apply_num ++;
+                            this.fifth_apply_value += this.fifth_money;
+                            this.all_money += this.fifth_money;
+                            return ;
+                        }
+                        temp_num = tresure_num.substr(-1);
+                        if(temp_num == this.sixth_num1) {
+                            //下一桁が６等の数字と一致している
+                            this.sixth_apply_num ++;
+                            this.sixth_apply_value += this.sixth_money;
+                            this.all_money += this.sixth_money;
+                            return ;
+                        }
+
+                    },
+                    createCombination: function() {
+                        var random = Math.floor(Math.random() * 201);
+                        if(random == 201) {
+                            return -1;
+                        }
+                        return random;
+                    },
+                    createTresureNum: function() {
+                        var random = Math.floor(Math.random() * 200000);
+                        if(random == 200000) {
+                            return -1;
+                        }
+                        if(random < 100000) {
+                            return -1;
+                        }
+                        return random;
+                    },
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Hello! Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+        </script>
+    </head>
+    <body>
+      <div id="app">
+          <p align="center">中央寄せを直接指定</p>
+          <p v-bind:align="myAlign">中央寄せをv-bindで指定</p>
+      </div>
+      <script>
+          new Vue ({
+              el: '#app',
+              data: {
+                  myAlign: "center"
+              }
+          })
+      </script>
+    </body>
+</html>

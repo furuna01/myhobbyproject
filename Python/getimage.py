@@ -18,7 +18,7 @@ def get_extention(file_name):
     return extention
 def is_target_file(file_path):
     extention = get_extention(file_path)
-    if extention == "jpeg" or extention == "jpg":
+    if extention == "jpeg" or extention == "jpg" or extention == "gif":
         return True
     else:
         return False
@@ -74,7 +74,7 @@ def down_all_jpgfile(Url):
         result_file.write(image)
 Url = ""
 if len(sys.argv) == 1:
-    Url = "http://www.erosite1012.com/archives/269206"
+    Url = "https://onapple.jp/archives/195241/2"
 elif len(sys.argv) >= 2:
     Url = sys.argv[1]
 

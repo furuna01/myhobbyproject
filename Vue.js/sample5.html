@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Hello! Vue.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{"myPrice 5000の消費税込みは" + myPrice * 1.08 + "です"}}</p>
+            <p>{{ "こんにちは、" + myName + "さん"}}</p>
+            <p>{{ myName.substr(0, 2) }}</p>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    myPrice: 5000,
+                    myName: '桃太郎'
+                }
+            })
+        </script>
+    </body>
+</html>
