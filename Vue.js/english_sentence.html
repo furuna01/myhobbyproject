@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Practicing English sentences</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+        </script>
+        <style>
+            body {
+                background-color: skyblue;
+                width: 400pt;
+            }
+            textarea {
+                width: 300pt;
+                height: 150pt;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>単語数をカウントする</h1>
+        <p>テキストエリアに英文を入力すると入力した英文と単語数を数えて表示します
+            ちょっと、ここに入力した文章から単語のリストを作成するファイルをダウンロードできる
+            ように、機能を実装してみる
+        </p>
+        <p>
+            すでに存在する単語リストのファイルを指定した場合、情報をアップデートします
+            たとえば、the 15個とかかれたファイルで入力された文章がthe を3個含む場合
+            単語のリストではthe 18になります。
+        </p>
+        <div id="english_sentence">
+            <textarea v-model="sentence"></textarea>
+            <button v-on:click="saveFile">保存</button>
+            <p><a href=# id="download" @click="saveFile">ダウンロード</a></p>
+            <p>入力した文章は、</p>
+            <p>{{ sentence }}</p>
+            <p>単語数は{{ this.countWord(sentence) }}です</p>
+        </div>
+        <script>
+            new Vue ({
+                el: '#english_sentence',
+                data: {
+                    sentence: "",
+                    word_number: 0
+                },
+                methods: {
+                    countWord: function(sentence) {
+                        if(sentence == "") {
+                            return 0;
+                        }
+                        sentence = sentence.replace(/\r\n/g, '');
+                        sentence = sentence.replace(/\n/g, '');
+                        sentence = sentence.replace(/\t/g, '');
+                        word_array = sentence.split(/\s/);
+                        return word_array.length;
+                    },
+
+                    saveFile: function(){
+                        var blob = new Blob([ this.sentence ]);
+                        if (window.navigator.msSaveBlob) {
+                            // for IE
+                            window.navigator.msSaveBlob(blob, "down.txt")
+                        }else {
+                            window.alert("msSaveBlob対応がい？")
+                        }
+                    },                    
+                }
+            })
+        </script>
+    </body>
+    </html>

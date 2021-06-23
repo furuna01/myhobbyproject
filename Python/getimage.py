@@ -31,6 +31,7 @@ def get_target_file(file_path_list):
 target_file_path_list = []
     
 def down_all_jpgfile(Url):
+    print(Url)
     res = requests.get(Url)
     res.raise_for_status()
     soup = bs4.BeautifulSoup(res.text, "html.parser")
@@ -74,9 +75,10 @@ def down_all_jpgfile(Url):
         result_file.write(image)
 Url = ""
 if len(sys.argv) == 1:
-    Url = "https://onapple.jp/archives/195241/2"
+    Url = "https://onapple.jp/archives/191133"
 elif len(sys.argv) >= 2:
     Url = sys.argv[1]
 
-#down_all_jpgfile(Url)
+print(Url)
+
 down_all_jpgfile(Url)

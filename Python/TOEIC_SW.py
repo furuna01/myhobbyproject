@@ -15,38 +15,27 @@ def checkTimeRange(time_begin, time_end):
         return False
 
 #TOEICの受験情報をすべて表示する
-def showDate(exam_number, time_begin_list, time_end_list, exam_time_list):
+def showDate(time_begin_list, time_end_list, exam_time_list):
     count = 0
     dt_now = datetime.datetime.now()
     dt_now_str = str(dt_now.month) + "/" + str(dt_now.day) + " " + str(dt_now.hour) + ":" + str(dt_now.minute)
-    for number in exam_number:
+    for list in time_begin_list:
         if time_end_list[count] > dt_now_str:
-            print(number + " TOEIC(L&R)試験 " + "試験日" + exam_time_list[count] + " インターネット受付日 " + time_begin_list[count] + "～" + time_end_list[count])
+            print(" TOEIC(S&W)試験 " + "試験日" + exam_time_list[count] + " インターネット受付日 " + time_begin_list[count] + "～" + time_end_list[count])
         count = count + 1
 
-url = "https://www.iibc-global.org/toeic/test/lr/guide01/schedule.html"
+url = "https://www.iibc-global.org/toeic/test/sw/guide01.html"
 response = requests.get(url)
 soup = bs4.BeautifulSoup(response.content, "html.parser")
 class_date_list = soup.find_all(class_="mod-schedule-vertical")
-exam_number = list()
 exam_month = list()
 exam_day = list()
-exam_gozen_gogo = list()
 begin_month = list()
 begin_day = list()
 begin_hour = list()
 end_month = list()
 end_day = list()
 end_hour = list()
-
-for date in class_date_list:
-    class_list = date.find_all(class_="mod-schedule-vertical_head")
-    count = 0
-    count2 = 0
-    for line in class_list:
-        em_list = line.find_all("em")
-        for em in em_list:
-            exam_number.append("第" + em.text + "回")
 
 for date in class_date_list:
     class_list = date.find_all(class_="mod-schedule-vertical_main_date")
@@ -59,8 +48,6 @@ for date in class_date_list:
                 exam_month.append(em.text)
             if count % 3 == 1:
                 exam_day.append(em.text)
-            if count % 3 == 2:
-                exam_gozen_gogo.append(em.text)
             count = count + 1            
 
 count = 0
@@ -90,8 +77,8 @@ exam_time_list = list()
 for i in range(count2):
     time_begin_list.append(begin_month[i] + "/" + begin_day[i] + " " + begin_hour[i])
     time_end_list.append(end_month[i] + "/" + end_day[i] + " " + end_hour[i])
-    exam_time_list.append(exam_month[i] + "/" + exam_day[i] + " " + exam_gozen_gogo[i])
-showDate(exam_number, time_begin_list, time_end_list, exam_time_list)
+    exam_time_list.append(exam_month[i] + "/" + exam_day[i])
+showDate(time_begin_list, time_end_list, exam_time_list)
 for i in range(count2):
     if checkTimeRange(time_begin_list[i], time_end_list[i]):
         ret = messagebox.askyesno("TOEICの申し込み期間", "今はTOEICの申込期間です")

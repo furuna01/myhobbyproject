@@ -57,6 +57,18 @@
         <div id="timer">
         <p>引いたくじの数</p>
         <p>{{ apply_num }}</p>
+        <p>引いたくじの番号</p>
+        <p>{{ apply_num_set }}</p>
+        <p>1等の当たったくじの番号</p>
+        <div v-html="apply_one"></div>
+        <p>前後賞の当たったくじの番号</p>
+        <div v-html="apply_zengo"></div>
+        <p>2等の当たったくじの番号</p>
+        <div v-html="apply_two"></div>
+        <p>3等の当たったくじの番号</p>
+        <div v-html="apply_thrid"></div>
+        <p>4等の当たったくじの番号</p>
+        <div v-html="apply_forth"></div>
         <p>全財産</p>
         <p>{{ all_money }}</p>
             <button v-on:click="start" v-if="!timerOn">Start</button>
@@ -110,6 +122,19 @@
                 data: {
                     //宝くじの一枚の値段
                     tresure_value: 300,
+                    //引いたくじの番号
+                    apply_num_set: 0,
+                    //1等の当たったくじの番号
+                    apply_one: "",
+                    //前後賞の当たったくじの番号
+                    apply_zengo: "",
+                    //2等の当たったくじの番号
+                    apply_two: "",
+                    //3等の当たったくじの番号
+                    apply_thrid: "",
+                    //4等の当たったくじの番号
+                    apply_forth: "",
+                    apply_fifth: "",
                     //引いたくじの数
                     apply_num: 0,
                     //全財産
@@ -118,6 +143,8 @@
                     tresure_num_of_picking_up: 0,
                     //宝くじの組の数
                     combination_num: 200,
+                    //4等以上当たったくじのの番号を収める配列
+                    lucky_array: [],
                     //宝くじの一組当たりのくじの数
                     peronenum: 100000,
                     //一等の賞金額
@@ -219,6 +246,7 @@
                             return ;
                         }
                         tresure_num = kumi_str + String(tresure_num);
+                        this.apply_num_set = tresure_num;
                         //引いたくじの数を表示
                         this.apply_num ++;
                 
@@ -233,6 +261,7 @@
                             this.one_apply_num ++;
                             this.one_apply_value += this.one_money;
                             this.all_money += this.one_money;
+                            this.apply_one += "<p>" + tresure_num + "</p>";
                             return ;
 
                         }
@@ -242,6 +271,7 @@
                             this.zengo_apply_num ++;
                             this.zengo_apply_value += this.zengo_money;
                             this.all_money += this.zengo_money;
+                            this.apply_zengo += "<p>" + tresure_num + "</p>";
                             return ;
                         }
                         if(temp_num == this.two_num1 || temp_num == this.two_num2
@@ -251,6 +281,7 @@
                             this.two_apply_num ++;
                             this.two_apply_value += this.two_money;
                             this.all_money += this.two_money;
+                            this.apply_two += "<p>" + tresure_num + "</p>";
                             return ;
 
                         }
@@ -260,6 +291,7 @@
                             this.third_apply_num ++;
                             this.third_apply_value += this.third_money;
                             this.all_money += this.third_money;
+                            this.apply_thrid += "<p>" + tresure_num + "</p>";
                             return ;
                         }
                         temp_num = tresure_num.substr(-3);
@@ -268,6 +300,7 @@
                             this.fourth_apply_num ++;
                             this.fourth_apply_value += this.fourth_money;
                             this.all_money += this.fourth_money;
+                            this.apply_forth += "<p>" + tresure_num + "</p>";
                             return ;
                         }
                         temp_num = tresure_num.substr(-2);
@@ -276,6 +309,7 @@
                             this.fifth_apply_num ++;
                             this.fifth_apply_value += this.fifth_money;
                             this.all_money += this.fifth_money;
+                            this.apply_fifth += "<p>" + tresure_num + "</p>";
                             return ;
                         }
                         temp_num = tresure_num.substr(-1);
