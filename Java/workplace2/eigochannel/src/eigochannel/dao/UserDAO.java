@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import eigochannel.model.User;
-
 public class UserDAO {
 
-	public boolean getUserFromDB(User user) {
+	public boolean getUserFromDB(String userId) {
 		try {
 			DataBaseCommon common = new DataBaseCommon();
 			if(!common.connectDB()) {
@@ -20,7 +18,7 @@ public class UserDAO {
 		    ResultSet rs = pstmt.executeQuery();
 
 		    while (rs.next()) {
-		     if(user.getUserID().equals(rs.getString("userid"))) {
+		     if(userId.equals(rs.getString("userid"))) {
 		    	 //ユーザーIDが見つかった
 		    	 return true;
 		     }

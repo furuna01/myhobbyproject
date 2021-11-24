@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import eigochannel.model.LoginLogic;
+
 /**
  * Servlet implementation class Login
  */
@@ -38,6 +40,9 @@ public class Login extends HttpServlet {
 		String userName = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String nickName = request.getParameter("nickName");
+
+		LoginLogic logic = new LoginLogic();
+		logic.doLogin(userName, password);
 		doGet(request, response);
 	}
 
