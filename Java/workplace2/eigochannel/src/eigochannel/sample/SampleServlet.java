@@ -32,29 +32,45 @@ public class SampleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubs
 		PrintWriter out = response.getWriter();
-		String str = "ABC";
 		out.println("<html>");
 		out.println("<body>");
 		out.println("</body>");
-		out.println("<p>" + str + "</p>");
+		String dataBaseName = "eigochannel";
+		String userName = "yonezawa";
+		String password = "suminftyj=1";
+		out.println("<p>" + dataBaseName + "</p>");
+		out.println("<p>" + userName + "</p>");
+		out.println("<p>" + password + "</p>");
 		out.println("<p>After Enripting</p>");
 		LogicEncript encript = new LogicEncript();
-		byte[] afterbyte = null;
+		byte[] afterbyte1 = null;
+		byte[] afterbyte2 = null;
+		byte[] afterbyte3 = null;
 		try {
-			afterbyte = encript.EncripString(str);
+			afterbyte1 = encript.EncripString(dataBaseName);
+			afterbyte2 = encript.EncripString(userName);
+			afterbyte3 = encript.EncripString(password);
+
 		}catch(Exception e) {
 			out.println(e.getMessage());
 		}
-		String newStr = new String(afterbyte);
-		out.println(newStr);
+		String afterstr1 = new String(afterbyte1);
+		String afterstr2 = new String(afterbyte2);
+		String afterstr3 = new String(afterbyte3);
+		out.println(afterstr1);
+		out.println(afterstr2);
+		out.println(afterstr3);
 		out.println("<p>AfterDeripting</p>");
-		String afterStr = null;
 		try {
-			afterStr = encript.DecripByte(afterbyte);
+			dataBaseName = encript.DecripByte(afterbyte1);
+			userName = encript.DecripByte(afterbyte2);
+			password = encript.DecripByte(afterbyte3);
 		}catch (Exception e) {
 			out.println(e.getMessage());
 		}
-		out.println("<p>" + afterStr + "</p>");
+		out.println("<p>" + dataBaseName + "</p>");
+		out.println("<p>" + userName + "</p>");
+		out.println("<p>" + password + "</p>");
 		out.println("</html>");
 	}
 
