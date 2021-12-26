@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import eigochannel.util.LogicEncript;
+
 /**
  * Servlet implementation class SampleServlet
  */
 @WebServlet("/SampleServlet")
 public class SampleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,10 +32,29 @@ public class SampleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubs
 		PrintWriter out = response.getWriter();
+		String str = "ABC";
 		out.println("<html>");
 		out.println("<body>");
 		out.println("</body>");
-		out.println("<p>Hello! Servlet!</p>");
+		out.println("<p>" + str + "</p>");
+		out.println("<p>After Enripting</p>");
+		LogicEncript encript = new LogicEncript();
+		byte[] afterbyte = null;
+		try {
+			afterbyte = encript.EncripString(str);
+		}catch(Exception e) {
+			out.println(e.getMessage());
+		}
+		String newStr = new String(afterbyte);
+		out.println(newStr);
+		out.println("<p>AfterDeripting</p>");
+		String afterStr = null;
+		try {
+			afterStr = encript.DecripByte(afterbyte);
+		}catch (Exception e) {
+			out.println(e.getMessage());
+		}
+		out.println("<p>" + afterStr + "</p>");
 		out.println("</html>");
 	}
 
