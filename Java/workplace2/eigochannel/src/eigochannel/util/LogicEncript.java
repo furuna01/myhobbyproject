@@ -11,6 +11,8 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class LogicEncript {
 
+	private SecretKey Key;
+	private IvParameterSpec Iv;
 	/**
 	 * 共通鍵を生成する
 	 * @return 共通鍵
@@ -34,9 +36,9 @@ public class LogicEncript {
 
 	public byte[]  EncripString(String text) throws GeneralSecurityException {
 		Cipher encrypter = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		SecretKey key = this.generateKey();
-		IvParameterSpec iv = this.generateIV();
-		encrypter.init(Cipher.ENCRYPT_MODE, key, iv);
+		Key = this.generateKey();
+		Iv = this.generateIV();
+		encrypter.init(Cipher.ENCRYPT_MODE, Key, Iv);
 
 		return encrypter.doFinal(text.getBytes());
 	}
@@ -44,10 +46,8 @@ public class LogicEncript {
 	public String DecripByte(byte[] crypText) throws GeneralSecurityException {
 		// 書式:"アルゴリズム/ブロックモード/パディング方式"
         Cipher decrypter = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		SecretKey key = this.generateKey();
-		IvParameterSpec iv = this.generateIV();
 
-        decrypter.init(Cipher.DECRYPT_MODE, key, iv);
+        decrypter.init(Cipher.DECRYPT_MODE, Key, Iv);
 
         return new String(decrypter.doFinal(crypText));
     }
