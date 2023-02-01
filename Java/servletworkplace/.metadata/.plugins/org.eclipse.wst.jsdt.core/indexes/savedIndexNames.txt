@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/Users/Ryo/Documents/program/myhobbyproject/Java/servletworkplace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2983769525.index
+3611027283.index
+3488389909.index
+1433643883.index
+362379079.index
+3212563114.index
+1113349552.index

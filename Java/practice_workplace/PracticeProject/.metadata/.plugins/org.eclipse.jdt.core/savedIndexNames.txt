@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+/Users/Ryo/Documents/program/myhobbyproject/Java/practice_workplace/PracticeProject/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+2285801732.index
+50858140.index

@@ -24,14 +24,14 @@ def is_target_file(file_path):
         return False
 
 def get_target_file(file_path_list):
+    target_file_path_list = []
     for file in file_path_list:
         if is_target_file(file):
             target_file_path_list.append(file)
+    return target_file_path_list
 
-target_file_path_list = []
     
 def down_all_jpgfile(Url):
-    print(Url)
     res = requests.get(Url)
     res.raise_for_status()
     soup = bs4.BeautifulSoup(res.text, "html.parser")
@@ -44,12 +44,18 @@ def down_all_jpgfile(Url):
     for var in contents_of_a:
         down_file_path_list.append(var.get('href'))
 
+    if len(down_file_path_list) == 0 or not down_file_path_list:
+        print("This application was not able to find target files")
+        exit(0)
 #for path in down_file_path_list:
 #    print(path)
 
-    get_target_file(down_file_path_list)
+    target_file_path_list = get_target_file(down_file_path_list)
 
-    if len(target_file_path_list) == 0:
+    for file in target_file_path_list:
+        print(file)
+
+    if len(target_file_path_list) == 0 or not target_file_path_list:
         print("This application was not able to find target files")
         exit(0)
     current_path = os.getcwd()
@@ -73,12 +79,10 @@ def down_all_jpgfile(Url):
 
         result_file = open(file_path, "wb")
         result_file.write(image)
-Url = ""
+Url = "https://1000giribest.com/630401.html"
 if len(sys.argv) == 1:
-    Url = "https://onapple.jp/archives/191133"
+    Url = "https://1000giribest.com/630401.html"
 elif len(sys.argv) >= 2:
     Url = sys.argv[1]
-
-print(Url)
 
 down_all_jpgfile(Url)

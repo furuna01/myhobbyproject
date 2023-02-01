@@ -1,0 +1,10 @@
+package sampleproject;
+
+public class SampleMain {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+}
