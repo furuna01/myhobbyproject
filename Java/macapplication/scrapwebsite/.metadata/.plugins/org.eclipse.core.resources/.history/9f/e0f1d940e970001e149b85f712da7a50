@@ -20,6 +20,11 @@ public class ToolForScrapeTest {
 	    expectedList.add("this is secondlink");
 	    
 	    assertEquals(expectedList, targetLink);
+	    //assertEquals(expectedList.size(), targetLink.size());
+	    
+	    /*for(int i = 0; i < expectedList.size(); i ++) {
+	    	assertEquals(expectedList.get(i), targetLink.get(i));
+	    }*/
 	  }
 
 }

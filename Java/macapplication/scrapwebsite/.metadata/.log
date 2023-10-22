@@ -738,3 +738,9 @@ Java Model Exception: Error in Java Model (code 1009): System [in System.class [
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-22 23:41:40.762
 !MESSAGE プラットフォームのエンコーディング (実際は UTF-8) を使用してフィルターされたリソースをコピーします。つまり、ビルドはプラットフォームに依存します!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-22 23:42:41.817
+!MESSAGE プラットフォームのエンコーディング (実際は UTF-8) を使用してフィルターされたリソースをコピーします。つまり、ビルドはプラットフォームに依存します!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-22 23:42:41.819
+!MESSAGE プラットフォームのエンコーディング (実際は UTF-8) を使用してフィルターされたリソースをコピーします。つまり、ビルドはプラットフォームに依存します!
