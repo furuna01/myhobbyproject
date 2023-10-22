@@ -15,6 +15,10 @@ public class ToolForScrapeTest {
 	    
 	    String htmlText = "abcd <a href=\"this_is_link\"> ddd <a href = \"this is secondlink\" dd";
 	    scrape.getHrefLink(htmlText, targetLink);
+	    
+	    for(String str : targetLink) {
+	    	System.out.println("target : " + str);
+	    }
 	    ArrayList<String> expectedList = new ArrayList<String>();
 	    expectedList.add("this_is_link");
 	    expectedList.add("this is secondlink");

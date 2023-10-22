@@ -187,3 +187,15 @@
 2023-10-22 23:33:50,490 [Worker-76: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2023-10-22 23:33:50,491 [Worker-76: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2023-10-22 23:33:50,492 [Worker-76: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 23:40:35,874 [Worker-65: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 23:40:35,875 [Worker-65: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 23:40:35,878 [Worker-65: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 23:40:35,879 [Worker-65: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 23:40:48,958 [Worker-73: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 23:40:48,959 [Worker-73: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 23:40:48,961 [Worker-73: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 23:40:48,961 [Worker-73: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 23:41:40,759 [Worker-78: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 23:41:40,761 [Worker-78: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 23:41:40,762 [Worker-78: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 23:41:40,763 [Worker-78: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
