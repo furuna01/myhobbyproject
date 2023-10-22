@@ -21,7 +21,7 @@ public class ToolForScrapeTest {
 	    }
 	    ArrayList<String> expectedList = new ArrayList<String>();
 	    expectedList.add("this_is_link");
-	    expectedList.add("this is secondlink");
+	    expectedList.add("this is secondLink");
 	    
 	    for(String str : expectedList) {
 	    	System.out.println("expected : " + str);
