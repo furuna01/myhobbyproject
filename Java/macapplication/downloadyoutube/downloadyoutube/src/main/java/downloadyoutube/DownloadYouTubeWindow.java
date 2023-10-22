@@ -3,18 +3,14 @@ package downloadyoutube;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
+import java.io.File;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import com.github.axet.vget.VGet;
 
 public class DownloadYouTubeWindow extends JFrame implements ActionListener {
 
@@ -43,14 +39,14 @@ public class DownloadYouTubeWindow extends JFrame implements ActionListener {
 		
 	}
 	public void downloadYouTube(String Url) {
-		/*try {
+		try {
             String path = "/Users/ryo/Movies/YouTube";
-            VGet v = new VGet(new URL(Url), new File(path));
-            v.download();
+            VGet vget = new VGet(new URL(Url), new File(path));
+            vget.download();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }*/
-		HttpURLConnection.setFollowRedirects(true);
+        }
+		/*HttpURLConnection.setFollowRedirects(true);
 		String video_id;
 	    System.out.println(Url);
 	    String[] list = Url.split("=");
@@ -61,11 +57,11 @@ public class DownloadYouTubeWindow extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
-		}
+		}*/
 	
 	}
 	
-	private static String getURL(String video_id) throws Exception {
+	/*private static String getURL(String video_id) throws Exception {
 	 
 	    URL url = new URL("http://youtube.com/watch?v=" + video_id);
 	 
@@ -95,6 +91,6 @@ public class DownloadYouTubeWindow extends JFrame implements ActionListener {
 	    	      "video_id=" + video_id + "&t=" + t;
 	 
 	    return u;
-	  }
+	  }*/
 	 
 }
