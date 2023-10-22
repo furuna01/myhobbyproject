@@ -1,0 +1,145 @@
+2023-10-22 20:07:22,319 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-10-22 20:10:06,530 [Worker-10: プロジェクト "scrapewebsite" の作成中] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.scrapewebsite:scrapewebsite:0.0.1-SNAPSHOT @ /Users/ryo/Documents/program/myhobbyproject/Java/macapplication/scrapwebsite/scrapewebsite/pom.xml.
+2023-10-22 20:10:06,744 [Worker-10: プロジェクト "scrapewebsite" の作成中] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /scrapewebsite/src/main/java
+2023-10-22 20:10:06,745 [Worker-10: プロジェクト "scrapewebsite" の作成中] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /scrapewebsite/src/main/resources
+2023-10-22 20:10:06,746 [Worker-10: プロジェクト "scrapewebsite" の作成中] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /scrapewebsite/src/test/java
+2023-10-22 20:10:06,746 [Worker-10: プロジェクト "scrapewebsite" の作成中] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /scrapewebsite/src/test/resources
+2023-10-22 20:10:08,301 [Worker-10: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 20:10:08,305 [Worker-10: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 20:10:08,309 [Worker-10: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 20:10:08,310 [Worker-10: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 20:11:08,646 [Worker-16: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 20:11:08,651 [Worker-16: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 20:11:08,654 [Worker-16: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 20:11:08,655 [Worker-16: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 20:12:51,959 [Worker-10: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 20:12:51,961 [Worker-10: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 20:12:51,962 [Worker-10: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 20:12:51,963 [Worker-10: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:19:33,990 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.0.0-M5/maven-surefire-plugin-3.0.0-M5.jar
+2023-10-22 21:19:34,045 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.0.0-M5/maven-surefire-plugin-3.0.0-M5.jar
+2023-10-22 21:19:34,249 [Worker-26: ビルド] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.scrapewebsite:scrapewebsite:0.0.1-SNAPSHOT @ /Users/ryo/Documents/program/myhobbyproject/Java/macapplication/scrapwebsite/scrapewebsite/pom.xml.
+2023-10-22 21:19:34,329 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.pom
+2023-10-22 21:19:34,367 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.pom
+2023-10-22 21:19:34,405 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.0/junit-bom-5.7.0.pom
+2023-10-22 21:19:34,425 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.0/junit-bom-5.7.0.pom
+2023-10-22 21:19:34,456 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.pom
+2023-10-22 21:19:34,476 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.pom
+2023-10-22 21:19:34,501 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+2023-10-22 21:19:34,529 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+2023-10-22 21:19:34,553 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.pom
+2023-10-22 21:19:34,578 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.pom
+2023-10-22 21:19:34,609 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar
+2023-10-22 21:19:34,612 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar
+2023-10-22 21:19:34,653 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar
+2023-10-22 21:19:34,653 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+2023-10-22 21:19:34,675 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar
+2023-10-22 21:19:34,681 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar
+2023-10-22 21:19:34,682 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+2023-10-22 21:19:34,693 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar
+2023-10-22 21:19:34,806 [Worker-26: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:19:34,808 [Worker-26: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:19:34,815 [Worker-26: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:19:34,815 [Worker-26: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:19:34,837 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.0.0-M5/maven-surefire-plugin-3.0.0-M5.pom
+2023-10-22 21:19:34,858 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.0.0-M5/maven-surefire-plugin-3.0.0-M5.pom
+2023-10-22 21:19:34,881 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.0.0-M5/surefire-3.0.0-M5.pom
+2023-10-22 21:19:34,907 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.0.0-M5/surefire-3.0.0-M5.pom
+2023-10-22 21:19:34,931 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/34/maven-parent-34.pom
+2023-10-22 21:19:34,952 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/34/maven-parent-34.pom
+2023-10-22 21:19:34,984 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom
+2023-10-22 21:19:35,003 [Worker-26: ビルド] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom
+2023-10-22 21:19:35,840 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0-sources.jar
+2023-10-22 21:19:35,904 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0-sources.jar
+2023-10-22 21:19:35,905 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.junit.jupiter:junit-jupiter-api:5.7.0
+2023-10-22 21:19:36,002 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-sources.jar
+2023-10-22 21:19:36,040 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-sources.jar
+2023-10-22 21:19:36,048 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.apiguardian:apiguardian-api:1.1.0
+2023-10-22 21:19:36,153 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0-sources.jar
+2023-10-22 21:19:36,189 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0-sources.jar
+2023-10-22 21:19:36,191 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.opentest4j:opentest4j:1.2.0
+2023-10-22 21:19:36,277 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0-sources.jar
+2023-10-22 21:19:36,277 [Worker-21: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:19:36,279 [Worker-21: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:19:36,280 [Worker-21: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:19:36,281 [Worker-21: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:19:36,327 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0-sources.jar
+2023-10-22 21:19:36,330 [Worker-23: ソースおよび Javadoc のダウンロード] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.junit.platform:junit-platform-commons:1.7.0
+2023-10-22 21:19:37,372 [Worker-21: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:19:37,380 [Worker-21: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:19:37,381 [Worker-21: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:19:37,382 [Worker-21: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:21:12,704 [Worker-29: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:21:12,709 [Worker-29: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:21:12,710 [Worker-29: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:21:12,711 [Worker-29: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:22:28,606 [Worker-30: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:22:28,613 [Worker-30: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:22:28,624 [Worker-30: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:22:28,626 [Worker-30: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:35:38,105 [Worker-26: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:35:38,109 [Worker-26: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:35:38,114 [Worker-26: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:35:38,116 [Worker-26: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:37:21,191 [Worker-29: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:37:21,193 [Worker-29: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:37:21,195 [Worker-29: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:37:21,197 [Worker-29: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:37:28,002 [Worker-29: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:37:28,004 [Worker-29: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:37:28,007 [Worker-29: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:37:28,007 [Worker-29: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:42:57,854 [Worker-26: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:42:57,859 [Worker-26: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:42:57,863 [Worker-26: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:42:57,864 [Worker-26: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:45:57,520 [Worker-33: 新規構成 の起動] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.0/junit-platform-launcher-1.7.0.jar
+2023-10-22 21:45:57,755 [Worker-33: 新規構成 の起動] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.0/junit-platform-launcher-1.7.0.jar
+2023-10-22 21:45:57,796 [Worker-33: 新規構成 の起動] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar
+2023-10-22 21:45:57,844 [Worker-33: 新規構成 の起動] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar
+2023-10-22 21:45:57,879 [Worker-33: 新規構成 の起動] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar
+2023-10-22 21:45:57,920 [Worker-33: 新規構成 の起動] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar
+2023-10-22 21:46:53,730 [Worker-34: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:46:53,732 [Worker-34: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:46:53,733 [Worker-34: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:46:53,735 [Worker-34: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:59:51,599 [Worker-35: ScrapeWebMainWindow の起動] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:59:51,602 [Worker-35: ScrapeWebMainWindow の起動] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 21:59:51,605 [Worker-35: ScrapeWebMainWindow の起動] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 21:59:51,605 [Worker-35: ScrapeWebMainWindow の起動] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:01:32,412 [Worker-37: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:01:32,414 [Worker-37: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:01:32,416 [Worker-37: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:01:32,416 [Worker-37: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:02:46,628 [Worker-36: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:02:46,630 [Worker-36: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:02:46,632 [Worker-36: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:02:46,632 [Worker-36: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:05:15,776 [Worker-35: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:05:15,777 [Worker-35: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:05:15,779 [Worker-35: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:05:15,779 [Worker-35: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:15:41,736 [Worker-42: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:15:41,739 [Worker-42: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:15:41,740 [Worker-42: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:15:41,741 [Worker-42: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:20:43,745 [Worker-46: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:20:43,747 [Worker-46: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:20:43,749 [Worker-46: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:20:43,749 [Worker-46: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:34:24,137 [Worker-50: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:34:24,141 [Worker-50: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:34:24,143 [Worker-50: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:34:24,144 [Worker-50: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:34:45,681 [Worker-52: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:34:45,682 [Worker-52: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:34:45,685 [Worker-52: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:34:45,686 [Worker-52: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:36:13,273 [Worker-43: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:36:13,273 [Worker-43: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:36:13,275 [Worker-43: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:36:13,277 [Worker-43: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:43:04,345 [Worker-56: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:43:04,349 [Worker-56: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-22 22:43:04,351 [Worker-56: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-22 22:43:04,352 [Worker-56: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

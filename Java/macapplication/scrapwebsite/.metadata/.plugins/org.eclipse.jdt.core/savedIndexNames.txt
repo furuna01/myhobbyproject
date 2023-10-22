@@ -1,0 +1,7 @@
+INDEX VERSION 1.131+/Users/ryo/Documents/program/myhobbyproject/Java/macapplication/scrapwebsite/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
+947482804.index
+643333764.index
+4123963557.index
+3972662609.index
+1262100142.index

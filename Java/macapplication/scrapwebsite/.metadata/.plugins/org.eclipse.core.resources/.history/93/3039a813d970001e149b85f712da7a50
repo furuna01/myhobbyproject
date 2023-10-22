@@ -1,0 +1,14 @@
+package scrapewebsite;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ToolForScrapeTestTest {
+
+	@Test
+	void test() {
+		fail("まだ実装されていません");
+	}
+
+}

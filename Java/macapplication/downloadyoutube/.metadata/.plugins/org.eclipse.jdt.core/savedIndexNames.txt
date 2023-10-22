@@ -1,0 +1,13 @@
+INDEX VERSION 1.131+/Users/ryo/Documents/program/myhobbyproject/Java/macapplication/downloadyoutube/.metadata/.plugins/org.eclipse.jdt.core
+1602079854.index
+643333764.index
+683280680.index
+1776821487.index
+1455441099.index
+1999091962.index
+46266592.index
+1762570089.index
+1865797976.index
+2601027257.index
+1351261390.index
+3467040518.index

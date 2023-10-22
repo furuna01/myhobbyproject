@@ -1,0 +1,51 @@
+package downloadyoutube;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+import com.github.axet.vget.VGet;
+
+public class DownloadYouTubeWindow extends JFrame implements ActionListener {
+
+	private JTextField textField = new JTextField(50);
+	private JButton downloadButton = new JButton("ダウンロード");
+	private final int WINDOW_SIZE_WIDTH = 600;
+	private final int WINDOW_SIZE_HEIGHT = 300;
+	public DownloadYouTubeWindow() {
+		getContentPane().setLayout(new FlowLayout());
+		getContentPane().add(textField);
+		getContentPane().add(downloadButton);
+		downloadButton.addActionListener(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(WINDOW_SIZE_WIDTH, WINDOW_SIZE_HEIGHT);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new DownloadYouTubeWindow();
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == downloadButton) {
+			downloadYouTube(textField.getText());
+			
+		}
+		
+	}
+	public void downloadYouTube(String Url) {
+		try {
+            String path = "//Users//ryo//Movies//YouTube";
+            VGet v = new VGet(new URL(Url), new File(path));
+            v.download();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+	}
+
+}

@@ -1,6 +1,6 @@
 package sokudokusiya;
 
-import java.awt.Color;
+import javAa.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

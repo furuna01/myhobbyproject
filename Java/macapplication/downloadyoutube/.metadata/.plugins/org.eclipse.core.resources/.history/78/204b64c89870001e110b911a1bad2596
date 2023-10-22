@@ -1,0 +1,36 @@
+package downloadyoutube;
+
+import java.awt.FlowLayout;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class DownloadYouTubeWindow extends JFrame implements ActionListener {
+
+	private JTextField textField = new JTextField(200);
+	private JButton downloadButton = new JButton("ダウンロード");
+	private final int WINDOW_SIZE_WIDTH = 400;
+	private final int WINDOW_SIZE_HEIGHT = 300;
+	public DownloadYouTubeWindow() {
+		getContentPane().setLayout(new FlowLayout());
+		getContentPane().add(textField);
+		getContentPane().add(downloadButton);
+		downloadButton.addActionListener(this);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(WINDOW_SIZE_WIDTH, WINDOW_SIZE_HEIGHT);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new DownloadYouTubeWindow();
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+}
