@@ -30,7 +30,6 @@ public class ScrapeWebMainWindow {
 				return false;
 			}
 		}
-		return true;
 	}
 
 }
