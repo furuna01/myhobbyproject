@@ -58,12 +58,7 @@ public class SokudokuSiyaTateWindow extends JPanel {
     	};
     	timer.scheduleAtFixedRate(task, 0, TIME_INTERVAL);
 	}
-	/*public void piantMoment(Graphics g) {
-		Graphics2D g2 = (Graphics2D)g;
 
-		  g2.setFont(number_font);
-		  g2.drawString("This is a pen", 100, 100);
-	}*/
 	public void paint(Graphics g){
 
 		  g.setFont(number_font);
