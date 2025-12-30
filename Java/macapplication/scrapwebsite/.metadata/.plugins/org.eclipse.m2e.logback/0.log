@@ -203,3 +203,7 @@
 2023-10-22 23:42:41,818 [Worker-79: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2023-10-22 23:42:41,819 [Worker-79: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2023-10-22 23:42:41,820 [Worker-79: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-23 11:10:13,846 [Worker-73: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-23 11:10:13,851 [Worker-73: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-23 11:10:13,854 [Worker-73: ビルド] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2023-10-23 11:10:13,854 [Worker-73: ビルド] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

@@ -31,6 +31,24 @@ public class ToolForScrape {
 			//あとでこれが画像などのファイルを含むパスであるかチェックする
 		}
 	}
+	public void getSrcLink(String htmlText, ArrayList<String> targetList) {
+		int begin = -1;
+		while(htmlText.contains("img src=") || htmlText.contains("img src = ")) {
+			if(htmlText.contains("img src=")) {
+				begin = htmlText.indexOf("img src=");
+				htmlText = htmlText.substring(begin);
+			}else if (htmlText.contains("img src = ")) {
+				begin = htmlText.indexOf("img src = ");
+				htmlText = htmlText.substring(begin);
+			}
+			//<a href 以降の"で囲まれた文字列を切り取る
+			htmlText = htmlText.substring(htmlText.indexOf("\"") + 1);
+			String subText = htmlText.substring(0, htmlText.indexOf("\""));
+			targetList.add(subText);
+			htmlText = htmlText.substring(htmlText.indexOf("\"") + 1);
+			//あとでこれが画像などのファイルを含むパスであるかチェックする
+		}
+	}
 	public String copyString(String sentence) {
 		String result_str = "";
 		

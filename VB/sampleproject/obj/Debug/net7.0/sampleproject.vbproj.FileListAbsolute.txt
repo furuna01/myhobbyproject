@@ -1,0 +1,15 @@
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/bin/Debug/net7.0/sampleproject
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/bin/Debug/net7.0/sampleproject.deps.json
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/bin/Debug/net7.0/sampleproject.runtimeconfig.json
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/bin/Debug/net7.0/sampleproject.dll
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/bin/Debug/net7.0/sampleproject.pdb
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.vbproj.AssemblyReference.cache
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.AssemblyInfoInputs.cache
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.AssemblyInfo.vb
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.vbproj.CoreCompileInputs.cache
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.dll
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/refint/sampleproject.dll
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.pdb
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/sampleproject.genruntimeconfig.cache
+/Users/ryo/Documents/program/myhobbyproject/VB/sampleproject/obj/Debug/net7.0/ref/sampleproject.dll

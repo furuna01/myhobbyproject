@@ -1,0 +1,78 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+<script>
+    function createRomdumPair() {
+        var random = Math.floor(Math.random()* 200);
+        if(random >= 200) {
+            return -1;
+        }
+        return random;
+    }
+    function createRomdumNumber() {
+        var random = Math.floor(Math.random() * 199999);
+        if( random < 100000) {
+            return -1;
+        }
+    }
+    function checkNumberIsExist(romdom_pair, romdom_num, tresure_number_array) {
+        for(var i = 0; i < tresure_number; i ++) {
+            if(tresure_number_array[romdom_pair][i] == romdom_num) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function checkAllcompleted(tresure_number) {
+        for(var i = 0; i < combination_num; i ++) {
+            for(var j = 0; j < tresure_number; j ++) {
+                if(tresure_number_array[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    const combination_num = 200;
+    const tresure_number = 99999;
+    var tresure_number_array = new Array(combination_num);
+    for(var i = 0; i < combination_num; i ++) {
+        tresure_number_array[i] = new Array(tresure_number);
+       for(var j = 0; j < tresure_number; j ++) {
+           tresure_number_array[i][j] = 0;
+       }
+    }
+    for(var i = 0; i < combination_num; i ++) {
+        for(var j = 0; j < tresure_number; j ++) {
+            document.writeln("<p>" + tresure_number_array[i][j] + "</p>");
+        }
+    }
+    //var i = 0;
+    //while(i < 10) {
+        /*if(checkAllcompleted(tresure_number_array)) {
+            break;
+        }*/
+ //       var rondom_pair = createRomdumPair();
+ //       if(rondom_pair == -1) {
+ //           continue;
+ //       }
+ //       var rondom_num = createRomdumNumber();
+ //       if(rondom_num == -1) {
+ //           continue;
+ //       }
+        //すでに番号を選んでいるかどうかチェック
+        /*if(checkNumberIsExist(rondom_pair, romdom_num, tresure_number_array)) {
+            //すでに番号が選ばれているならスキップ
+            continue;
+        }*/
+        //そうでない場合配列に追加
+//        tresure_number_array[rondom_pair][i] = rondom_num;
+//        print("<p>" + rondom_num + "</p>")
+//        i ++;
+//    }
+
+</script>
+</body>
+</html>

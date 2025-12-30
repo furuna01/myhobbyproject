@@ -1,0 +1,10 @@
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\bin\Debug\TetorisGame.exe.config
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\bin\Debug\TetorisGame.exe
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\bin\Debug\TetorisGame.pdb
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.csprojAssemblyReference.cache
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.TetorisForm.resources
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.Properties.Resources.resources
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.csproj.GenerateResource.cache
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.csproj.CoreCompileInputs.cache
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.exe
+C:\Users\Ryo\Documents\program\myhobbyproject\VisualStudio\TetorisGame\TetorisGame\obj\Debug\TetorisGame.pdb
