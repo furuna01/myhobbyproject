@@ -2,7 +2,7 @@
 require 'DbAccess.php';  //読み込むファイル
 session_start();
 if (!isset($_SESSION['username'])) {
-    exit('ログインしてください');
+    header('Location: lesson_login.php');
 }
 ?>
 <!DOCTYPE html>

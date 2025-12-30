@@ -4,8 +4,15 @@ class DbAccess {
     const ERROR = -1;
     const NOT_RECIEVED_TO_RECIEVED = 1;
     const RECIEVED_TO_NOTRECIEVED = 2;
-    
-    public function insertLessonInfo($student_name, $lesson_date, $content) {
+   /**
+    * 先生用の画面でレッスンした内容の情報をDBに登録する
+    * @param $student_name
+    * @param $teacher_name
+    * @param $lesson_date
+    * @param $content
+    * @return boolean
+    */
+    public function insertLessonInfo($student_name, $teacher_name, $lesson_date, $content) {
         try {
             $host = "mysql3109.db.sakura.ne.jp";
             $dbname = "yonetti_web_learning";
@@ -16,10 +23,9 @@ class DbAccess {
             
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //存在しないので新規挿入
             $money_status = 'Not recieved';
             $create_date = date('Y-m-d H:i:s');
-            $sql = "INSERT INTO lesson_info (lesson_date, content, create_date, money_status, student_name) VALUES  (:lesson_date, :content, :create_date, :money_status, :student_name) ";
+            $sql = "INSERT INTO lesson_info (lesson_date, content, create_date, money_status, student_name, teacher_name) VALUES  (:lesson_date, :content, :create_date, :money_status, :student_name, :teacher_name);";
             $stmt = $pdo->prepare($sql);
             if(!$stmt) {
                 return false;
@@ -30,12 +36,79 @@ class DbAccess {
             $stmt->bindParam(':create_date', $create_date);
             $stmt->bindParam(':money_status', $money_status);
             $stmt->bindParam(':student_name', $student_name);
+            $stmt->bindParam(':teacher_name', $teacher_name);
             $stmt->execute();
             return true;
         }catch (Exception $e) {
             echo "Error occured. insertIP: " . $e->getMessage();
             $pdo = null;
             return false;
+        }
+    }
+    /**
+     * ユーザが先生か生徒かチェックする
+     * @param $user_name
+     * @return boolean|mixed
+     */
+    public function checkIfStudentTeacher($user_name) {
+        try {
+            $host = "mysql3109.db.sakura.ne.jp";
+            $dbname = "yonetti_web_learning";
+            $username = "yonetti_web_learning";
+            $password = "suminftyj1";
+            $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT user_status FROM lesson_user_info WHERE user_name = :user_name;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':user_name', $user_name);
+            if(!$stmt) {
+                return false;
+            }
+            // 実行
+            $stmt->execute();
+            // 結果を全行取得
+            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if(count(row) === 0) {
+                return false;
+            }
+            if(strcasecmp($row[0]['user_status'], 'teacher') === 0) {
+                return true;
+            }else {
+                return false;
+            }
+            return $row[0]['user_status'];
+        }catch (Exception $e) {
+            print "<p>Errow occured checkIfStudentTeac: " . $e->getMessage() . "</p>";
+            $pdo = null;
+            return false;
+        }
+    }
+    public function getStudentInfo($teacher_name) {
+        try {
+            $host = "mysql3109.db.sakura.ne.jp";
+            $dbname = "yonetti_web_learning";
+            $username = "yonetti_web_learning";
+            $password = "suminftyj1";
+            $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT teacher_name, student_name FROM teacher_student_info WHERE teacher_name = :teacher_name;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':teacher_name', $teacher_name);
+            if(!$stmt) {
+                return null;
+            }
+            // 実行
+            $stmt->execute();
+            // 結果を全行取得
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
+        }catch(Exception $e) {
+            print "<p>Errow occured getStudentInfo: " . $e->getMessage() . "</p>";
+            return null;
         }
     }
     public function getAllLessonInfo() {
@@ -179,7 +252,6 @@ class DbAccess {
             return $row;
             
         }catch (Exception $e) {
-            $pod = null;
             print('<p>Exception happend!');
             return null;
         }
@@ -208,7 +280,6 @@ class DbAccess {
            return $user;
             
         }catch (Exception $e) {
-            $pod = null;
             print('<p>Exception happend!</p>');
             return null;
         }
@@ -234,7 +305,6 @@ class DbAccess {
             $stmt->execute();
             return true;
         }catch (Exception $e) {
-            $pod = null;
             print('<p>Exception happend!</p>');
             return false;
         }
