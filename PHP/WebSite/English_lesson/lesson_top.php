@@ -3,7 +3,7 @@ require 'DbAccess.php';
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    exit('ログインしてください');
+    header('Location: lesson_login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -13,17 +13,55 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body style="background-color: #e0ffe0;">
 <h1>Lesson history</h1>
+    <a href="Logout.php">Logout</a>
 	<div style="border: 1px solid #333; width: 1000px;">
      <p>Input the lesson information and push the button register</p>
     <form id = "form" method="POST" action="register.php">
-      <p>Student name</p>
-      <input type="text" name="student_name" /><br/>
+      <p>Student name
+     <select name="student_name">
+     <?php 
+     $pdo = new DbAccess();
+     //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
+     $rows = $pdo->getStudentInfo($_SESSION['username']);
+     if($rows === null) {
+         print('<p>You can\'t get student information.');
+         return;
+     }
+     foreach($rows as $row) {
+         print('<option value="' . $row['student_name'] . '">' . $row['student_name'] . '</option>');
+     }
+     ?>
+     </select>
+     </p>
       <p>Lesson date
       <input type="date" name="lesson_date" />
-     start hour
-     <input type="text" name="hour" />
+     	start hour
+       <select name="hour">
+     <?php 
+     for($count = 0; $count <= 23; $count ++) {
+         if(strlen(strval($count)) === 1) {
+             $count = '0' . strval($count);
+         }else {
+             $count = strval($count);
+         }
+         print('<option value="' . $count . '">' . $count . '</option>');
+     } 
+     ?>
+     </select>
       start mintes
-     <input type="text" name="minites" /></p>
+      <select name="minites">
+     <?php 
+     for($count = 0; $count <= 59; $count ++) {
+         if(strlen(strval($count)) === 1) {
+             $count = '0' . strval($count);
+         }else {
+             $count = strval($count);
+         }
+         print('<option value="' . $count . '">' . $count . '</option>');
+     } 
+     ?>
+     </select>
+     </p>
      <p>Lesson content</p>
      <textarea style="width: 600px; height: 400px;" name="content"></textarea>
      <br>
@@ -34,16 +72,53 @@ if (!isset($_SESSION['username'])) {
   <br>
   <div style="border: 1px solid #333; width: 1000px;">
   <form id = "form2" method="POST" action="change_money_status.php">
-    <p>Input the student name and lesson date if you recieve money from student or mistakenly change the money status</br>
+    <p>Input the student name and lesson date if you recieve money from student or mistakenly change the money status<br>
     to "recieved" without getting money from a student
-    <p>Student name</p>
-    <input type="text" name="target_student_name" /><br/>
+    <p>Student name
+     <select name="target_student_name">
+     <?php 
+     $pdo = new DbAccess();
+     //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
+     $rows = $pdo->getStudentInfo($_SESSION['username']);
+     if($rows === null) {
+         print('<p>You can\'t get student information.');
+         return;
+     }
+     foreach($rows as $row) {
+         print('<option value="' . $row['student_name'] . '">' . $row['student_name'] . '</option>');
+     }
+     ?>
+     </select>
+     </p>
     <p>Lesson date
     <input type="date" name="target_date" />
-    <p>start hour
-    <input type="text" name="target_hour" />
-    start mintes
-    <input type="text" name="target_minites" /></p>
+    start hour
+      <select name="target_hour">
+     <?php 
+     for($count = 0; $count <= 23; $count ++) {
+         if(strlen(strval($count)) === 1) {
+             $count = '0' . strval($count);
+         }else {
+             $count = strval($count);
+         }
+         print('<option value="' . $count . '">' . $count . '</option>');
+     } 
+     ?>
+     </select>
+      start mintes
+      <select name="target_minites">
+     <?php 
+     for($count = 0; $count <= 59; $count ++) {
+         if(strlen(strval($count)) === 1) {
+             $count = '0' . strval($count);
+         }else {
+             $count = strval($count);
+         }
+         print('<option value="' . $count . '">' . $count . '</option>');
+     } 
+     ?>
+     </select>
+     </p>
     <button type="submit">Change money status</button>
   </form>
   </div>
@@ -52,8 +127,22 @@ if (!isset($_SESSION['username'])) {
   <div style="border: 1px solid #333; width: 1000px;">
   <form id = "form2" method="POST" action="lesson_top.php">
    <p>if you want to search target span lessons, Input time of from and to, then push button Search</p>
-    <p>Student name</p>
-    <input type="text" name="deginated_student_name" /><br/>
+    <p>Student name
+    <select name="deginated_student_name">
+     <?php 
+     $pdo = new DbAccess();
+     //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
+     $rows = $pdo->getStudentInfo($_SESSION['username']);
+     if($rows === null) {
+         print('<p>You can\'t get student information.');
+         return;
+     }
+     foreach($rows as $row) {
+         print('<option value="' . $row['student_name'] . '">' . $row['student_name'] . '</option>');
+     }
+     ?>
+     </select>
+     </p>
     <p>Lesson date</p>
     <p>From
     <input type="date" name="deginatedfrom_date" />

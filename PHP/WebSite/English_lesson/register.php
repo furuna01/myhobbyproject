@@ -2,7 +2,7 @@
 require 'DbAccess.php';  //読み込むファイル
 session_start();
 if (!isset($_SESSION['username'])) {
-    exit('ログインしてください');
+    header('Location: lesson_login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -14,6 +14,8 @@ if (!isset($_SESSION['username'])) {
 <h1>You registered lesson information.</h1>
 <?php
 $student_name = filter_input(INPUT_POST, 'student_name');
+//ここにログインしているのは先生のみ
+$teacher_name = $_SESSION['username'];
 $date = filter_input(INPUT_POST, 'lesson_date');
 $hour = filter_input(INPUT_POST, 'hour');
 $minites = filter_input(INPUT_POST, 'minites');
@@ -45,7 +47,7 @@ $time = $date . ' ' . $hour . ':' . $minites;
 $pdo = new DbAccess();
 
 try {
-    $pdo->insertLessonInfo($student_name, $time, $content);
+    $pdo->insertLessonInfo($student_name, $teacher_name, $time, $content);
 }catch(Exception $e) {
     print('Error occured!' . $e.getMessage());
 }
