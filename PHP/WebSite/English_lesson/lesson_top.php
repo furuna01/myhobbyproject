@@ -21,10 +21,10 @@ if (!isset($_SESSION['username'])) {
      <select name="student_name">
      <?php 
      $pdo = new DbAccess();
-     //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
+         //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
      $rows = $pdo->getStudentInfo($_SESSION['username']);
      if($rows === null) {
-         print('<p>You can\'t get student information.');
+         print('<p>You can\'t get student information.</p>');
          return;
      }
      foreach($rows as $row) {
@@ -76,12 +76,12 @@ if (!isset($_SESSION['username'])) {
     to "recieved" without getting money from a student
     <p>Student name
      <select name="target_student_name">
-     <?php 
+      <?php 
      $pdo = new DbAccess();
-     //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
+         //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
      $rows = $pdo->getStudentInfo($_SESSION['username']);
      if($rows === null) {
-         print('<p>You can\'t get student information.');
+         print('<p>You can\'t get student information.</p>');
          return;
      }
      foreach($rows as $row) {
@@ -129,17 +129,18 @@ if (!isset($_SESSION['username'])) {
    <p>if you want to search target span lessons, Input time of from and to, then push button Search</p>
     <p>Student name
     <select name="deginated_student_name">
-     <?php 
+      <?php 
      $pdo = new DbAccess();
-     //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
+         //この画面に来るログインユーザーは先生だから、ログインユーザー先生の生徒を取得
      $rows = $pdo->getStudentInfo($_SESSION['username']);
      if($rows === null) {
-         print('<p>You can\'t get student information.');
+         print('<p>You can\'t get student information.</p>');
          return;
      }
      foreach($rows as $row) {
          print('<option value="' . $row['student_name'] . '">' . $row['student_name'] . '</option>');
      }
+     ?>
      ?>
      </select>
      </p>
@@ -180,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pod = new DbAccess();
     $rows = $pod->getDeginatedLessonInfo($student_name, $from_date, $to_date);
     if($rows === null) {
-        print('You failed search the lesson inftomation!');
+        print('You failed search the lesson inftomation!</p>');
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $pod = new DbAccess();
