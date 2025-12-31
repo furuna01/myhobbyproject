@@ -4,6 +4,8 @@ class DbAccess {
     const ERROR = -1;
     const NOT_RECIEVED_TO_RECIEVED = 1;
     const RECIEVED_TO_NOTRECIEVED = 2;
+    const STATUS_TEACHER = 3;
+    const STATUS_STUDENT = 4;
    /**
     * 先生用の画面でレッスンした内容の情報をDBに登録する
     * @param $student_name
@@ -48,7 +50,7 @@ class DbAccess {
     /**
      * ユーザが先生か生徒かチェックする
      * @param $user_name
-     * @return boolean|mixed
+     * @return boolean| ログインユーザーが先生だったらtrue
      */
     public function checkIfStudentTeacher($user_name) {
         try {
@@ -60,29 +62,32 @@ class DbAccess {
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT user_status FROM lesson_user_info WHERE user_name = :user_name;";
+            $sql = "SELECT * FROM lesson_user_info WHERE username = :username;";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':user_name', $user_name);
             if(!$stmt) {
-                return false;
+                print('<p>68</p>');
+                return self::ERROR;
             }
+            $stmt->bindParam(':username', $user_name);
             // 実行
             $stmt->execute();
             // 結果を全行取得
             $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if(count(row) === 0) {
-                return false;
+            if(count($row) === 0) {
+                print('<p>74</p>');
+                return self::ERROR;
             }
             if(strcasecmp($row[0]['user_status'], 'teacher') === 0) {
-                return true;
+                print('<p>78</p>');
+                return self::STATUS_TEACHER;
             }else {
-                return false;
+                print('<p>81</p>');
+                return self::STATUS_STUDENT;
             }
-            return $row[0]['user_status'];
         }catch (Exception $e) {
+            print('<p>86</p>');
             print "<p>Errow occured checkIfStudentTeac: " . $e->getMessage() . "</p>";
-            $pdo = null;
-            return false;
+            return self::ERROR;
         }
     }
     public function getStudentInfo($teacher_name) {
@@ -98,6 +103,32 @@ class DbAccess {
             $sql = "SELECT teacher_name, student_name FROM teacher_student_info WHERE teacher_name = :teacher_name;";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':teacher_name', $teacher_name);
+            if(!$stmt) {
+                return null;
+            }
+            // 実行
+            $stmt->execute();
+            // 結果を全行取得
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
+        }catch(Exception $e) {
+            print "<p>Errow occured getStudentInfo: " . $e->getMessage() . "</p>";
+            return null;
+        }
+    }
+    public function getTeacherInfo($student_name) {
+        try {
+            $host = "mysql3109.db.sakura.ne.jp";
+            $dbname = "yonetti_web_learning";
+            $username = "yonetti_web_learning";
+            $password = "suminftyj1";
+            $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT teacher_name, student_name FROM teacher_student_info WHERE student_name = :student_name;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':student_name', $student_name);
             if(!$stmt) {
                 return null;
             }
@@ -192,7 +223,7 @@ class DbAccess {
             return self::ERROR;
         }
     }
-    public function getDeginatedLessonInfo($student_name, $from_date, $to_date) {
+    public function getDeginatedLessonInfo($user_name, $from_date, $to_date) {
         try {
             $host = "mysql3109.db.sakura.ne.jp";
             $dbname = "yonetti_web_learning";
@@ -202,44 +233,65 @@ class DbAccess {
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT * FROM lesson_info WHERE student_name = :student_name";
+            if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                $sql = "SELECT * FROM lesson_info WHERE student_name = :student_name";
+            }else {
+                $sql = "SELECT * FROM lesson_info WHERE teacher_name = :teacher_name";
+            }
+            
             if(!empty($from_date) && empty($to_date)) {
                 $sql .= " AND lesson_date >= :from_date";
                 $sql .= ";";
                 $stmt = $pdo->prepare($sql);
                 if(!$stmt) {
-                    print('<p>144</p>');
+                    print('<p>getDeginatedLessonInfo 144</p>');
                     return null;
                 }
-                $stmt->bindParam(':student_name', $student_name);
+                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                    $stmt->bindParam(':student_name', $user_name);
+                }else {
+                    $stmt->bindParam(':teacher_name', $user_name);
+                }
                 $stmt->bindParam(':from_date', $from_date);
             }else if(empty($from_date) && !empty($to_date)) {
                 $sql .= " AND lesson_date <= :to_date";
-                $sql .= ";";
+                $sql .= " ORDER BY lesson_date DESC;";
                 $stmt = $pdo->prepare($sql);
                 if(!$stmt) {
-                    print('<p>154</p>');
+                    print('<p>getDeginatedLessonInfo 154</p>');
                     return null;
                 }
-                $stmt->bindParam(':student_name', $student_name);
+                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                    $stmt->bindParam(':student_name', $user_name);
+                }else {
+                    $stmt->bindParam(':teacher_name', $user_name);
+                }
                 $stmt->bindParam(':to_date', $to_date);
             }else if(!empty($from_date) && !empty($to_date)) {
                 $sql .= " AND lesson_date >= :from_date AND lesson_date <= :to_date";
-                $sql .= ";";
+                $sql .= " ORDER BY lesson_date DESC;";
                 $stmt = $pdo->prepare($sql);
                 if(!$stmt) {
-                    print('<p>164</p>');
+                    print('<p>getDeginatedLessonInfo 164</p>');
                     return null;
                 }
-                $stmt->bindParam(':student_name', $student_name);
+                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                    $stmt->bindParam(':student_name', $user_name);
+                }else {
+                    $stmt->bindParam(':teacher_name', $user_name);
+                }
                 $stmt->bindParam(':from_date', $from_date);
                 $stmt->bindParam(':to_date', $to_date);
             }else {
-                $sql .= ";";
+                $sql .= " ORDER BY lesson_date DESC;";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':student_name', $student_name);
+                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                    $stmt->bindParam(':student_name', $user_name);
+                }else {
+                    $stmt->bindParam(':teacher_name', $user_name);
+                }
                 if(!$stmt) {
-                    print('<p>175</p>');
+                    print('<p>getDeginatedLessonInfo 175</p>');
                     return null;
                 }
             }
@@ -247,12 +299,13 @@ class DbAccess {
             $stmt->execute();
             // 結果を全行取得
             $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            //echo row[0]['lesson_date'] . row[0]['content'];
-            print('<p>function was suceed</p>');
+            if(count($row) === 0) {
+                print('<p>No data!</p>');
+            }
             return $row;
             
         }catch (Exception $e) {
-            print('<p>Exception happend!');
+            print('<p>Exception happend! getDeginatedLessonInfo');
             return null;
         }
     }
