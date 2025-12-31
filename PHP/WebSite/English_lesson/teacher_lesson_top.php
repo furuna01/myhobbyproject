@@ -157,6 +157,7 @@ if (!isset($_SESSION['username'])) {
          <td>Lesson date</td>
          <td style="width: 600px;">Lesson content</td>
          <td>Money status</td>
+         <td>Delete</td>
      </tr>
 <?php
 $rows = null;
@@ -193,6 +194,14 @@ foreach ($rows as $row) {
     print('     <td>' . $row['lesson_date'] . '</td>');
     print('     <td style="width: 800px">' . $row['content'] . '</td>');
     print('     <td>' . $row['money_status'] . '</td>');
+    print('     <td>');
+    print('        <form method="POST" action="delete_lesson_info.php" style="display:inline;">');
+    print('          <input type="hidden" name="delete_teacher_name" value="' . $_SESSION['username'] . '">');
+    print('          <input type="hidden" name="delete_student_name" value="' . $row['student_name'] . '">');
+    print('          <input type="hidden" name="delete_lesson_date" value="' . $row['lesson_date'] . '">');
+    print('          <button type="submit">Delete</button>');
+    print('        </form>');
+    print('     </td>');
     print(' </tr>');
 }
 ?>
