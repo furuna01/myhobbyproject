@@ -37,7 +37,7 @@ try {
 print('<p>You deleted the lesson informations</p>');
 print('<p> Deleted teacher name was ' . $teacher_name . '</p>');
 print('<p> Deleted student name was ' . $student_name . '</p>');
-print('<p>inputed time was ' . $date . '</p>');
+print('<p> Deleted date was ' . $date . '</p>');
 ?>
 <form method="GET" action="teacher_lesson_top.php">
 <button type="submit">Back</button>
