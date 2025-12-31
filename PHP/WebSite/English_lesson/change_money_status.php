@@ -61,7 +61,7 @@ if($result === DbAccess::ERROR) {
     print('<p>Error occured.</p>');
 }
 ?>
-<form method="GET" action="lesson_top.php">
+<form method="GET" action="teacher_lesson_top.php">
 <button type="submit">Back</button>
 </form>
 </body>

@@ -58,7 +58,7 @@ print('<p>inputed time was ' . $time . '</p>');
 print('<p>inputed content was ' . $content . '</p>');
 ?>
 <p>You did not get lesson fee</p>
-<form method="GET" action="lesson_top.php">
+<form method="GET" action="teacher_lesson_top.php">
 <button type="submit">Back</button>
 </form>
 </body>

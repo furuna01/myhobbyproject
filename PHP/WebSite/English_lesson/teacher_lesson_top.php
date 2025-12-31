@@ -125,7 +125,7 @@ if (!isset($_SESSION['username'])) {
   <br>
   <br>
   <div style="border: 1px solid #333; width: 1000px;">
-  <form id = "form2" method="POST" action="lesson_top.php">
+  <form id = "form2" method="POST" action="teacher_lesson_top.php">
    <p>if you want to search target span lessons, Input time of from and to, then push button Search</p>
     <p>Student name
     <select name="deginated_student_name">
@@ -141,7 +141,6 @@ if (!isset($_SESSION['username'])) {
          print('<option value="' . $row['student_name'] . '">' . $row['student_name'] . '</option>');
      }
      ?>
-     ?>
      </select>
      </p>
     <p>Lesson date</p>
@@ -154,6 +153,7 @@ if (!isset($_SESSION['username'])) {
   </div>
   <table border="1">
      <tr>
+         <td>Student name</td>
          <td>Lesson date</td>
          <td style="width: 600px;">Lesson content</td>
          <td>Money status</td>
@@ -189,6 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 foreach ($rows as $row) {
     print(' <tr>');
+    print('     <td>' . $row['student_name'] . '</td>');
     print('     <td>' . $row['lesson_date'] . '</td>');
     print('     <td style="width: 800px">' . $row['content'] . '</td>');
     print('     <td>' . $row['money_status'] . '</td>');

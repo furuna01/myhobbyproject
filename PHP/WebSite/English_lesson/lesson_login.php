@@ -10,15 +10,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         print('<p>You didn\'t input username or password!</p>');
     }
     $pdo = new DbAccess();
-    $result = $pdo->checkLogin($username, $password);
-    if($result == null) {
+    $user_name = $pdo->checkLogin($username, $password);
+    if($user_name === null) {
         print('<p>User or Password was wrong!');
         return;
     }
+    print('<p>18</p>');
+    $result = $pdo->checkIfStudentTeacher($username);
+    print('<p>20</p>');
+    if($result === DbAccess::ERROR) {
+        print('<p>Error occured!</p>');
+        return;
+    }
     // ログイン成功 → セッションに保存
-    $_SESSION['username'] = $result[0]['username'];
-    
-    header('Location: lesson_top.php');
+    print('<p>username was ' . $user_name . '</p>');
+    $_SESSION['username'] = $user_name[0]['username'];
+    $_SESSION['userstatus'] = $user_name[0]['user_status'];
+    //ユーザーステータスを取る
+    $pdo = new DbAccess();
+    if($result === DbAccess::STATUS_TEACHER) {
+        header('Location: teacher_lesson_top.php');
+    }else if($result === DbAccess::STATUS_STUDENT){
+        header('Location: student_lesson_top.php');
+    }
 }
 ?>
 <!DOCTYPE html>
