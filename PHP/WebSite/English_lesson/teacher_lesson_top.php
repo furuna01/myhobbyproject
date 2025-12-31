@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $to_date = $to_date . ' ' . '23:59';
     }
     if(empty($student_name)) {
-        print('<p>Input the student_name at least.');
+        print('<p>Input the student_name at least.</p>');
         return;
     }
     $pod = new DbAccess();
