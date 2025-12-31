@@ -233,7 +233,7 @@ class DbAccess {
             return self::ERROR;
         }
     }
-    public function getDeginatedLessonInfo($user_name, $from_date, $to_date) {
+    public function getDeginatedLessonInfo($teacher_name, $student_name, $from_date, $to_date) {
         try {
             $host = "mysql3109.db.sakura.ne.jp";
             $dbname = "yonetti_web_learning";
@@ -243,11 +243,7 @@ class DbAccess {
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
-                $sql = "SELECT * FROM lesson_info WHERE student_name = :student_name";
-            }else {
-                $sql = "SELECT * FROM lesson_info WHERE teacher_name = :teacher_name";
-            }
+            $sql = "SELECT * FROM lesson_info WHERE teacher_name = :teacher_name AND student_name = :student_name";
             
             if(!empty($from_date) && empty($to_date)) {
                 $sql .= " AND lesson_date >= :from_date";
@@ -257,11 +253,8 @@ class DbAccess {
                     print('<p>getDeginatedLessonInfo 144</p>');
                     return null;
                 }
-                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
-                    $stmt->bindParam(':student_name', $user_name);
-                }else {
-                    $stmt->bindParam(':teacher_name', $user_name);
-                }
+                $stmt->bindParam(':teacher_name', $teacher_name);
+                $stmt->bindParam(':student_name', $student_name);
                 $stmt->bindParam(':from_date', $from_date);
             }else if(empty($from_date) && !empty($to_date)) {
                 $sql .= " AND lesson_date <= :to_date";
@@ -271,11 +264,8 @@ class DbAccess {
                     print('<p>getDeginatedLessonInfo 154</p>');
                     return null;
                 }
-                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
-                    $stmt->bindParam(':student_name', $user_name);
-                }else {
-                    $stmt->bindParam(':teacher_name', $user_name);
-                }
+                $stmt->bindParam(':teacher_name', $teacher_name);
+                $stmt->bindParam(':student_name', $student_name);
                 $stmt->bindParam(':to_date', $to_date);
             }else if(!empty($from_date) && !empty($to_date)) {
                 $sql .= " AND lesson_date >= :from_date AND lesson_date <= :to_date";
@@ -285,21 +275,15 @@ class DbAccess {
                     print('<p>getDeginatedLessonInfo 164</p>');
                     return null;
                 }
-                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
-                    $stmt->bindParam(':student_name', $user_name);
-                }else {
-                    $stmt->bindParam(':teacher_name', $user_name);
-                }
+                $stmt->bindParam(':teacher_name', $teacher_name);
+                $stmt->bindParam(':student_name', $student_name);
                 $stmt->bindParam(':from_date', $from_date);
                 $stmt->bindParam(':to_date', $to_date);
             }else {
                 $sql .= " ORDER BY lesson_date DESC;";
                 $stmt = $pdo->prepare($sql);
-                if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
-                    $stmt->bindParam(':student_name', $user_name);
-                }else {
-                    $stmt->bindParam(':teacher_name', $user_name);
-                }
+                $stmt->bindParam(':teacher_name', $teacher_name);
+                $stmt->bindParam(':student_name', $student_name);
                 if(!$stmt) {
                     print('<p>getDeginatedLessonInfo 175</p>');
                     return null;
