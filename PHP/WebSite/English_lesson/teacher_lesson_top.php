@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
     $pod = new DbAccess();
-    $rows = $pod->getDeginatedLessonInfo($student_name, $from_date, $to_date);
+    $rows = $pod->getDeginatedLessonInfo($_SESSION['username'], $student_name, $from_date, $to_date);
     if($rows === null) {
         print('You failed search the lesson inftomation!</p>');
     }

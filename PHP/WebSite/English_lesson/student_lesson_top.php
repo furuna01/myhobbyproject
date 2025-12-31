@@ -53,7 +53,7 @@ if (!isset($_SESSION['username'])) {
 <?php
 $rows = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $student_name = filter_input(INPUT_POST, 'teacher_name');
+    $teacher_name = filter_input(INPUT_POST, 'teacher_name');
     $from_date = filter_input(INPUT_POST, 'from_date');
     $to_date = filter_input(INPUT_POST, 'to_date');
     
@@ -66,12 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $to_date = str_replace('-', '/', $to_date);
         $to_date = $to_date . ' ' . '23:59';
     }
-    if(empty($student_name)) {
+    if(empty($teacher_name)) {
         print('<p>Input the student_name at least.');
         return;
     }
     $pod = new DbAccess();
-    $rows = $pod->getDeginatedLessonInfo($student_name, $from_date, $to_date);
+    $rows = $pod->getDeginatedLessonInfo($teacher_name, $_SESSION['username'], $from_date, $to_date);
     if($rows === null) {
         print('You failed search the lesson inftomation!</p>');
     }
