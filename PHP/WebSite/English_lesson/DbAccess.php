@@ -356,5 +356,27 @@ class DbAccess {
             return false;
         }
     }
+    public function deleteLessonInfo($teacher_name, $student_name, $date) {
+        try {
+            $host = "mysql3109.db.sakura.ne.jp";
+            $dbname = "yonetti_web_learning";
+            $username = "yonetti_web_learning";
+            $password = "suminftyj1";
+            $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "DELETE FROM lesson_info WHERE lesson_date = :lesson_date AND teacher_name = :teacher_name AND student_name = :student_name;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':lesson_date', $date);
+            $stmt->bindParam(':teacher_name', $teacher_name);
+            $stmt->bindParam(':student_name', $student_name);
+            $stmt->execute();
+            return true;
+        }catch (Exception $e) {
+            print('<p>Exception happend!</p>');
+            return false;
+        }
+    }
 }
 ?>
