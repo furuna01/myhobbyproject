@@ -142,7 +142,7 @@ class DbAccess {
             return null;
         }
     }
-    public function getAllLessonInfo() {
+    public function getAllLessonInfo($user_name) {
         try {
             $host = "mysql3109.db.sakura.ne.jp";
             $dbname = "yonetti_web_learning";
@@ -152,10 +152,20 @@ class DbAccess {
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "SELECT * FROM lesson_info ORDER BY lesson_date DESC;";
+            $sql = "SELECT * FROM lesson_info";
+            if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                $sql .= " WHERE teacher_name = :teacher_name ORDER BY lesson_date DESC;";
+            }else {
+                $sql .= " WHERE student_name = :student_name ORDER BY lesson_date DESC;";
+            }
             $stmt = $pdo->prepare($sql);
             if(!$stmt) {
                 return null;
+            }
+            if(strcasecmp($_SESSION['userstatus'], 'teacher') === 0 ) {
+                $stmt->bindParam(':teacher_name', $user_name);
+            }else {
+                $stmt->bindParam(':student_name', $user_name);
             }
             // 実行
             $stmt->execute();
