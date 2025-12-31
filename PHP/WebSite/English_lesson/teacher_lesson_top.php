@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $pod = new DbAccess();
-    $rows = $pod->getAllLessonInfo();
+    $rows = $pod->getAllLessonInfo($_SESSION['username']);
 }
 foreach ($rows as $row) {
     print(' <tr>');
