@@ -46,7 +46,6 @@ class DbAccess {
             
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (count($user) === 0) {
-                print('<p>205</p>');
                 return null;
             }
             return $user;
