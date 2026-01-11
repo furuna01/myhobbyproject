@@ -32,7 +32,7 @@ if(mb_strlen($day) === 1) {
     $day = '0' . $day;
 }
 
-$inputdate = $year . '年' . $month . '月' . $day;
+$inputdate = $year . '年' . $month . '月' . $day . '日';
 $username = $_SESSION['username'];
 
 $pdo = new DbAccess();
