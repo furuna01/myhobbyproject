@@ -3,7 +3,7 @@ require 'DbAccess.php';
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header('Location: lesson_login.php');
+    header('Location: master_login.php');
 }
 ?>
 <!DOCTYPE html>

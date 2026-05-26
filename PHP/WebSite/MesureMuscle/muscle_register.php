@@ -2,7 +2,7 @@
 require 'DbAccess.php';  //読み込むファイル
 session_start();
 if (!isset($_SESSION['username'])) {
-    header('Location: master_login.php');
+    header('Location: muscle_login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -13,14 +13,18 @@ if (!isset($_SESSION['username'])) {
 <body style="background-color: #e0ffe0;">
 <h1>You registered vold voice information.</h1>
 <?php
-$master_date = filter_input(INPUT_POST, 'master_date');
+$mesured_date = filter_input(INPUT_POST, 'mesured_date');
+$how_thick = filter_input(INPUT_POST, 'howthick');
+$how_thick = (float)$how_thick - 2.1;
+$how_thick = (string)$how_thick;
 
-if(empty($master_date)) {
-    print('Input the date when you masterbate!');
+
+if(empty($mesured_date)) {
+    print('Input the date when you mesured!');
     return;
 }
 
-$array = explode("-", $master_date);
+$array = explode("-", $mesured_date);
 $year = $array[0];
 $month = $array[1];
 $day = $array[2];
@@ -38,16 +42,17 @@ $username = $_SESSION['username'];
 $pdo = new DbAccess();
 
 try {
-    $pdo->insertMasterInfo($username, $inputdate);
+    $pdo->insertMuscleMesuredInfo($username, $inputdate, $how_thick);
 }catch(Exception $e) {
     print('Error occured!' . $e.getMessage());
 }
 
-print('<p>You inputed the master informations</p>');
+print('<p>You inputed the muscle measure informations</p>');
 print('<p> Inputed user name was ' . $username . '</p>');
-print('<p> Inputed master date was ' . $inputdate . '</p>');
+print('<p> Inputed date you mesure how thick the arm was ' . $inputdate . '</p>');
+print('<p> Inputed how thick was ' . $how_thick . 'cm </p>');
 ?>
-<form method="GET" action="master_top.php">
+<form method="GET" action="muscle_top.php">
 <button type="submit">Back</button>
 </form>
 </body>

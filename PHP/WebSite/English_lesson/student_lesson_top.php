@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
 <h1>Lesson history</h1>
     <a href="Logout.php">Logout</a>
   <br>
-  <br
+  <br>
   <div style="border: 1px solid #333; width: 1000px;">
   <form id = "form" method="POST" action="student_lesson_top.php">
    <p>if you want to search target span lessons, Input time of from and to, then push button Search</p>
