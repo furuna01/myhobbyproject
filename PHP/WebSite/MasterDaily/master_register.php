@@ -14,7 +14,8 @@ if (!isset($_SESSION['username'])) {
 <h1>You registered vold voice information.</h1>
 <?php
 $master_date = filter_input(INPUT_POST, 'master_date');
-
+$title = filter_input(INPUT_POST, 'title');
+$genre = filter_input(INPUT_POST, 'genre');
 if(empty($master_date)) {
     print('Input the date when you masterbate!');
     return;
@@ -38,14 +39,16 @@ $username = $_SESSION['username'];
 $pdo = new DbAccess();
 
 try {
-    $pdo->insertMasterInfo($username, $inputdate);
+    $pdo->insertMasterInfo($username, $inputdate, $title, $genre);
 }catch(Exception $e) {
-    print('Error occured!' . $e.getMessage());
+    print('Error occured!' . $e->getMessage());
 }
 
 print('<p>You inputed the master informations</p>');
 print('<p> Inputed user name was ' . $username . '</p>');
 print('<p> Inputed master date was ' . $inputdate . '</p>');
+print('<p> Inputed title was ' . $title . '</p>');
+print('<p> Inputed genre was ' . $genre . '</p>');
 ?>
 <form method="GET" action="master_top.php">
 <button type="submit">Back</button>
