@@ -29,7 +29,7 @@ class DbAccess {
             return null;
         }
     }
-    public function insertMasterInfo($user_name, $inputdate) {
+    public function insertMasterInfo($user_name, $inputdate, $title, $genre) {
         try {
             $host = "mysql3109.db.sakura.ne.jp";
             $dbname = "yonetti_web_learning";
@@ -41,7 +41,7 @@ class DbAccess {
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $create_date = date('Y-m-d H:i:s');
-            $sql = "INSERT INTO master_date VALUES (:username, :master_date, :created_time);";
+            $sql = "INSERT INTO master_date VALUES (:username, :master_date, :created_time, :title, :genre);";
             $stmt = $pdo->prepare($sql);
             if(!$stmt) {
                 return false;
@@ -50,6 +50,8 @@ class DbAccess {
             $stmt->bindParam(':username', $user_name);
             $stmt->bindParam(':master_date', $inputdate);
             $stmt->bindParam(':created_time', $create_date);
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':genre', $genre);
             $stmt->execute();
             return true;
         }catch (Exception $e) {

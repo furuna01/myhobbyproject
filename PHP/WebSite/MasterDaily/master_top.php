@@ -20,6 +20,13 @@ if (!isset($_SESSION['username'])) {
     <label>The day when you masterbated.
       <input type="date" name="master_date" />
     </label>
+    <br>
+    <p>Title
+    <input type="text" style="width: 600px;"  name="title" />
+    </p>
+    <p>Genre
+    <input type="text" style="width: 100px;" name="genre" />
+    </p>
     <button type="submit">Register</button>
     </form>
     </div>
@@ -47,6 +54,8 @@ if (!isset($_SESSION['username'])) {
    <tr>
    <td>User name</td>
    <td>Date</td>
+   <td>Title</td>
+   <td>Genre</td>
    </tr>
 <?php
 $pod = new DbAccess();
@@ -122,6 +131,8 @@ foreach ($rows as $row) {
     print(' <tr>');
     print('     <td>' . $row['username'] . '</td>');
     print('     <td>' . $row['master_date'] . '</td>');
+    print('     <td>' . $row['title'] . '</td>');
+    print('     <td>' . $row['genre'] . '</td>');
     print(' </tr>');
 }
 ?>
