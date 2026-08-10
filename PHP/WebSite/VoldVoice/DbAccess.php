@@ -75,9 +75,9 @@ class DbAccess {
                
             }else {
                 if($order === 'asc') {
-                    $sql = "SELECT * FROM vold_voice_info WHERE username = :username AND english_sentence = :english_sentence ORDER BY first_accent_percentage ASC";
+                    $sql = "SELECT * FROM vold_voice_info WHERE username = :username AND english_sentence LIKE :english_sentence ORDER BY first_accent_percentage ASC";
                 }else {
-                    $sql = "SELECT * FROM vold_voice_info WHERE username = :username AND english_sentence = :english_sentence ORDER BY first_accent_percentage DESC";
+                    $sql = "SELECT * FROM vold_voice_info WHERE username = :username AND english_sentence LIKE :english_sentence ORDER BY first_accent_percentage DESC";
                 }
             }
             $stmt = $pdo->prepare($sql);
@@ -85,7 +85,7 @@ class DbAccess {
                 $stmt->bindParam(':username', $user_name);
             }else {
                 $stmt->bindParam(':username', $user_name);
-                $stmt->bindParam(':english_sentence', $target_content);
+                $stmt->bindValue(':english_sentence', '%'. $target_content . '%');
             }
            
             $stmt->execute();
