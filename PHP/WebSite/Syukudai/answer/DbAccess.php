@@ -136,6 +136,60 @@ class DbAccess {
             return null;
         }
     }
+    public function InsertFileInfo($user_name, $inputdate, $dbPath) {
+        try {
+            $host = "mysql3109.db.sakura.ne.jp";
+            $dbname = "yonetti_web_learning";
+            $username = "yonetti_web_learning";
+            $password = "suminftyj1";
+            $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $create_date = date('Y-m-d H:i:s');
+            $sql = "INSERT INTO syukudai_problem_info VALUES (:user_name, :problem_date, :problem_path, :create_date);";
+
+            $stmt = $pdo->prepare($sql);
+            if(!$stmt) {
+                return false;
+            }
+            // 値をバインドする
+            $stmt->bindParam(':user_name', $user_name);
+            $stmt->bindParam(':problem_date', $inputdate);
+            $stmt->bindParam(':problem_path', $dbPath);
+            $stmt->bindParam(':create_date', $create_date);
+            $stmt->execute();
+            return true;
+        }catch (Exception $e) {
+            print('<p>エラー: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</p>');
+            return null;
+        }
+    }
+    public function getAllProblemInfo($user_name) {
+        try {
+            $host = "mysql3109.db.sakura.ne.jp";
+            $dbname = "yonetti_web_learning";
+            $username = "yonetti_web_learning";
+            $password = "suminftyj1";
+            $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT * FROM syukudai_problem_info WHERE username = :username ORDER BY problem_date DESC";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':username', $user_name);
+            $stmt->execute();
+            
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($user) === 0) {
+                return null;
+            }
+            return $user;
+        }catch (Exception $e) {
+            print('<p>エラー: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</p>');
+            return null;
+        }
+    }
     private function makeInputDate(string $date): string
     {
         [$year, $month] = explode('-', $date);

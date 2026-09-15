@@ -13,7 +13,8 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body style="background-color: #e0ffe0;">
 <h1>大数宿題者の管理サイト</h1>
-    <a href="Logout.php">Logout</a>
+    <a href="../Logout.php">Logout</a>
+    <a href = "../syukudai_title.php">戻る</a>
 	<div style="border: 1px solid #333; width: 1000px;">
      <p>宿題を正解した大数の年月と名前、出身校を入力してください、なお、在校生の場合は出身校になるのでその扱いとします。</p>
     <form id = "form" method="POST" action="syukudai_register.php">

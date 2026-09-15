@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body style="background-color: #e0ffe0;">
-	<h1>Wellcome to the Register system of Vold Voice system!</h1>
+	<h1>Wellcome to the Register system of Vold Voice</h1>
+    <a href = "../index.php">Back</a>
 		<form action="vold_voice_login.php" method="POST">
     		<label>Username：</label>
     		<input type="text" name="username" required>

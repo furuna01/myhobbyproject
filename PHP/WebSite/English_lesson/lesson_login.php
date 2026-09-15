@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body style="background-color: #e0ffe0;">
 	<h1>Wellcome to the English lesson management system!</h1>
+    <a href = "../index.php">Back</a>
 		<form action="lesson_login.php" method="POST">
     		<label>Username：</label>
     		<input type="text" name="username" required>
