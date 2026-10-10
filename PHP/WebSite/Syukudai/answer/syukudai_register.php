@@ -13,6 +13,12 @@ if (!isset($_SESSION['username'])) {
 <body style="background-color: #e0ffe0;">
 <h1>You registered vold voice information.</h1>
 <?php
+$username = $_SESSION['username'];
+if($username !== 'yonezawa' && $username !== 'testuser') {
+    print("<p>サイトのオーナーのアカウントでないと入力できません");
+    return ;
+}
+
 $answer_date = filter_input(INPUT_POST, 'syukudai_date');
 $name = filter_input(INPUT_POST, 'name');
 $school = filter_input(INPUT_POST, 'school');
@@ -24,8 +30,6 @@ if(empty($answer_date)) {
 [$year, $month] = explode('-', $answer_date);
 
 $inputdate = sprintf('%04d年%02d月号', $year, $month);
-
-$username = $_SESSION['username'];
 
 $pdo = new DbAccess();
 

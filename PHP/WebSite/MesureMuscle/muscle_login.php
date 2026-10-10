@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body style="background-color: #e0ffe0;">
 	<h1>Wellcome to the Registering history system of how thick arm muscle is!</h1>
-    <a href = "../index.php">Back</a>
+    <a href = "../index.html">Back</a>
 		<form action="muscle_login.php" method="POST">
     		<label>Username：</label>
     		<input type="text" name="username" required>

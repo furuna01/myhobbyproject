@@ -6,7 +6,11 @@ if (!isset($_SESSION['username'])) {
     header('Location: ../syukudai_login.php');
     exit;
 }
-
+$username = $_SESSION['username'];
+if($username !== 'yonezawa' && $username !== 'testuser') {
+    print("<p>サイトのオーナーのアカウントでないと入力できません");
+    return ;
+}
 if (!isset($_FILES['upload_file'])
     || $_FILES['upload_file']['error'] !== UPLOAD_ERR_OK) {
     exit('ファイルを選択できませんでした。');

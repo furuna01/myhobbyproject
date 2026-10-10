@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body style="background-color: #e0ffe0;">
   <h1>大数宿題正解者の管理サイトにようこそ！</h1>
-  <a href = "../index.php">Back</a>
+  <a href = "../index.html">Back</a>
   <?php if ($error !== ''): ?>
     <p><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
   <?php endif; ?>

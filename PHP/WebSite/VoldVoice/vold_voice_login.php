@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body style="background-color: #e0ffe0;">
 	<h1>Wellcome to the Register system of Vold Voice</h1>
-    <a href = "../index.php">Back</a>
+    <a href = "../index.html">Back</a>
 		<form action="vold_voice_login.php" method="POST">
     		<label>Username：</label>
     		<input type="text" name="username" required>

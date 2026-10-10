@@ -3,10 +3,21 @@ class DbAccess {
     
     public function checkLogin($target_username, $target_password) {
         try {
-            $host = "mysql3109.db.sakura.ne.jp";
-            $dbname = "yonetti_web_learning";
-            $username = "yonetti_web_learning";
-            $password = "suminftyj1";
+            // 設定ファイルのパス
+            $configFile = dirname(__DIR__, 1) . '/setting/config.properties';
+
+            if (!file_exists($configFile)) {
+                die("設定ファイルが見つかりません。");
+            }
+
+            // ファイルを読み込んで連想配列に変換
+            $config = parse_ini_file($configFile);
+
+            // 連想配列から値を取り出す
+            $host     = $config['host'];
+            $dbname   = $config['dbname'];
+            $username = $config['username'];
+            $password = $config['password'];
             $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -31,10 +42,21 @@ class DbAccess {
     }
     public function insertMasterInfo($user_name, $inputdate, $title, $genre) {
         try {
-            $host = "mysql3109.db.sakura.ne.jp";
-            $dbname = "yonetti_web_learning";
-            $username = "yonetti_web_learning";
-            $password = "suminftyj1";
+            // 設定ファイルのパス
+            $configFile = dirname(__DIR__, 1) . '/setting/config.properties';
+
+            if (!file_exists($configFile)) {
+                die("設定ファイルが見つかりません。");
+            }
+
+            // ファイルを読み込んで連想配列に変換
+            $config = parse_ini_file($configFile);
+
+            // 連想配列から値を取り出す
+            $host     = $config['host'];
+            $dbname   = $config['dbname'];
+            $username = $config['username'];
+            $password = $config['password'];
             $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
             $pdo = new PDO($dsn, $username, $password);
             
@@ -62,10 +84,21 @@ class DbAccess {
     }
     public function getAllMasterInfo($user_name) {
         try {
-            $host = "mysql3109.db.sakura.ne.jp";
-            $dbname = "yonetti_web_learning";
-            $username = "yonetti_web_learning";
-            $password = "suminftyj1";
+            // 設定ファイルのパス
+            $configFile = dirname(__DIR__, 1) . '/setting/config.properties';
+
+            if (!file_exists($configFile)) {
+                die("設定ファイルが見つかりません。");
+            }
+
+            // ファイルを読み込んで連想配列に変換
+            $config = parse_ini_file($configFile);
+
+            // 連想配列から値を取り出す
+            $host     = $config['host'];
+            $dbname   = $config['dbname'];
+            $username = $config['username'];
+            $password = $config['password'];
             $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -88,10 +121,21 @@ class DbAccess {
     }
     public function getMasterResultByOrder($user_name, $target_from_date, $target_to_date, $order) {
         try{
-            $host = "mysql3109.db.sakura.ne.jp";
-            $dbname = "yonetti_web_learning";
-            $username = "yonetti_web_learning";
-            $password = "suminftyj1";
+            // 設定ファイルのパス
+            $configFile = dirname(__DIR__, 1) . '/setting/config.properties';
+
+            if (!file_exists($configFile)) {
+                die("設定ファイルが見つかりません。");
+            }
+
+            // ファイルを読み込んで連想配列に変換
+            $config = parse_ini_file($configFile);
+
+            // 連想配列から値を取り出す
+            $host     = $config['host'];
+            $dbname   = $config['dbname'];
+            $username = $config['username'];
+            $password = $config['password'];
             $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8";
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
